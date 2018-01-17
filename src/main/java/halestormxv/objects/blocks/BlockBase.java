@@ -1,6 +1,6 @@
 package halestormxv.objects.blocks;
 
-import halestormxv.Main;
+import halestormxv.RunicSorcery;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.util.IHasModel;
@@ -27,6 +27,6 @@ public class BlockBase extends Block implements IHasModel
     @Override
     public void registerModels()
     {
-        Main.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0 , "inventory");
+        RunicSorcery.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0 , "inventory");
     }
 }
