@@ -1,0 +1,6 @@
+#ITEMS
+item.ingot_phenet.name=Phenet Ingot
+
+#BLOCKS
+tile.block_phenet.name=Phenet Block
+tile.ore_phenet.name=Phenet Ore
