@@ -1,6 +1,10 @@
 #ITEMS
 item.ingot_phenet.name=Phenet Ingot
+item.dust_siegre.name=Siegre Dust
 
 #BLOCKS
 tile.block_phenet.name=Phenet Block
 tile.ore_phenet.name=Phenet Ore
+
+tile.ore_siegre.name=Siegre Ore
+tile.block_siegre.name=Siegre Block
