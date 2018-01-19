@@ -1,6 +1,6 @@
 package halestormxv.init;
 
-import halestormxv.objects.blocks.BlockBase;
+import halestormxv.objects.blocks.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -19,4 +19,11 @@ public class BlockInit
     public static final Block ORE_END = new BlockOres("ore_end", "end");
     public static final Block ORE_OVERWORLD = new BlockOres("ore_overworld", "overworld");
     public static final Block ORE_NETHER = new BlockOres("ore_nether", "nether");
+
+    //public static final Block PLANKS = new BlockPlank("planks");
+    //public static final Block LOGS = new BlockLogs("log");
+    //public static final Block LEAVES = new BlockLeaf("leaves");
+    //public static final Block SAPLINGS = new BlockSaplings("sapling");
+
+    //public static final Block DIRT = new BlockDirts("dirt");
 }

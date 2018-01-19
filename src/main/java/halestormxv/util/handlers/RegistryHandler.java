@@ -2,7 +2,6 @@ package halestormxv.util.handlers;
 
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
-import halestormxv.util.Logging;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.world.gen.WorldGenCustomOres;
 import net.minecraft.block.Block;
@@ -48,9 +47,9 @@ public class RegistryHandler
         }
     }
 
-    public static void otherRegistries()
+    public static void preInitRegistries()
     {
         GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
-        Logging.getLogger().info("Loaded the World Generator, bring on the orez!!!");
+        //GameRegistry.registerWorldGenerator(new WorldGenCustomTrees(), 0);
     }
 }

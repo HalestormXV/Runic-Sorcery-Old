@@ -26,7 +26,7 @@ public class RunicSorcery
     public static void preInit(FMLPreInitializationEvent event) {
         Logging.getLogger().info("Pre Initialize");
         logger = event.getModLog();
-        RegistryHandler.otherRegistries();
+        RegistryHandler.preInitRegistries();
     }
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {

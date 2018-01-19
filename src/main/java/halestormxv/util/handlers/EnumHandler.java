@@ -9,6 +9,7 @@ public class EnumHandler
         LUPRESIUM(0, "lupresium"),
         APRONYX(1, "apronyx"),
         XOSHIAN(2, "xoshian");
+        //MYSTIC(3, "mystic");
 
         private static final EnumType[] META_LOOKUP = new EnumType[values().length];
         private final int meta;
