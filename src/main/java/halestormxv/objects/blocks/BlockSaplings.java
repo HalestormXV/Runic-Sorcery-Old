@@ -11,8 +11,11 @@ import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.objects.blocks.item.ItemBlockVariants;
 import halestormxv.util.handlers.EnumHandler;
+import halestormxv.util.handlers.EnumHandlerWood;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.util.interfaces.IMetaName;
+import halestormxv.world.gen.generators.WorldGenLupresiumTree;
+import halestormxv.world.gen.generators.WorldGenMysticTree;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.properties.IProperty;
@@ -33,15 +36,15 @@ import net.minecraft.world.gen.feature.WorldGenBigTree;
 import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.event.terraingen.TerrainGen;
-/*
+
 public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IHasModel
 {
     public static final PropertyInteger STAGE = PropertyInteger.create("stage", 0, 1);
     protected static final AxisAlignedBB SAPLING_AABB = new AxisAlignedBB(0.09999999403953552D, 0.0D, 0.09999999403953552D, 0.8999999761581421D, 0.800000011920929D, 0.8999999761581421D);
 
-    public static final PropertyEnum<EnumHandler.EnumType> VARIANT = PropertyEnum.<EnumHandler.EnumType>create("variant", EnumHandler.EnumType.class, new Predicate<EnumHandler.EnumType>()
+    public static final PropertyEnum<EnumHandlerWood.EnumTypeWood> VARIANT = PropertyEnum.<EnumHandlerWood.EnumTypeWood>create("variant", EnumHandlerWood.EnumTypeWood.class, new Predicate<EnumHandlerWood.EnumTypeWood>()
     {
-        public boolean apply(@Nullable EnumHandler.EnumType apply)
+        public boolean apply(@Nullable EnumHandlerWood.EnumTypeWood apply)
         {
             return apply.getMeta() < 2;
         }
@@ -53,8 +56,8 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
     {
         setUnlocalizedName(name);
         setRegistryName(name);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.LUPRESIUM).withProperty(STAGE, Integer.valueOf(0)));
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandlerWood.EnumTypeWood.LUPRESIUM).withProperty(STAGE, Integer.valueOf(0)));
+        setCreativeTab(RunicSorcery.RUNICSORCERY);
 
         this.name = name;
 
@@ -91,35 +94,35 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
     {
-        for(EnumHandler.EnumType customblockplanks$enumtype : EnumHandler.EnumType.values())
+        for(EnumHandlerWood.EnumTypeWood customblockplanks$enumtypewood : EnumHandlerWood.EnumTypeWood.values())
         {
-            items.add(new ItemStack(this, 1, customblockplanks$enumtype.getMeta()));
+            items.add(new ItemStack(this, 1, customblockplanks$enumtypewood.getMeta()));
         }
     }
 
     @Override
     public int damageDropped(IBlockState state)
     {
-        return ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
+        return ((EnumHandlerWood.EnumTypeWood)state.getValue(VARIANT)).getMeta();
     }
 
     @Override
     public String getSpecialName(ItemStack stack)
     {
-        return EnumHandler.EnumType.values()[stack.getItemDamage()].getName();
+        return EnumHandlerWood.EnumTypeWood.values()[stack.getItemDamage()].getName();
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(VARIANT, EnumHandler.EnumType.byMetadata(meta & 1)).withProperty(STAGE, Integer.valueOf((meta & 8) >> 3));
+        return this.getDefaultState().withProperty(VARIANT, EnumHandlerWood.EnumTypeWood.byMetadata(meta & 1)).withProperty(STAGE, Integer.valueOf((meta & 8) >> 3));
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
         int i = 0;
-        i = i | ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
+        i = i | ((EnumHandlerWood.EnumTypeWood)state.getValue(VARIANT)).getMeta();
         i = i | ((Integer)state.getValue(STAGE)).intValue() << 3;
         return i;
     }
@@ -133,9 +136,9 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
     @Override
     public void registerModels()
     {
-        for(int i = 0; i < EnumHandler.EnumType.values().length; i++)
+        for(int i = 0; i < EnumHandlerWood.EnumTypeWood.values().length; i++)
         {
-            RunicSorcery.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "sapling_" + EnumHandler.EnumType.values()[i].getName(), "inventory");
+            RunicSorcery.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "sapling_" + EnumHandlerWood.EnumTypeWood.values()[i].getName(), "inventory");
         }
     }
 
@@ -162,12 +165,12 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
         boolean flag = false;
         int i = 0, j = 0;
 
-        switch((EnumHandler.EnumType)state.getValue(VARIANT))
+        switch((EnumHandlerWood.EnumTypeWood)state.getValue(VARIANT))
         {
             case LUPRESIUM:
                 gen = new WorldGenLupresiumTree();
                 break;
-            case APRONYX:
+            case MYSTIC:
                 gen = new WorldGenMysticTree();
                 break;
         }
@@ -219,4 +222,3 @@ public class BlockSaplings extends BlockBush implements IGrowable, IMetaName, IH
         return state.getBlock() == Blocks.GRASS || state.getBlock() == Blocks.DIRT || state.getBlock() == Blocks.FARMLAND;
     }
 }
-*/

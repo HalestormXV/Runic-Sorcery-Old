@@ -1,5 +1,5 @@
 package halestormxv.world.gen.generators;
-/*
+
 import java.util.Random;
 
 import halestormxv.init.BlockInit;
@@ -7,6 +7,7 @@ import halestormxv.objects.blocks.BlockLeaf;
 import halestormxv.objects.blocks.BlockLogs;
 import halestormxv.objects.blocks.BlockSaplings;
 import halestormxv.util.handlers.EnumHandler;
+import halestormxv.util.handlers.EnumHandlerWood;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -18,8 +19,8 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class WorldGenMysticTree extends WorldGenAbstractTree
 {
-    public static final IBlockState LOG = BlockInit.LOGS.getDefaultState().withProperty(BlockLogs.VARIANT, EnumHandler.EnumType.APRONYX);
-    public static final IBlockState LEAF = BlockInit.LEAVES.getDefaultState().withProperty(BlockLeaf.VARIANT, EnumHandler.EnumType.APRONYX);
+    public static final IBlockState LOG = BlockInit.LOGS.getDefaultState().withProperty(BlockLogs.VARIANT, EnumHandlerWood.EnumTypeWood.MYSTIC);
+    public static final IBlockState LEAF = BlockInit.LEAVES.getDefaultState().withProperty(BlockLeaf.VARIANT, EnumHandlerWood.EnumTypeWood.MYSTIC);
 
     private final int minHeight;
 
@@ -132,4 +133,3 @@ public class WorldGenMysticTree extends WorldGenAbstractTree
 
     }
 }
-*/
