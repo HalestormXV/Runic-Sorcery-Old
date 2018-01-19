@@ -4,6 +4,7 @@ import halestormxv.proxy.CommonProxy;
 import halestormxv.util.Logging;
 import halestormxv.util.Reference;
 import halestormxv.util.handlers.RegistryHandler;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -21,6 +22,8 @@ public class RunicSorcery
 
     @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
     public static CommonProxy proxy;
+
+    public static final CreativeTabs RUNICSORCERY = new ModTab("Runic Sorcery");
 
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {

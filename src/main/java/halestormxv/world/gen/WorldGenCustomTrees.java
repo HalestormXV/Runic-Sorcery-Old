@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 
+import halestormxv.world.gen.generators.WorldGenLupresiumTree;
+import halestormxv.world.gen.generators.WorldGenMysticTree;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeForest;
@@ -14,7 +16,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-/*
+
 public class WorldGenCustomTrees implements IWorldGenerator
 {
     private final WorldGenerator LUPRESIUM = new WorldGenLupresiumTree();
@@ -60,4 +62,3 @@ public class WorldGenCustomTrees implements IWorldGenerator
         }
     }
 }
-*/

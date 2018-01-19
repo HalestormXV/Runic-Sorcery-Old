@@ -1,3 +1,6 @@
+#CREATIVE TAB
+itemGroup.RunicSorcery=Runic Sorcery
+
 #ITEMS
 item.ingot_phenet.name=Phenet Ingot
 item.dust_siegre.name=Siegre Dust
@@ -18,3 +21,19 @@ tile.ore_nether_xoshian.name=Xoshian Ore
 tile.ore_end_lupresium.name=Lupresium Ore
 tile.ore_end_apronyx.name=Apronyx Ore
 tile.ore_end_xoshian.name=Xoshian Ore
+
+#WOODS
+tile.dirt_lupresium.name=Lupresium Infused Dirt
+tile.dirt_mystic.name=Mystic Dirt
+
+tile.planks_lupresium.name=Lupresium Planks
+tile.planks_mystic.name=Mystic Planks
+
+tile.log_lupresium.name=Lupresium Infused Wood
+tile.log_mystic.name=Mystic Wood
+
+tile.sapling_lupresium.name=Lupresium Sapling
+tile.sapling_mystic.name=Mystic Sapling
+
+tile.leaves_lupresium.name=Lupresium Touched Leaves
+tile.leaves_mystic.name=Mystic Leaves

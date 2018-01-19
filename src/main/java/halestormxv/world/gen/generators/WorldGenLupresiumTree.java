@@ -1,5 +1,5 @@
 package halestormxv.world.gen.generators;
-/*
+
 import java.util.Random;
 
 import halestormxv.init.BlockInit;
@@ -7,6 +7,7 @@ import halestormxv.objects.blocks.BlockLeaf;
 import halestormxv.objects.blocks.BlockLogs;
 import halestormxv.objects.blocks.BlockSaplings;
 import halestormxv.util.handlers.EnumHandler;
+import halestormxv.util.handlers.EnumHandlerWood;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -15,8 +16,8 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 
 public class WorldGenLupresiumTree extends WorldGenAbstractTree
 {
-    public static final IBlockState LOG = BlockInit.LOGS.getDefaultState().withProperty(BlockLogs.VARIANT, EnumHandler.EnumType.LUPRESIUM);
-    public static final IBlockState LEAF = BlockInit.LEAVES.getDefaultState().withProperty(BlockLeaf.VARIANT, EnumHandler.EnumType.LUPRESIUM);
+    public static final IBlockState LOG = BlockInit.LOGS.getDefaultState().withProperty(BlockLogs.VARIANT, EnumHandlerWood.EnumTypeWood.LUPRESIUM);
+    public static final IBlockState LEAF = BlockInit.LEAVES.getDefaultState().withProperty(BlockLeaf.VARIANT, EnumHandlerWood.EnumTypeWood.LUPRESIUM);
 
     private final int minHeight;
 
@@ -121,4 +122,3 @@ public class WorldGenLupresiumTree extends WorldGenAbstractTree
         return true;
     }
 }
-*/

@@ -5,6 +5,7 @@ import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.objects.blocks.item.ItemBlockVariants;
 import halestormxv.util.handlers.EnumHandler;
+import halestormxv.util.handlers.EnumHandlerWood;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.util.interfaces.IMetaName;
 import net.minecraft.block.Block;
@@ -25,7 +26,7 @@ import net.minecraft.world.World;
 
 public class BlockPlank extends Block implements IMetaName, IHasModel
 {
-    public static final PropertyEnum<EnumHandler.EnumType> VARIANT = PropertyEnum.<EnumHandler.EnumType>create("variant", EnumHandler.EnumType.class);
+    public static final PropertyEnum<EnumHandlerWood.EnumTypeWood> VARIANT = PropertyEnum.<EnumHandlerWood.EnumTypeWood>create("variant", EnumHandlerWood.EnumTypeWood.class);
 
     private String name;
 
@@ -35,8 +36,9 @@ public class BlockPlank extends Block implements IMetaName, IHasModel
         setUnlocalizedName(name);
         setRegistryName(name);
         setSoundType(SoundType.WOOD);
-        setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.LUPRESIUM));
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandlerWood.EnumTypeWood.LUPRESIUM));
+        setCreativeTab(RunicSorcery.RUNICSORCERY);
+        setHarvestLevel("axe", 3);
 
         this.name = name;
 
@@ -48,28 +50,28 @@ public class BlockPlank extends Block implements IMetaName, IHasModel
     @Override
     public int damageDropped(IBlockState state)
     {
-        return ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
+        return ((EnumHandlerWood.EnumTypeWood)state.getValue(VARIANT)).getMeta();
     }
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
     {
-        for(EnumHandler.EnumType customblockplanks$enumtype : EnumHandler.EnumType.values())
+        for(EnumHandlerWood.EnumTypeWood customblockplanks$enumtypewood : EnumHandlerWood.EnumTypeWood.values())
         {
-            items.add(new ItemStack(this, 1, customblockplanks$enumtype.getMeta()));
+            items.add(new ItemStack(this, 1, customblockplanks$enumtypewood.getMeta()));
         }
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(VARIANT, EnumHandler.EnumType.byMetadata(meta));
+        return this.getDefaultState().withProperty(VARIANT, EnumHandlerWood.EnumTypeWood.byMetadata(meta));
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumHandler.EnumType)state.getValue(VARIANT)).getMeta();
+        return ((EnumHandlerWood.EnumTypeWood)state.getValue(VARIANT)).getMeta();
     }
 
     @Override
@@ -87,15 +89,15 @@ public class BlockPlank extends Block implements IMetaName, IHasModel
     @Override
     public String getSpecialName(ItemStack stack)
     {
-        return EnumHandler.EnumType.values()[stack.getItemDamage()].getName();
+        return EnumHandlerWood.EnumTypeWood.values()[stack.getItemDamage()].getName();
     }
 
     @Override
     public void registerModels()
     {
-        for(int i = 0; i < EnumHandler.EnumType.values().length; i++)
+        for(int i = 0; i < EnumHandlerWood.EnumTypeWood.values().length; i++)
         {
-            RunicSorcery.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "planks_" + EnumHandler.EnumType.values()[i].getName(), "inventory");
+            RunicSorcery.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "planks_" + EnumHandlerWood.EnumTypeWood.values()[i].getName(), "inventory");
         }
     }
 }

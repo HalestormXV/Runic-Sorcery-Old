@@ -4,6 +4,7 @@ import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.world.gen.WorldGenCustomOres;
+import halestormxv.world.gen.WorldGenCustomTrees;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -50,6 +51,6 @@ public class RegistryHandler
     public static void preInitRegistries()
     {
         GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
-        //GameRegistry.registerWorldGenerator(new WorldGenCustomTrees(), 0);
+        GameRegistry.registerWorldGenerator(new WorldGenCustomTrees(), 0);
     }
 }
