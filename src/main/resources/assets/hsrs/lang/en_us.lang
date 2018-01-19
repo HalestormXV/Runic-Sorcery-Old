@@ -6,5 +6,15 @@ item.dust_siegre.name=Siegre Dust
 tile.block_phenet.name=Phenet Block
 tile.ore_phenet.name=Phenet Ore
 
+#ORES
 tile.ore_siegre.name=Siegre Ore
 tile.block_siegre.name=Siegre Block
+tile.ore_overworld_lupresium.name=Lupresium Ore
+tile.ore_overworld_apronyx.name=Apronyx Ore
+tile.ore_overworld_xoshian.name=Xoshian Ore
+tile.ore_nether_lupresium.name=Lupresium Ore
+tile.ore_nether_apronyx.name=Apronyx Ore
+tile.ore_nether_xoshian.name=Xoshian Ore
+tile.ore_end_lupresium.name=Lupresium Ore
+tile.ore_end_apronyx.name=Apronyx Ore
+tile.ore_end_xoshian.name=Xoshian Ore

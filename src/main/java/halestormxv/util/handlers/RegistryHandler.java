@@ -2,13 +2,16 @@ package halestormxv.util.handlers;
 
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
-import halestormxv.util.IHasModel;
+import halestormxv.util.Logging;
+import halestormxv.util.interfaces.IHasModel;
+import halestormxv.world.gen.WorldGenCustomOres;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @Mod.EventBusSubscriber
 public class RegistryHandler
@@ -43,5 +46,11 @@ public class RegistryHandler
                 ((IHasModel)block).registerModels();
             }
         }
+    }
+
+    public static void otherRegistries()
+    {
+        GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
+        Logging.getLogger().info("Loaded the World Generator, bring on the orez!!!");
     }
 }

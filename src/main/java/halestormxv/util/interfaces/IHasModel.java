@@ -1,4 +1,4 @@
-package halestormxv.util;
+package halestormxv.util.interfaces;
 
 public interface IHasModel
 {
