@@ -33,7 +33,7 @@ public class BlockOres extends Block implements IHasModel, IMetaName
         setRegistryName(name);
         setHardness(6.0f);
         setHarvestLevel("pickaxe", 3);
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+        setCreativeTab(RunicSorcery.RUNICSORCERY);
         setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandler.EnumType.LUPRESIUM));
         this.name = name;
         this.dimension = dimension;
