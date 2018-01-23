@@ -12,4 +12,5 @@ public class ItemInit
 
     public static final Item INGOT_PHENET = new ItemBase("ingot_phenet");
     public static final Item DUST_SIEGRE = new ItemBase("dust_siegre");
+    public static final Item ITEM_RUNE = new ItemRunes("item_runestone");
 }

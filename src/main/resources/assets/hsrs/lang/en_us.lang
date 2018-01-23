@@ -5,6 +5,14 @@ itemGroup.RunicSorcery=Runic Sorcery
 item.ingot_phenet.name=Phenet Ingot
 item.dust_siegre.name=Siegre Dust
 
+#ITEM RUNESTONES
+item.item_runestone_basic.name=Uncharged Rune
+item.item_runestone_air.name=Air Rune
+item.item_runestone_water.name=Water Rune
+item.item_runestone_fire.name=Fire Rune
+item.item_runestone_earth.name=Earth Rune
+item.item_runestone_death.name=Death Rune
+
 #BLOCKS
 tile.block_phenet.name=Phenet Block
 tile.ore_phenet.name=Phenet Ore
