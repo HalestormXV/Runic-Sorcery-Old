@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 
+import halestormxv.world.biomes.BiomeLupresiumForest;
 import halestormxv.world.gen.generators.WorldGenLupresiumTree;
 import halestormxv.world.gen.generators.WorldGenMysticTree;
 import net.minecraft.util.math.BlockPos;
@@ -33,7 +34,7 @@ public class WorldGenCustomTrees implements IWorldGenerator
 
             case 0:
 
-                runGenerator(LUPRESIUM, world, random, chunkX, chunkZ, 3, -1, 0, BiomePlains.class);
+                runGenerator(LUPRESIUM, world, random, chunkX, chunkZ, 3, -1, 0, BiomeLupresiumForest.class);
                 runGenerator(MYSTIC, world, random, chunkX, chunkZ, 3, -1, 0, BiomeForest.class);
 
                 break;

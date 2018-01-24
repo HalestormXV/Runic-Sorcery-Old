@@ -1,6 +1,8 @@
 package halestormxv.util.handlers;
 
+import halestormxv.init.BiomeInit;
 import halestormxv.init.BlockInit;
+import halestormxv.init.EntityInit;
 import halestormxv.init.ItemInit;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.world.gen.WorldGenCustomOres;
@@ -52,5 +54,14 @@ public class RegistryHandler
     {
         GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenCustomTrees(), 0);
+
+        BiomeInit.registerBiomes();
+        EntityInit.registerEntities();
+        RenderHandler.registerEntityRenders();
+    }
+
+    public static void initRegistries()
+    {
+        SoundsHandler.registerSounds();
     }
 }

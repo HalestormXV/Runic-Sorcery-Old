@@ -1,0 +1,20 @@
+{
+	"entity.phantom.ambient": {
+		"category": "entity",
+		"subtitle": "entity.phantom.ambient",
+		"sounds": [ {"name": "hsrs:entity/phantom/ambient", "stream": true }]
+	},
+	"entity.phantom.hurt": {
+		"category": "entity",
+		"subtitle": "entity.phantom.hurt",
+		"sounds": [ {"name": "hsrs:entity/phantom/hurt", "stream": true }]
+	},
+	"entity.phantom.death": {
+		"category": "entity",
+		"subtitle": "entity.phantom.death",
+		"sounds": [ {"name": "hsrs:entity/phantom/death", "stream": true }]
+	},
+	"music.mavismusic": { "sounds":[{"name": "eangel:music/mavistheme", "stream": true}] },
+	"music.kishuu": { "sounds":[{"name": "eangel:music/kishuumusic", "stream": true}] },
+	"music.motomiyaflute": { "sounds":[{"name": "eangel:music/motomiyaflute", "stream": true}] }
+}

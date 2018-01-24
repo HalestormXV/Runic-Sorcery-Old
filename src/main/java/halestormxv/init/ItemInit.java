@@ -1,6 +1,7 @@
 package halestormxv.init;
 
 import halestormxv.objects.items.ItemBase;
+import halestormxv.objects.items.ItemRunes;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;

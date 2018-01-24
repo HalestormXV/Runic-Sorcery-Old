@@ -1,6 +1,7 @@
-package halestormxv.init;
+package halestormxv.objects.items;
 
 import halestormxv.RunicSorcery;
+import halestormxv.init.ItemInit;
 import halestormxv.util.handlers.EnumHandlerRunes;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.util.interfaces.IMetaName;

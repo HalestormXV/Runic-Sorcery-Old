@@ -45,3 +45,6 @@ tile.sapling_mystic.name=Mystic Sapling
 
 tile.leaves_lupresium.name=Lupresium Touched Leaves
 tile.leaves_mystic.name=Mystic Leaves
+
+#ENTITIES
+entity.phantom.name=Specter
