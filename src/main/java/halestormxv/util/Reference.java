@@ -10,4 +10,6 @@ public class Reference
 
     public static final int ENTITY_PHANTOM = 120;
     public static final int ENTITY_CULTIST = 121;
+
+    public static final String NETWORK_MODID = "hsrs_";
 }

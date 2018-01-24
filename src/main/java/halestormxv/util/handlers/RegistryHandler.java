@@ -1,15 +1,18 @@
 package halestormxv.util.handlers;
 
+import halestormxv.KeyBindings;
 import halestormxv.init.BiomeInit;
 import halestormxv.init.BlockInit;
 import halestormxv.init.EntityInit;
 import halestormxv.init.ItemInit;
+import halestormxv.network.PacketHandler;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomTrees;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -57,11 +60,14 @@ public class RegistryHandler
 
         BiomeInit.registerBiomes();
         EntityInit.registerEntities();
+        PacketHandler.registerMessages("runicBagKey");
         RenderHandler.registerEntityRenders();
     }
 
     public static void initRegistries()
     {
         SoundsHandler.registerSounds();
+        MinecraftForge.EVENT_BUS.register(new InputHandler());
+        KeyBindings.init();
     }
 }
