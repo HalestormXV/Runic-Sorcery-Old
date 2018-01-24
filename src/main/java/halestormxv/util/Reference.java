@@ -9,4 +9,5 @@ public class Reference
     public static final String COMMON = "halestormxv.proxy.CommonProxy";
 
     public static final int ENTITY_PHANTOM = 120;
+    public static final int ENTITY_CULTIST = 121;
 }

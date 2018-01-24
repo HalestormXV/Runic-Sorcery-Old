@@ -14,6 +14,36 @@
 		"subtitle": "entity.phantom.death",
 		"sounds": [ {"name": "hsrs:entity/phantom/death", "stream": true }]
 	},
+	"entity.cultist.ambient": {
+		"category": "entity",
+		"subtitle": "entity.cultist.ambient",
+		"sounds":
+		[
+			{"name": "hsrs:entity/cultist/ambient01", "stream": true},
+			{"name": "hsrs:entity/cultist/ambient02", "stream": true},
+			{"name": "hsrs:entity/cultist/ambient03", "stream": true}
+		]
+	},
+	"entity.cultist.death": {
+		"category": "entity",
+		"subtitle": "entity.cultist.death",
+		"sounds": [ {"name": "hsrs:entity/cultist/death", "stream": true }]
+	},
+	"entity.cultist.hurt": {
+		"category": "entity",
+		"subtitle": "entity.cultist.hurt",
+		"sounds":
+		[
+			{"name": "hsrs:entity/cultist/hurt01", "stream": true },
+			{"name": "hsrs:entity/cultist/hurt02", "stream": true },
+			{"name": "hsrs:entity/cultist/hurt03", "stream": true }
+		]
+	},
+	"entity.cultist.special": {
+		"category": "entity",
+		"subtitle": "entity.cultist.special",
+		"sounds": [ {"name": "hsrs:entity/cultist/special", "stream": true }]
+	},
 	"music.mavismusic": { "sounds":[{"name": "eangel:music/mavistheme", "stream": true}] },
 	"music.kishuu": { "sounds":[{"name": "eangel:music/kishuumusic", "stream": true}] },
 	"music.motomiyaflute": { "sounds":[{"name": "eangel:music/motomiyaflute", "stream": true}] }
