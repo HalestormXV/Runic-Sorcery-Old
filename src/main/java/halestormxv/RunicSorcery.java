@@ -1,5 +1,6 @@
 package halestormxv;
 
+import halestormxv.proxy.ClientProxy;
 import halestormxv.proxy.CommonProxy;
 import halestormxv.util.Logging;
 import halestormxv.util.Reference;
@@ -20,7 +21,7 @@ public class RunicSorcery
 
     public static Logger logger;
 
-    @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.COMMON)
+    @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.SERVER)
     public static CommonProxy proxy;
 
     public static final CreativeTabs RUNICSORCERY = new ModTab("Runic Sorcery");
@@ -29,16 +30,18 @@ public class RunicSorcery
     public static void preInit(FMLPreInitializationEvent event) {
         Logging.getLogger().info("Pre Initialize");
         logger = event.getModLog();
-        RegistryHandler.preInitRegistries();
+        proxy.preInit(event);
     }
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event)
     {
         Logging.getLogger().info("Initialize");
-        RegistryHandler.initRegistries();
+        proxy.init(event);
     }
     @Mod.EventHandler
-    public static void postInit(FMLPostInitializationEvent event) {
+    public static void postInit(FMLPostInitializationEvent event)
+    {
         Logging.getLogger().info("Post Initialize");
+        proxy.postInit(event);
     }
 }

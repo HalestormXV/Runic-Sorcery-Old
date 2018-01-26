@@ -27,13 +27,13 @@ public class WorldGenMysticTree extends WorldGenAbstractTree
     public WorldGenMysticTree()
     {
         super(false);
-        this.minHeight = 12;
+        this.minHeight = 14;
     }
 
     @Override
     public boolean generate(World world, Random rand, BlockPos pos)
     {
-        int height = this.minHeight + rand.nextInt(3);
+        int height = this.minHeight + rand.nextInt(6);
         boolean flag = true;
 
         int x = pos.getX();

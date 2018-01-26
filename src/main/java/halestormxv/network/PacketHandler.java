@@ -21,7 +21,7 @@ public class PacketHandler
 
     public static void registerMessages(String channelName)
     {
-        INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_MODID + channelName);
+        INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(channelName);
         registerMessages();
     }
 

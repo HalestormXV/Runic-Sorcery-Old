@@ -1,6 +1,7 @@
 package halestormxv.entity;
 
 import halestormxv.init.ItemInit;
+import halestormxv.util.handlers.LootTableHandler;
 import halestormxv.util.handlers.SoundsHandler;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -20,15 +21,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
 
 public class EntityCultist extends EntityMob implements IRangedAttackMob
 {
@@ -57,6 +57,13 @@ public class EntityCultist extends EntityMob implements IRangedAttackMob
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityVillager.class, false));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityIronGolem.class, true));
+    }
+
+    @Nullable
+    @Override
+    protected ResourceLocation getLootTable()
+    {
+        return LootTableHandler.CULTIST;
     }
 
     @Override

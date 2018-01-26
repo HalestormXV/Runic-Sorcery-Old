@@ -14,7 +14,7 @@ public class KeyBindings
 
     public static void init()
     {
-        runeBag = new KeyBinding("key.tutorial", Keyboard.KEY_T, "key.categories.runebag");
+        runeBag = new KeyBinding("key.runicsorcery", Keyboard.KEY_T, "key.categories.runebag");
         ClientRegistry.registerKeyBinding(runeBag);
     }
 }

@@ -1,5 +1,6 @@
 package halestormxv.world.biomes;
 
+import halestormxv.entity.EntityPhantom;
 import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockDirts;
 import halestormxv.util.handlers.EnumHandlerWood;
@@ -36,7 +37,7 @@ public class BiomeLupresiumForest extends Biome
         this.spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 6, 1, 3));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 10, 2, 6));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityWitherSkeleton.class, 4, 2, 8));
-        this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 7, 3, 9));
+        this.spawnableMonsterList.add(new SpawnListEntry(EntityPhantom.class, 7, 3, 9));
 
     }
 
