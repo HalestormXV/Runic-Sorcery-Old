@@ -9,20 +9,24 @@ import halestormxv.world.gen.generators.WorldGenLupresiumTree;
 import halestormxv.world.gen.generators.WorldGenMysticTree;
 import halestormxv.world.gen.generators.WorldGenStructure;
 import net.minecraft.block.Block;
+import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import scala.actors.threadpool.Arrays;
-import java.util.ArrayList;
-import java.util.Random;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import java.util.*;
+import java.util.Arrays;
 
 public class WorldGenCustomStuffs implements IWorldGenerator
 {
+    private static List<Biome> biomeList = ForgeRegistries.BIOMES.getValues();
+
     /*###STRUCTURES###*/
     private static final WorldGenStructure CULTIST_HUT = new WorldGenStructure("cultist_hut");
 
@@ -41,7 +45,7 @@ public class WorldGenCustomStuffs implements IWorldGenerator
                 break;
 
             case 0:
-                generateStructures(CULTIST_HUT, world, random, chunkX, chunkZ, 80, Blocks.GRASS);
+                generateStructures(CULTIST_HUT, world, random, chunkX, chunkZ, 7, Blocks.GRASS, getBiomeList().toArray(new Class[getBiomeList().size()]));
                 generateTrees(LUPRESIUM_TREE, world, random, chunkX, chunkZ, 10, lupresiumDirt, BiomeLupresiumForest.class);
                 generateTrees(MYSTIC_TREE, world, random, chunkX, chunkZ, 10, mysticDirt, BiomeMysticLands.class);
                 break;
@@ -113,5 +117,19 @@ public class WorldGenCustomStuffs implements IWorldGenerator
             foundGround = block == topBlock;
         }
         return y;
+    }
+
+
+    private static List<?> getBiomeList()
+    {
+        ArrayList<Class> biomeClassList = new ArrayList<Class>();
+        for (Biome biome : biomeList)
+        {
+            if (biome != null)
+            {
+                biomeClassList.add(biome.getBiomeClass());
+            }
+        }
+        return biomeClassList;
     }
 }
