@@ -23,7 +23,7 @@ public class BiomeLupresiumForest extends Biome
     {
         super(new BiomeProperties("Lupresium Touched").setBaseHeight(0.4f).setHeightVariation(0.5f).setTemperature(0.6f).setWaterColor(40206));
         topBlock = BlockInit.DIRT.getDefaultState().withProperty(BlockDirts.VARIANT, EnumHandlerWood.EnumTypeWood.LUPRESIUM);
-        fillerBlock = Blocks.STONE.getDefaultState();
+        fillerBlock = BlockInit.BLOCK_STONES.getDefaultState();
 
         //this.decorator.coalGen = new WorldGenMinable(Blocks.COAL_BLOCK.getDefaultState(), 4);
         this.decorator.generateFalls = true;

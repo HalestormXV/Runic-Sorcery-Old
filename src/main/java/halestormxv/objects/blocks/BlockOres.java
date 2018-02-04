@@ -1,6 +1,8 @@
-package halestormxv.init;
+package halestormxv.objects.blocks;
 
 import halestormxv.RunicSorcery;
+import halestormxv.init.BlockInit;
+import halestormxv.init.ItemInit;
 import halestormxv.objects.blocks.item.ItemBlockVariants;
 import halestormxv.util.handlers.EnumHandler;
 import halestormxv.util.interfaces.IHasModel;

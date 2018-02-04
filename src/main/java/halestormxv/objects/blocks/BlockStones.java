@@ -4,6 +4,9 @@ import halestormxv.RunicSorcery;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.objects.blocks.item.ItemBlockVariants;
+import halestormxv.util.Logging;
+import halestormxv.util.handlers.EnumHandler;
+import halestormxv.util.handlers.EnumHandlerStone;
 import halestormxv.util.handlers.EnumHandlerWood;
 import halestormxv.util.interfaces.IHasModel;
 import halestormxv.util.interfaces.IMetaName;
@@ -26,21 +29,24 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
-public class BlockDirts extends Block implements IMetaName, IHasModel
+import java.util.Random;
+
+public class BlockStones extends Block implements IMetaName, IHasModel
 {
-    public static final PropertyEnum<EnumHandlerWood.EnumTypeWood> VARIANT = PropertyEnum.<EnumHandlerWood.EnumTypeWood>create("variant", EnumHandlerWood.EnumTypeWood.class);
+    public static final PropertyEnum<EnumHandlerStone.EnumTypeStone> VARIANT = PropertyEnum.<EnumHandlerStone.EnumTypeStone>create("variant", EnumHandlerStone.EnumTypeStone.class);
 
     private String name;
 
-    public BlockDirts(String name)
+    public BlockStones(String name)
     {
-        super(Material.GROUND);
+        super(Material.ROCK);
         setUnlocalizedName(name);
         setRegistryName(name);
-        setSoundType(SoundType.GROUND);
-        setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandlerWood.EnumTypeWood.LUPRESIUM));
+        setSoundType(SoundType.STONE);
+        setHardness(4.0f);
+        setDefaultState(this.blockState.getBaseState().withProperty(VARIANT, EnumHandlerStone.EnumTypeStone.LUPRESIUM_SMOOTHSTONE));
         setCreativeTab(RunicSorcery.RUNICSORCERY);
-        setHardness(2.0f);
+        setHarvestLevel("pickaxe", 1);
 
         this.name = name;
 
@@ -52,28 +58,28 @@ public class BlockDirts extends Block implements IMetaName, IHasModel
     @Override
     public int damageDropped(IBlockState state)
     {
-        return ((EnumHandlerWood.EnumTypeWood)state.getValue(VARIANT)).getMeta();
+        return ((EnumHandlerStone.EnumTypeStone)state.getValue(VARIANT)).getMeta();
     }
 
     @Override
     public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
     {
-        for(EnumHandlerWood.EnumTypeWood customblockplanks$enumtypewood : EnumHandlerWood.EnumTypeWood.values())
+        for(EnumHandlerStone.EnumTypeStone variant : EnumHandlerStone.EnumTypeStone.values())
         {
-            items.add(new ItemStack(this, 1, customblockplanks$enumtypewood.getMeta()));
+            items.add(new ItemStack(this, 1, variant.getMeta()));
         }
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta)
     {
-        return this.getDefaultState().withProperty(VARIANT, EnumHandlerWood.EnumTypeWood.byMetadata(meta));
+        return this.getDefaultState().withProperty(VARIANT, EnumHandlerStone.EnumTypeStone.byMetadata(meta));
     }
 
     @Override
     public int getMetaFromState(IBlockState state)
     {
-        return ((EnumHandlerWood.EnumTypeWood)state.getValue(VARIANT)).getMeta();
+        return ((EnumHandlerStone.EnumTypeStone)state.getValue(VARIANT)).getMeta();
     }
 
     @Override
@@ -91,21 +97,35 @@ public class BlockDirts extends Block implements IMetaName, IHasModel
     @Override
     public String getSpecialName(ItemStack stack)
     {
-        return EnumHandlerWood.EnumTypeWood.values()[stack.getItemDamage()].getName();
+        return EnumHandlerStone.EnumTypeStone.values()[stack.getItemDamage()].getName();
     }
 
     @Override
     public void registerModels()
     {
-        for(int i = 0; i < EnumHandlerWood.EnumTypeWood.values().length; i++)
+        for(int i = 0; i < EnumHandlerStone.EnumTypeStone.values().length; i++)
         {
-            RunicSorcery.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "dirt_" + EnumHandlerWood.EnumTypeWood.values()[i].getName(), "inventory");
+            RunicSorcery.proxy.registerVariantRenderer(Item.getItemFromBlock(this), i, "stone_" + EnumHandlerStone.EnumTypeStone.values()[i].getName(), "inventory");
         }
     }
 
     @Override
     public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, IPlantable plantable)
     {
-        return true;
+        return false;
+    }
+
+    @Override
+    public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        if (state.getValue(VARIANT) == EnumHandlerStone.EnumTypeStone.LUPRESIUM_SMOOTHSTONE)
+        {
+            return Item.getItemFromBlock(BlockInit.BLOCK_LUPRESIUM_COBBLE);
+        }
+        if (state.getValue(VARIANT) == EnumHandlerStone.EnumTypeStone.MYSTIC_SMOOTHSTONE)
+        {
+            return Item.getItemFromBlock(BlockInit.BLOCK_MYSTIC_COBBLE);
+        }
+        return Item.getItemFromBlock(this);
     }
 }

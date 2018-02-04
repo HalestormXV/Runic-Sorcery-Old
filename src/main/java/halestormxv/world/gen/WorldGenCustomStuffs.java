@@ -2,6 +2,7 @@ package halestormxv.world.gen;
 
 import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockDirts;
+import halestormxv.util.Logging;
 import halestormxv.util.handlers.EnumHandlerWood;
 import halestormxv.world.biomes.BiomeLupresiumForest;
 import halestormxv.world.biomes.BiomeMysticLands;
@@ -9,7 +10,6 @@ import halestormxv.world.gen.generators.WorldGenLupresiumTree;
 import halestormxv.world.gen.generators.WorldGenMysticTree;
 import halestormxv.world.gen.generators.WorldGenStructure;
 import net.minecraft.block.Block;
-import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -22,11 +22,10 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import java.util.*;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 public class WorldGenCustomStuffs implements IWorldGenerator
 {
-    private static List<Biome> biomeList = ForgeRegistries.BIOMES.getValues();
-
     /*###STRUCTURES###*/
     private static final WorldGenStructure CULTIST_HUT = new WorldGenStructure("cultist_hut");
 
@@ -45,7 +44,7 @@ public class WorldGenCustomStuffs implements IWorldGenerator
                 break;
 
             case 0:
-                generateStructures(CULTIST_HUT, world, random, chunkX, chunkZ, 7, Blocks.GRASS, getBiomeList().toArray(new Class[getBiomeList().size()]));
+                generateStructures(CULTIST_HUT, world, random, chunkX, chunkZ, 80, Blocks.GRASS, getBiomeList().toArray(new Class[getBiomeList().size()]));
                 generateTrees(LUPRESIUM_TREE, world, random, chunkX, chunkZ, 10, lupresiumDirt, BiomeLupresiumForest.class);
                 generateTrees(MYSTIC_TREE, world, random, chunkX, chunkZ, 10, mysticDirt, BiomeMysticLands.class);
                 break;
@@ -120,16 +119,8 @@ public class WorldGenCustomStuffs implements IWorldGenerator
     }
 
 
-    private static List<?> getBiomeList()
+    private static List<Class> getBiomeList()
     {
-        ArrayList<Class> biomeClassList = new ArrayList<Class>();
-        for (Biome biome : biomeList)
-        {
-            if (biome != null)
-            {
-                biomeClassList.add(biome.getBiomeClass());
-            }
-        }
-        return biomeClassList;
+        return ForgeRegistries.BIOMES.getValues().stream().map(Biome::getBiomeClass).collect(Collectors.toList());
     }
 }

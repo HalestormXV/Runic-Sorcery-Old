@@ -16,6 +16,16 @@ item.item_runestone_death.name=Death Rune
 #BLOCKS
 tile.block_phenet.name=Phenet Block
 tile.ore_phenet.name=Phenet Ore
+tile.stone_lupresium_smoothstone.name=Lupresium Stone
+tile.block_lupresium_cobblestone.name=Lupresium Cobblestone
+tile.stone_lupresium_chiseled.name=Chiseled Lupresium Stone Bricks
+tile.stone_lupresium_brick.name=Lupresium Bricks
+tile.stone_lupresium_runestone.name=Lupresium Runestone Brick
+tile.stone_mystic_smoothstone.name=Mystic Stone
+tile.block_mystic_cobblestone.name=Mystic Cobblestone
+tile.stone_mystic_chiseled.name=Chiseled Mystic Stone Bricks
+tile.stone_mystic_brick.name=Mystic Bricks
+tile.stone_mystic_runestone.name=Mystic Runestone Brick
 
 #ORES
 tile.ore_siegre.name=Siegre Ore

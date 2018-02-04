@@ -1,7 +1,7 @@
 package halestormxv.world.gen;
 
 import halestormxv.init.BlockInit;
-import halestormxv.init.BlockOres;
+import halestormxv.objects.blocks.BlockOres;
 import halestormxv.util.handlers.EnumHandler;
 import net.minecraft.block.state.pattern.BlockMatcher;
 import net.minecraft.init.Blocks;

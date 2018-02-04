@@ -32,7 +32,6 @@ public class CommonProxy
 
     public void init(FMLInitializationEvent e)
     {
-        //RegistryHandler.initRegistries();
         SoundsHandler.registerSounds();
     }
 
