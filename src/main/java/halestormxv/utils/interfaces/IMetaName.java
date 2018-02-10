@@ -1,4 +1,4 @@
-package halestormxv.util.interfaces;
+package halestormxv.utils.interfaces;
 
 import net.minecraft.item.ItemStack;
 

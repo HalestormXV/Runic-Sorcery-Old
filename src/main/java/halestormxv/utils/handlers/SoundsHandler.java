@@ -1,6 +1,6 @@
-package halestormxv.util.handlers;
+package halestormxv.utils.handlers;
 
-import halestormxv.util.Reference;
+import halestormxv.utils.Reference;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;

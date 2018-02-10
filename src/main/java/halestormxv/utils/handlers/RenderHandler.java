@@ -1,4 +1,4 @@
-package halestormxv.util.handlers;
+package halestormxv.utils.handlers;
 
 import halestormxv.entity.EntityCultist;
 import halestormxv.entity.EntityPhantom;

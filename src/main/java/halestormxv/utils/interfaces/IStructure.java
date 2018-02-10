@@ -1,4 +1,4 @@
-package halestormxv.util.interfaces;
+package halestormxv.utils.interfaces;
 
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
