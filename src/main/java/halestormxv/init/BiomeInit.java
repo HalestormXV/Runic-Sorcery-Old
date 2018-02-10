@@ -1,6 +1,6 @@
 package halestormxv.init;
 
-import halestormxv.util.Logging;
+import halestormxv.utils.Logging;
 import halestormxv.world.biomes.BiomeLupresiumForest;
 import halestormxv.world.biomes.BiomeMysticLands;
 import net.minecraft.world.biome.Biome;

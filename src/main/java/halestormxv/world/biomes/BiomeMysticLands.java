@@ -4,12 +4,10 @@ import halestormxv.entity.EntityCultist;
 import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockDirts;
 import halestormxv.objects.blocks.BlockStones;
-import halestormxv.util.handlers.EnumHandlerStone;
-import halestormxv.util.handlers.EnumHandlerWood;
-import halestormxv.world.gen.generators.WorldGenLupresiumTree;
+import halestormxv.utils.handlers.EnumHandlerStone;
+import halestormxv.utils.handlers.EnumHandlerWood;
 import halestormxv.world.gen.generators.WorldGenMysticTree;
 import net.minecraft.entity.monster.*;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 

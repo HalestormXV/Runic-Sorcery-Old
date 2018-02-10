@@ -1,4 +1,4 @@
-package halestormxv.util;
+package halestormxv.utils;
 
 public class Reference
 {
@@ -13,4 +13,6 @@ public class Reference
     public static final int ENTITY_CULTIST = 121;
 
     public static final String NETWORK_MODID = "hsrs_";
+
+    public static final int GUI_RUNIC_FURNACE = 0;
 }

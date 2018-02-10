@@ -2,7 +2,7 @@ package halestormxv.entity.render;
 
 import halestormxv.entity.EntityCultist;
 import halestormxv.entity.model.ModelCultist;
-import halestormxv.util.Reference;
+import halestormxv.utils.Reference;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.layers.LayerBipedArmor;

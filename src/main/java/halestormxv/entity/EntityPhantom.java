@@ -1,7 +1,7 @@
 package halestormxv.entity;
 
 import halestormxv.init.ItemInit;
-import halestormxv.util.handlers.SoundsHandler;
+import halestormxv.utils.handlers.SoundsHandler;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;

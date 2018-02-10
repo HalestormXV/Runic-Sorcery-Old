@@ -1,9 +1,8 @@
 package halestormxv;
 
 import halestormxv.proxy.CommonProxy;
-import halestormxv.util.Logging;
-import halestormxv.util.Reference;
-import halestormxv.world.gen.WorldGenCustomStuffs;
+import halestormxv.utils.Logging;
+import halestormxv.utils.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;

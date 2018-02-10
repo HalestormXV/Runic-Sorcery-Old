@@ -2,8 +2,7 @@ package halestormxv.entity.render;
 
 import halestormxv.entity.EntityPhantom;
 import halestormxv.entity.model.ModelPhantom;
-import halestormxv.util.Reference;
-import net.minecraft.client.model.ModelBase;
+import halestormxv.utils.Reference;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

@@ -1,6 +1,6 @@
 package halestormxv.objects.blocks.item;
 
-import halestormxv.util.interfaces.IMetaName;
+import halestormxv.utils.interfaces.IMetaName;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;

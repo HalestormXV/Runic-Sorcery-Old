@@ -2,8 +2,7 @@ package halestormxv.objects.items;
 
 import halestormxv.RunicSorcery;
 import halestormxv.init.ItemInit;
-import halestormxv.util.interfaces.IHasModel;
-import net.minecraft.creativetab.CreativeTabs;
+import halestormxv.utils.interfaces.IHasModel;
 import net.minecraft.item.Item;
 
 public class ItemBase extends Item implements IHasModel

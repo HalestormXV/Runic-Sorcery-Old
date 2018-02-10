@@ -1,15 +1,19 @@
 package halestormxv.proxy;
 
+import halestormxv.RunicSorcery;
 import halestormxv.init.BiomeInit;
 import halestormxv.init.BlockInit;
 import halestormxv.init.EntityInit;
 import halestormxv.init.ItemInit;
 import halestormxv.network.PacketHandler;
-import halestormxv.util.handlers.SoundsHandler;
+import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
+import halestormxv.utils.Reference;
+import halestormxv.utils.handlers.SoundsHandler;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -33,6 +37,7 @@ public class CommonProxy
     public void init(FMLInitializationEvent e)
     {
         SoundsHandler.registerSounds();
+        GameRegistry.registerTileEntity(TileEntityRunicInscriber.class, Reference.MODID +"TE_RunicInscriber");
     }
 
     public void postInit(FMLPostInitializationEvent e) {

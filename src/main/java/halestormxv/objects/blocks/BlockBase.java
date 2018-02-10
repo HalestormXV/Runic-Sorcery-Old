@@ -3,11 +3,10 @@ package halestormxv.objects.blocks;
 import halestormxv.RunicSorcery;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
-import halestormxv.util.interfaces.IHasModel;
+import halestormxv.utils.interfaces.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 

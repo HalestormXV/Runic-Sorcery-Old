@@ -3,13 +3,11 @@ package halestormxv.world.biomes;
 import halestormxv.entity.EntityPhantom;
 import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockDirts;
-import halestormxv.util.handlers.EnumHandlerWood;
+import halestormxv.utils.handlers.EnumHandlerWood;
 import halestormxv.world.gen.generators.WorldGenLupresiumTree;
 import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.entity.monster.EntityZombie;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 

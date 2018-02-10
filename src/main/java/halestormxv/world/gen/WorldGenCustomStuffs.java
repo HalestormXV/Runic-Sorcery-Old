@@ -2,8 +2,7 @@ package halestormxv.world.gen;
 
 import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockDirts;
-import halestormxv.util.Logging;
-import halestormxv.util.handlers.EnumHandlerWood;
+import halestormxv.utils.handlers.EnumHandlerWood;
 import halestormxv.world.biomes.BiomeLupresiumForest;
 import halestormxv.world.biomes.BiomeMysticLands;
 import halestormxv.world.gen.generators.WorldGenLupresiumTree;

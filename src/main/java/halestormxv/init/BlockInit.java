@@ -1,6 +1,7 @@
 package halestormxv.init;
 
 import halestormxv.objects.blocks.*;
+import halestormxv.objects.blocks.devices.inscriber.BlockRunicInscriber;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -32,4 +33,7 @@ public class BlockInit
     public static final Block BLOCK_SIEGRE = new BlockBase("block_siegre", Material.GLASS).setHardness(2.0f).setLightLevel(1.0f);
     public static final Block BLOCK_PHENET = new BlockBase("block_phenet", Material.IRON).setHardness(3.0f);
     public static final Block ORE_PHENET = new BlockBase("ore_phenet", Material.ROCK).setHardness(4.0f);
+
+    //SPECIAL BLOCKS
+    public static final Block RUNIC_INSCRIBER = new BlockRunicInscriber("runic_inscriber", Material.IRON);
 }

@@ -1,7 +1,6 @@
 package halestormxv.network;
 
 import halestormxv.network.packets.PacketSendKey;
-import halestormxv.util.Reference;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;

@@ -32,11 +32,12 @@ public class PacketSendKey implements IMessage
         buf.writeLong(blockPos.toLong());
     }
 
-    public PacketSendKey()
+    public PacketSendKey(){}
+
+    public PacketSendKey(BlockPos blockPos)
     {
         // Calculate the position of the block we are looking at
-        RayTraceResult mouseOver = Minecraft.getMinecraft().objectMouseOver;
-        blockPos = mouseOver.getBlockPos();
+        this.blockPos = blockPos;
     }
 
     public static class Handler implements IMessageHandler<PacketSendKey, IMessage> {

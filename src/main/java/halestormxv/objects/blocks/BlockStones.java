@@ -4,12 +4,9 @@ import halestormxv.RunicSorcery;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.objects.blocks.item.ItemBlockVariants;
-import halestormxv.util.Logging;
-import halestormxv.util.handlers.EnumHandler;
-import halestormxv.util.handlers.EnumHandlerStone;
-import halestormxv.util.handlers.EnumHandlerWood;
-import halestormxv.util.interfaces.IHasModel;
-import halestormxv.util.interfaces.IMetaName;
+import halestormxv.utils.handlers.EnumHandlerStone;
+import halestormxv.utils.interfaces.IHasModel;
+import halestormxv.utils.interfaces.IMetaName;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -123,6 +120,7 @@ public class BlockStones extends Block implements IMetaName, IHasModel
             return Item.getItemFromBlock(BlockInit.BLOCK_LUPRESIUM_COBBLE);
         }
         if (state.getValue(VARIANT) == EnumHandlerStone.EnumTypeStone.MYSTIC_SMOOTHSTONE)
+        //if (state.getValue(VARIANT).getMeta() == 4)
         {
             return Item.getItemFromBlock(BlockInit.BLOCK_MYSTIC_COBBLE);
         }

@@ -1,6 +1,9 @@
 #CREATIVE TAB
 itemGroup.RunicSorcery=Runic Sorcery
 
+#CONTAINER
+container.runic_inscriber=Runic Inscriber
+
 #ITEMS
 item.ingot_phenet.name=Phenet Ingot
 item.dust_siegre.name=Siegre Dust
@@ -26,6 +29,7 @@ tile.block_mystic_cobblestone.name=Mystic Cobblestone
 tile.stone_mystic_chiseled.name=Chiseled Mystic Stone Bricks
 tile.stone_mystic_brick.name=Mystic Bricks
 tile.stone_mystic_runestone.name=Mystic Runestone Brick
+tile.runic_inscriber.name=Runic Inscriber
 
 #ORES
 tile.ore_siegre.name=Siegre Ore

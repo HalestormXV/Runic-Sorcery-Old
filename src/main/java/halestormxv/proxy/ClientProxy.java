@@ -1,13 +1,15 @@
 package halestormxv.proxy;
 
 import halestormxv.KeyBindings;
+import halestormxv.gui.handlers.RunicInscriberGuiHandler;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
-import halestormxv.util.Reference;
-import halestormxv.util.handlers.InputHandler;
-import halestormxv.util.handlers.RenderHandler;
-import halestormxv.util.interfaces.IHasModel;
+import halestormxv.utils.Reference;
+import halestormxv.utils.handlers.InputHandler;
+import halestormxv.utils.handlers.RenderHandler;
+import halestormxv.utils.interfaces.IHasModel;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -18,8 +20,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 @Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy
@@ -37,7 +39,8 @@ public class ClientProxy extends CommonProxy
     }
 
     @Override
-    public void preInit(FMLPreInitializationEvent e) {
+    public void preInit(FMLPreInitializationEvent e)
+    {
         super.preInit(e);
         RenderHandler.registerEntityRenders();
     }
@@ -48,6 +51,7 @@ public class ClientProxy extends CommonProxy
         super.init(e);
         MinecraftForge.EVENT_BUS.register(new InputHandler());
         KeyBindings.init();
+        NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MODID, new RunicInscriberGuiHandler());
     }
 
 
