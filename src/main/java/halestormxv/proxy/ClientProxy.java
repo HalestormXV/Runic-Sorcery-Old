@@ -51,7 +51,6 @@ public class ClientProxy extends CommonProxy
         super.init(e);
         MinecraftForge.EVENT_BUS.register(new InputHandler());
         KeyBindings.init();
-        NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MODID, new RunicInscriberGuiHandler());
     }
 
 

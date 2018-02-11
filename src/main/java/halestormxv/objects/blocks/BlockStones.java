@@ -55,6 +55,7 @@ public class BlockStones extends Block implements IMetaName, IHasModel
     @Override
     public int damageDropped(IBlockState state)
     {
+        if (state.getValue(VARIANT) == EnumHandlerStone.EnumTypeStone.MYSTIC_SMOOTHSTONE) { return 0; }
         return ((EnumHandlerStone.EnumTypeStone)state.getValue(VARIANT)).getMeta();
     }
 
@@ -115,18 +116,12 @@ public class BlockStones extends Block implements IMetaName, IHasModel
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        //DEBUG\\
-        int meta = getMetaFromState(state);
-        //------\\
         if (state.getValue(VARIANT) == EnumHandlerStone.EnumTypeStone.LUPRESIUM_SMOOTHSTONE)
         {
             return Item.getItemFromBlock(BlockInit.BLOCK_LUPRESIUM_COBBLE);
         }
         else if (state.getValue(VARIANT) == EnumHandlerStone.EnumTypeStone.MYSTIC_SMOOTHSTONE)
         {
-            //DEBUG\\
-            System.out.println(meta);
-            //------\\
             return Item.getItemFromBlock(BlockInit.BLOCK_MYSTIC_COBBLE);
         }
         else { return Item.getItemFromBlock(this); }

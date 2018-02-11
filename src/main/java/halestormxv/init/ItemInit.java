@@ -11,7 +11,14 @@ public class ItemInit
 {
     public static final List<Item> ITEMS = new ArrayList<Item>();
 
-    public static final Item INGOT_PHENET = new ItemBase("ingot_phenet");
+    //DUSTS\\
+    public static final Item DUST_MYSTERIUM = new ItemBase("dust_mysterium");
     public static final Item DUST_SIEGRE = new ItemBase("dust_siegre");
+
+    //INGOTS AND METALS\\
+    public static final Item INGOT_PHENET = new ItemBase("ingot_phenet");
+
+    //META DATA ITEMS\\
     public static final Item ITEM_RUNE = new ItemRunes("item_runestone");
+
 }

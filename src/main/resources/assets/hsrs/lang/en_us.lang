@@ -7,6 +7,7 @@ container.runic_inscriber=Runic Inscriber
 #ITEMS
 item.ingot_phenet.name=Phenet Ingot
 item.dust_siegre.name=Siegre Dust
+item.dust_mysterium.name=Mysterium Dust
 
 #ITEM RUNESTONES
 item.item_runestone_basic.name=Uncharged Rune
