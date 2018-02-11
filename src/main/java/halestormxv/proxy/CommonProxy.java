@@ -41,7 +41,6 @@ public class CommonProxy
     public void init(FMLInitializationEvent e)
     {
         SoundsHandler.registerSounds();
-        GameRegistry.registerTileEntity(TileEntityRunicInscriber.class, Reference.MODID +"TE_RunicInscriber");
         NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MODID, new RunicInscriberGuiHandler());
     }
 

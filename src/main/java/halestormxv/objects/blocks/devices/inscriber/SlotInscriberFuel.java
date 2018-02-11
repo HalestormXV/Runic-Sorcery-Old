@@ -15,6 +15,7 @@ public class SlotInscriberFuel extends Slot
     @Override
     public boolean isItemValid(ItemStack itemStack)
     {
+
         return TileEntityRunicInscriber.isItemFuel(itemStack);
     }
 

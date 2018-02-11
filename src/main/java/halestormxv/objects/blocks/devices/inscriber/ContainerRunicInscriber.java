@@ -14,7 +14,8 @@ public class ContainerRunicInscriber extends Container
     private final TileEntityRunicInscriber tileEntity;
     private int cookTime, totalCookTime, burnTime, currentBurnTime;
 
-    public ContainerRunicInscriber(InventoryPlayer player, TileEntityRunicInscriber tileEntity) {
+    public ContainerRunicInscriber(InventoryPlayer player, TileEntityRunicInscriber tileEntity)
+    {
         this.tileEntity = tileEntity;
         this.addSlotToContainer(new Slot(tileEntity, 0, 20, 18));
         this.addSlotToContainer(new Slot(tileEntity, 1, 140, 18));
@@ -92,42 +93,24 @@ public class ContainerRunicInscriber extends Container
 
                 if (!RunicInscriberRecipes.getInstance().getInscriberResult(stack1, slot1.getStack()).isEmpty())
                     if (!this.mergeItemStack(stack1, 0, 2, false))
-                    {
                         return ItemStack.EMPTY;
-                    }
                     else if (TileEntityRunicInscriber.isItemFuel(stack1))
-                    {
-                        if (!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
-                    }
-                    else if (TileEntityRunicInscriber.isItemFuel(stack1))
-                    {
-                        if (!this.mergeItemStack(stack1, 2, 3, false)) return ItemStack.EMPTY;
-                    }
-                    else if (index >= 4 && index < 31)
-                    {
-                        if (!this.mergeItemStack(stack1, 31, 40, false)) return ItemStack.EMPTY;
-                    }
-                    else if (index >= 31 && index < 40 && !this.mergeItemStack(stack1, 4, 31, false))
-                    {
-                        return ItemStack.EMPTY;
-                    }
+                        if (!this.mergeItemStack(stack1, 2, 3, false))
+                            return ItemStack.EMPTY;
+                        else if (index >= 4 && index < 31)
+                            if (!this.mergeItemStack(stack1, 31, 40, false))
+                                return ItemStack.EMPTY;
+                            else if (index >= 31 && index < 40 && !this.mergeItemStack(stack1, 4, 31, false))
+                                return ItemStack.EMPTY;
             }
             else if (!this.mergeItemStack(stack1, 4, 40, false))
-            {
                 return ItemStack.EMPTY;
-            }
             if (stack1.isEmpty())
-            {
                 slot.putStack(ItemStack.EMPTY);
-            }
             else
                 slot.onSlotChanged();
-
             if (stack1.getCount() == stack1.getCount())
-            {
                 return ItemStack.EMPTY;
-            }
-
             slot.onTake(playerIn, stack1);
         }
         return itemStack;

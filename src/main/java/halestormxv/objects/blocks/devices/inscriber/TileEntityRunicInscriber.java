@@ -1,7 +1,10 @@
 package halestormxv.objects.blocks.devices.inscriber;
 
+import halestormxv.init.ItemInit;
+import halestormxv.utils.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -14,13 +17,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,9 +36,8 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
 {
     private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
     private String customName;
-    private String guiID = "hsrs:runic_inscriber";
 
-    public static int cookSpeed = 175;
+    //public static int cookSpeed = 175;
     private int burnTime;
     private int currentBurnTime;
     private int cookTime;
@@ -101,7 +107,8 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
         boolean flag = !stack.isEmpty() && stack.isItemEqual(itemstack) && ItemStack.areItemStackTagsEqual(stack, itemstack);
         this.inventory.set(index, stack);
 
-        if(stack.getCount() > this.getInventoryStackLimit()) stack.setCount(this.getInventoryStackLimit());
+        if(stack.getCount() > this.getInventoryStackLimit())
+            stack.setCount(this.getInventoryStackLimit());
         if(index == 0 && index + 1 == 1 && !flag)
         {
             ItemStack stack1 = (ItemStack)this.inventory.get(index + 1);
@@ -111,31 +118,9 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
         }
     }
 
-    @Override
-    public void readFromNBT(NBTTagCompound compound)
+    private IBlockState getState()
     {
-        super.readFromNBT(compound);
-        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
-        ItemStackHelper.loadAllItems(compound, this.inventory);
-        this.burnTime = compound.getInteger("BurnTime");
-        this.cookTime = compound.getInteger("CookTime");
-        this.totalCookTime = compound.getInteger("CookTimeTotal");
-        this.currentBurnTime = getItemBurnTime((ItemStack)this.inventory.get(2));
-
-        if(compound.hasKey("CustomName", 8)) this.setCustomName(compound.getString("CustomName"));
-    }
-
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound compound)
-    {
-        super.writeToNBT(compound);
-        compound.setInteger("BurnTime", (short)this.burnTime);
-        compound.setInteger("CookTime", (short)this.cookTime);
-        compound.setInteger("CookTimeTotal", (short)this.totalCookTime);
-        ItemStackHelper.saveAllItems(compound, this.inventory);
-
-        if(this.hasCustomName()) compound.setString("CustomName", this.customName);
-        return compound;
+        return world.getBlockState(pos);
     }
 
     @Override
@@ -155,36 +140,37 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
         return inventory.getField(0) > 0;
     }
 
+    @Override
     public void update()
     {
         boolean flag = this.isBurning();
         boolean flag1 = false;
 
-        if(this.isBurning()) --this.burnTime;
+        if(this.isBurning())
+            --this.burnTime;
 
         if(!this.world.isRemote)
         {
-            ItemStack stack = (ItemStack)this.inventory.get(2);
+            ItemStack itemStack = (ItemStack)this.inventory.get(2);
 
-            if(this.isBurning() || !stack.isEmpty() && !((((ItemStack)this.inventory.get(0)).isEmpty()) || ((ItemStack)this.inventory.get(1)).isEmpty()))
+            if(this.isBurning() || !itemStack.isEmpty() && !((((ItemStack)this.inventory.get(0)).isEmpty()) || ((ItemStack)this.inventory.get(1)).isEmpty()))
             {
                 if(!this.isBurning() && this.canSmelt())
                 {
-                    this.burnTime = getItemBurnTime(stack);
+                    this.burnTime = getItemBurnTime(itemStack);
                     this.currentBurnTime = this.burnTime;
 
                     if(this.isBurning())
                     {
                         flag1 = true;
 
-                        if(!stack.isEmpty())
+                        if(!itemStack.isEmpty())
                         {
-                            Item item = stack.getItem();
-                            stack.shrink(1);
-
-                            if(stack.isEmpty())
+                            Item item = itemStack.getItem();
+                            itemStack.shrink(1);
+                            if(itemStack.isEmpty())
                             {
-                                ItemStack item1 = item.getContainerItem(stack);
+                                ItemStack item1 = item.getContainerItem(itemStack);
                                 this.inventory.set(2, item1);
                             }
                         }
@@ -201,25 +187,26 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
                         this.smeltItem();
                         flag1 = true;
                     }
-                }
-                else this.cookTime = 0;
-            }
-            else if(!this.isBurning() && this.cookTime > 0)
-            {
+                } else
+                    this.cookTime = 0;
+            } else if(!this.isBurning() && this.cookTime > 0)
                 this.cookTime = MathHelper.clamp(this.cookTime - 2, 0, this.totalCookTime);
-            }
             if(flag != this.isBurning())
             {
                 flag1 = true;
                 BlockRunicInscriber.setState(this.isBurning(), this.world, this.pos);
+                sendUpdates();
             }
         }
-        if(flag1) this.markDirty();
+        if(flag1)
+        {
+            this.markDirty();
+        }
     }
 
     public int getCookTime(ItemStack input1, ItemStack input2)
     {
-        return cookSpeed;
+        return 170;
     }
 
     private boolean canSmelt()
@@ -264,7 +251,7 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
         {
             Item item = fuel.getItem();
 
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+            /*if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
             {
                 Block block = Block.getBlockFromItem(item);
 
@@ -280,7 +267,8 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
             if (item == Items.COAL) return 1600;
             if (item == Items.LAVA_BUCKET) return 20000;
             if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
-            if (item == Items.BLAZE_ROD) return 2400;
+            if (item == Items.BLAZE_ROD) return 2400;*/
+            if (item == ItemInit.DUST_MYSTERIUM) return 1800;
 
             return GameRegistry.getFuelValue(fuel);
         }
@@ -317,7 +305,7 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
 
     public String getGuiID()
     {
-        return guiID;
+        return Reference.MODID+":runic_furnace";
     }
 
     @Override
@@ -367,5 +355,100 @@ public class TileEntityRunicInscriber extends TileEntity implements IInventory, 
     public void clear()
     {
         this.inventory.clear();
+    }
+
+    /**--------------------------UPDATE FUNCTIONS-------------------------
+     * Place all of the Tile Entity Update Functions Below Here for Readability
+     */
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        this.inventory = NonNullList.<ItemStack>withSize(this.getSizeInventory(), ItemStack.EMPTY);
+        ItemStackHelper.loadAllItems(compound, this.inventory);
+        this.burnTime = compound.getInteger("BurnTime");
+        this.cookTime = compound.getInteger("CookTime");
+        this.totalCookTime = compound.getInteger("CookTimeTotal");
+        this.currentBurnTime = getItemBurnTime((ItemStack)this.inventory.get(2));
+
+        if(compound.hasKey("CustomName", 8))
+            this.setCustomName(compound.getString("CustomName"));
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound)
+    {
+        super.writeToNBT(compound);
+        compound.setInteger("BurnTime", (short)this.burnTime);
+        compound.setInteger("CookTime", (short)this.cookTime);
+        compound.setInteger("CookTimeTotal", (short)this.totalCookTime);
+        ItemStackHelper.saveAllItems(compound, this.inventory);
+
+        if(this.hasCustomName())
+            compound.setString("CustomName", this.customName);
+
+        return compound;
+    }
+
+    private void sendUpdates()
+    {
+        world.markBlockRangeForRenderUpdate(pos, pos);
+        world.notifyBlockUpdate(pos, getState(), getState(), 3);
+        world.scheduleBlockUpdate(pos,this.getBlockType(),0,0);
+        markDirty();
+    }
+
+    private void notifyBlockUpdate()
+    {
+        final IBlockState state = getWorld().getBlockState(getPos());
+        getWorld().notifyBlockUpdate(getPos(), state, state, 3);
+    }
+
+    @Override
+    public void markDirty()
+    {
+        super.markDirty();
+        notifyBlockUpdate();
+    }
+
+    @Override
+    public boolean shouldRefresh(final World world, final BlockPos pos, final IBlockState oldState, final IBlockState newState)
+    {
+        return oldState.getBlock() != newState.getBlock();
+    }
+
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket()
+    {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        int metadata = getBlockMetadata();
+        return new SPacketUpdateTileEntity(this.pos, metadata, nbt);
+    }
+
+    @Override
+    public void onDataPacket(final NetworkManager net, final SPacketUpdateTileEntity pkt)
+    {
+        readFromNBT(pkt.getNbtCompound());
+        notifyBlockUpdate();
+    }
+
+    @Override
+    public NBTTagCompound getTileData()
+    {
+        NBTTagCompound nbt = new NBTTagCompound();
+        this.writeToNBT(nbt);
+        return nbt;
+    }
+
+    @Override
+    public void handleUpdateTag(NBTTagCompound tag)
+    {
+        this.readFromNBT(tag);
+    }
+
+    @Override
+    public NBTTagCompound getUpdateTag()
+    {
+        return writeToNBT(new NBTTagCompound());
     }
 }
