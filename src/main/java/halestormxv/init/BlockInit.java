@@ -36,4 +36,6 @@ public class BlockInit
 
     //SPECIAL BLOCKS
     public static final Block RUNIC_INSCRIBER = new BlockRunicInscriber("runic_inscriber", Material.IRON);
+    public static final Block LUPRESIUM_GRASS = new BlockGrasses("grass_lupresium", Material.GRASS);
+    public static final Block MYSTIC_GRASS = new BlockGrasses("grass_mystic", Material.GRASS);
 }
