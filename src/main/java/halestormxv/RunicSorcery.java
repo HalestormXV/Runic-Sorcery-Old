@@ -5,6 +5,7 @@ import halestormxv.proxy.CommonProxy;
 import halestormxv.utils.Logging;
 import halestormxv.utils.Reference;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -26,8 +27,11 @@ public class RunicSorcery
 
     public static final CreativeTabs RUNICSORCERY = new ModTab("Runic Sorcery");
 
+    static { FluidRegistry.enableUniversalBucket(); }
+
     @Mod.EventHandler
-    public static void preInit(FMLPreInitializationEvent event) {
+    public static void preInit(FMLPreInitializationEvent event)
+    {
         Logging.getLogger().info("Pre Initialize");
         GameRegistry.registerTileEntity(TileEntityRunicInscriber.class, Reference.MODID +"TE_RunicInscriber");
         logger = event.getModLog();

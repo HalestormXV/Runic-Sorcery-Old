@@ -8,6 +8,7 @@ public class Reference
     public static final String CLIENT = "halestormxv.proxy.ClientProxy";
     public static final String COMMON = "halestormxv.proxy.CommonProxy";
     public static final String SERVER = "halestormxv.proxy.ServerProxy";
+    public static final String RESOURCE_PREFIX = MODID + ":";
     //public static final String GUI_FACTORY = "halestormxv.hsrs.config.ConfigGuiFactory";
 
     public static final int ENTITY_PHANTOM = 120;
