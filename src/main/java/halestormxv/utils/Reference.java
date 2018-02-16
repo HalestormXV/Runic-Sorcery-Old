@@ -11,8 +11,11 @@ public class Reference
     public static final String RESOURCE_PREFIX = MODID + ":";
     //public static final String GUI_FACTORY = "halestormxv.hsrs.config.ConfigGuiFactory";
 
+    //ENTITIES
     public static final int ENTITY_PHANTOM = 120;
     public static final int ENTITY_CULTIST = 121;
+    public static final int ENTITY_HARBINGER = 122;
+
 
     public static final String NETWORK_MODID = "hsrs_";
 

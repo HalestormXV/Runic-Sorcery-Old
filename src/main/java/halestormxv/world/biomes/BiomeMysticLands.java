@@ -22,12 +22,12 @@ public class BiomeMysticLands extends Biome
         super(new BiomeProperties("Mystic Lands").setBaseHeight(0.2f).setHeightVariation(0.8f).setTemperature(0.06f).setWaterColor(12013822).setSnowEnabled());
         //topBlock = BlockInit.DIRT.getDefaultState().withProperty(BlockDirts.VARIANT, EnumHandlerWood.EnumTypeWood.MYSTIC);
         topBlock = BlockInit.MYSTIC_GRASS.getDefaultState();
-        fillerBlock = BlockInit.BLOCK_STONES.getDefaultState().withProperty(BlockStones.VARIANT, EnumHandlerStone.EnumTypeStone.MYSTIC_SMOOTHSTONE);
+        //fillerBlock = BlockInit.BLOCK_STONES.getDefaultState().withProperty(BlockStones.VARIANT, EnumHandlerStone.EnumTypeStone.MYSTIC_SMOOTHSTONE);
+        fillerBlock = BlockInit.DIRT.getDefaultState().withProperty(BlockDirts.VARIANT, EnumHandlerWood.EnumTypeWood.MYSTIC);
 
-        //this.decorator.coalGen = new WorldGenMinable(Blocks.COAL_BLOCK.getDefaultState(), 4);
         this.decorator.generateFalls = true;
         this.decorator.treesPerChunk = 2;
-        this.decorator.bigMushroomsPerChunk = 1;
+        this.decorator.bigMushroomsPerChunk = 3;
 
         this.spawnableCaveCreatureList.clear();
         this.spawnableCreatureList.clear();

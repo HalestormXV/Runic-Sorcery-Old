@@ -1,4 +1,4 @@
-package halestormxv.objects.fluids;
+package halestormxv.objects.fluids.types;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;

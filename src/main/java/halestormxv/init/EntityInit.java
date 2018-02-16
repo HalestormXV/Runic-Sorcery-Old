@@ -2,6 +2,7 @@ package halestormxv.init;
 
 import halestormxv.RunicSorcery;
 import halestormxv.entity.EntityCultist;
+import halestormxv.entity.EntityHarbinger;
 import halestormxv.entity.EntityPhantom;
 import halestormxv.utils.Reference;
 import net.minecraft.entity.Entity;
@@ -25,6 +26,7 @@ public class EntityInit
     {
         registerEntity("phantom", EntityPhantom.class, Reference.ENTITY_PHANTOM, 32, 13869624, 11797069);
         registerEntity("cultist", EntityCultist.class, Reference.ENTITY_CULTIST, 32, 3133855, 10375936);
+        registerEntity("harbinger", EntityHarbinger.class, Reference.ENTITY_HARBINGER, 32, 10199483, 10217659);
 
         //Register the Spawns
         registerSpawnable(EntityPhantom.class, 8, 1, 3, EnumCreatureType.MONSTER, spawnInAll);

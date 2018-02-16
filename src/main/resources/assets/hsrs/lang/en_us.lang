@@ -47,6 +47,15 @@ tile.ore_end_lupresium.name=Lupresium Ore
 tile.ore_end_apronyx.name=Apronyx Ore
 tile.ore_end_xoshian.name=Xoshian Ore
 
+#FLUIDS
+tile.hsrs:fluid.normal_gas.name=Gaseous Blight
+tile.hsrs:fluid.finite.name=Magic Remnants
+tile.hsrs:fluid.static.name=Runic Remnants
+tile.hsrs:fluid.static_gas.name=Gaseous Discharge
+tile.hsrs:fluid.portal_displacement.name=Liquid Magic
+tile.hsrs:fluid.normal.name=Liquid Mana
+tile.hsrs:fluid.liquid_mysterium.name=Liquefied Mysterium
+
 #WOODS
 tile.dirt_lupresium.name=Lupresium Infused Dirt
 tile.dirt_mystic.name=Mystic Dirt

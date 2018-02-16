@@ -34,6 +34,13 @@
 				"custom": {"fluid": "finite"}
 			}
 		],
+		"liquid_mysterium": [
+			{
+				"model": "forge:fluid",
+				"custom": {"fluid": "liquid_mysterium"}
+			}
+		],
+
 		"portal_displacement": [
 			{
 				"model": "forge:fluid",

@@ -1,8 +1,10 @@
 package halestormxv.utils.handlers;
 
 import halestormxv.entity.EntityCultist;
+import halestormxv.entity.EntityHarbinger;
 import halestormxv.entity.EntityPhantom;
 import halestormxv.entity.render.RenderCultist;
+import halestormxv.entity.render.RenderHarbinger;
 import halestormxv.entity.render.RenderPhantom;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -17,21 +19,12 @@ public class RenderHandler
     public static void registerEntityRenders()
     {
         //Phantom Rendering
-        RenderingRegistry.registerEntityRenderingHandler(EntityPhantom.class, new IRenderFactory<EntityPhantom>()
-        {
-            @Override
-            public Render<? super EntityPhantom> createRenderFor(RenderManager manager) {
-                return new RenderPhantom(manager);
-            }
-        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityPhantom.class, RenderPhantom::new);
 
         //Cultist Rendering
-        RenderingRegistry.registerEntityRenderingHandler(EntityCultist.class, new IRenderFactory<EntityCultist>()
-        {
-            @Override
-            public Render<? super EntityCultist> createRenderFor(RenderManager manager) {
-                return new RenderCultist(manager);
-            }
-        });
+        RenderingRegistry.registerEntityRenderingHandler(EntityCultist.class, RenderCultist::new);
+
+        //Harbinger Rendering
+        RenderingRegistry.registerEntityRenderingHandler(EntityHarbinger.class, RenderHarbinger::new);
     }
 }

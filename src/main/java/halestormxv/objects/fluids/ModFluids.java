@@ -1,10 +1,14 @@
 package halestormxv.objects.fluids;
 
 import halestormxv.RunicSorcery;
+import halestormxv.objects.fluids.types.LiquidMysterium;
+import halestormxv.objects.fluids.types.NonFlowFluid;
+import halestormxv.objects.fluids.types.PortalDisplacement;
 import halestormxv.utils.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.MaterialLiquid;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
@@ -56,6 +60,10 @@ public class ModFluids
             fluid -> fluid.setLuminosity(10).setDensity(1600).setViscosity(100),
             fluid -> new PortalDisplacement(fluid, new MaterialLiquid(MapColor.DIAMOND)));
 
+    public static final Fluid LIQUID_MYSTERIUM = createFluid("liquid_mysterium", true,
+            fluid -> fluid.setLuminosity(13).setDensity(1900).setViscosity(1800).setRarity(EnumRarity.RARE),
+            fluid -> new LiquidMysterium(fluid, new MaterialLiquid(MapColor.MAGENTA)));
+
     /**
      * Create a {@link Fluid} and its {@link IFluidBlock}, or use the existing ones if a fluid has already been registered with the same name.
      *
@@ -66,7 +74,7 @@ public class ModFluids
      * @return The fluid and block
      */
     private static <T extends Block & IFluidBlock> Fluid createFluid(String name, boolean hasFlowIcon, Consumer<Fluid> fluidPropertyApplier, Function<Fluid, T> blockFactory) {
-        final String texturePrefix = Reference.RESOURCE_PREFIX + "blocks/fluid_";
+        final String texturePrefix = Reference.RESOURCE_PREFIX + "blocks/fluids/fluid_";
 
         final ResourceLocation still = new ResourceLocation(texturePrefix + name + "_still");
         final ResourceLocation flowing = hasFlowIcon ? new ResourceLocation(texturePrefix + name + "_flow") : still;
@@ -120,13 +128,39 @@ public class ModFluids
         {
             final IForgeRegistry<Item> registry = event.getRegistry();
 
-            for (final IFluidBlock fluidBlock : MOD_FLUID_BLOCKS) {
+            for (final IFluidBlock fluidBlock : MOD_FLUID_BLOCKS)
+            {
                 final Block block = (Block) fluidBlock;
                 final ItemBlock itemBlock = new ItemBlock(block);
                 itemBlock.setRegistryName(block.getRegistryName());
                 registry.register(itemBlock);
             }
         }
+
+        public static void registerFluidContainers()
+        {
+            //registerTank(FluidRegistry.WATER);
+            //registerTank(FluidRegistry.LAVA);
+
+            for (final Fluid fluid : FLUIDS)
+            {
+                registerBucket(fluid);
+                //registerTank(fluid);
+            }
+        }
+
+        /**
+         * Add this back in later when I create the actual Fluid Tanks.
+         */
+        /*private static void registerTank(Fluid fluid)
+        {
+            final FluidStack fluidStack = new FluidStack(fluid, TileEntityFluidTank.CAPACITY);
+
+            final Item item = Item.getItemFromBlock(ModBlocks.FLUID_TANK);
+            assert item instanceof ItemFluidTank;
+
+            ((ItemFluidTank) item).addFluid(fluidStack);
+        }*/
     }
 
     private static void registerBucket(Fluid fluid) {
