@@ -11,6 +11,7 @@ import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
 import halestormxv.utils.Reference;
 import halestormxv.utils.handlers.EventHandler;
 import halestormxv.utils.handlers.SoundsHandler;
+import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
 import net.minecraft.block.Block;
@@ -36,6 +37,7 @@ public class CommonProxy
         BiomeInit.registerBiomes();
         EntityInit.registerEntities();
         PacketHandler.registerMessages( "hsrrunebag");
+        ModDimensions.init();
     }
 
     public void init(FMLInitializationEvent e)

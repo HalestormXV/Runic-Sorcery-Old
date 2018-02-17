@@ -94,10 +94,10 @@ public class EntityCultist extends EntityMob implements IRangedAttackMob
     }
 
     @Override
-    protected SoundEvent getAmbientSound()
-    {
-        return SoundsHandler.ENTITY_CULTIST_AMBIENT;
-    }
+    protected float getSoundPitch() { return 1.0f; }
+
+    @Override
+    protected SoundEvent getAmbientSound() { return SoundsHandler.ENTITY_CULTIST_AMBIENT; }
 
     @Override
     protected SoundEvent getDeathSound()
