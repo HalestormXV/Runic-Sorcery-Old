@@ -33,7 +33,6 @@ public class RunicSorcery
     public static void preInit(FMLPreInitializationEvent event)
     {
         Logging.getLogger().info("Pre Initialize");
-        GameRegistry.registerTileEntity(TileEntityRunicInscriber.class, Reference.MODID +"TE_RunicInscriber");
         logger = event.getModLog();
         proxy.preInit(event);
     }

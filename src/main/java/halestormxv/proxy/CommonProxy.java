@@ -1,22 +1,20 @@
 package halestormxv.proxy;
 
-import halestormxv.RunicSorcery;
-import halestormxv.gui.handlers.RunicInscriberGuiHandler;
+import halestormxv.gui.handlers.GeneralGuiHandler;
 import halestormxv.init.BiomeInit;
 import halestormxv.init.BlockInit;
 import halestormxv.init.EntityInit;
 import halestormxv.init.ItemInit;
 import halestormxv.network.PacketHandler;
-import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
 import halestormxv.utils.Reference;
 import halestormxv.utils.handlers.EventHandler;
 import halestormxv.utils.handlers.SoundsHandler;
+import halestormxv.utils.handlers.TileEntityHandler;
 import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -43,7 +41,7 @@ public class CommonProxy
     public void init(FMLInitializationEvent e)
     {
         SoundsHandler.registerSounds();
-        NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MODID, new RunicInscriberGuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MODID, new GeneralGuiHandler());
     }
 
     public void postInit(FMLPostInitializationEvent e)
@@ -59,6 +57,7 @@ public class CommonProxy
     public static void registerBlocks(RegistryEvent.Register<Block> event)
     {
         event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));
+        TileEntityHandler.registerTileEntities();
     }
 
     @SubscribeEvent

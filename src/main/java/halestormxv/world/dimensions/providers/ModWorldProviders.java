@@ -1,21 +1,15 @@
 package halestormxv.world.dimensions.providers;
 
-import halestormxv.utils.Reference;
-import halestormxv.utils.misc.RS_SkyRender;
 import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.dimensions.gen.MysteriumChunkGenerator;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import javax.annotation.Nullable;
 
 public class ModWorldProviders extends WorldProvider
 {
@@ -78,12 +72,6 @@ public class ModWorldProviders extends WorldProvider
     }
 
     @Override
-    public boolean isSurfaceWorld()
-    {
-        return false;
-    }
-
-    @Override
     @SideOnly(Side.CLIENT)
     public boolean doesXZShowFog(int par1, int par2)
     {
@@ -102,11 +90,12 @@ public class ModWorldProviders extends WorldProvider
         return true;
     }
 
-    @SideOnly(Side.CLIENT)
+
+    /*@SideOnly(Side.CLIENT)
     @Nullable
     @Override
     public IRenderHandler getSkyRenderer()
     {
         return new RS_SkyRender(new ResourceLocation(Reference.MODID,"textures/environment/mysterium_sky.png"), 221, 153, 255);
-    }
+    }*/
 }

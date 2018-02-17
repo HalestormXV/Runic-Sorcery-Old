@@ -32,10 +32,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Objects;
 import java.util.Random;
 
+@SuppressWarnings("deprecation")
 public class BlockRunicInscriber extends BlockBase implements ITileEntityProvider, IHasModel
 {
-    public static final PropertyDirection FACING = BlockHorizontal.FACING;
-    public static final PropertyBool ACTIVE = PropertyBool.create("active");
+    private static final PropertyDirection FACING = BlockHorizontal.FACING;
+    private static final PropertyBool ACTIVE = PropertyBool.create("active");
 
     public BlockRunicInscriber(String name, Material material)
     {

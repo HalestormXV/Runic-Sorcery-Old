@@ -11,9 +11,9 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 
 import javax.annotation.Nullable;
 
-public class RunicInscriberGuiHandler implements IGuiHandler
+public class GeneralGuiHandler implements IGuiHandler
 {
-    public static final int RUNIC_INSCRIBER_GUI = Reference.GUI_RUNIC_FURNACE;
+    private static final int RUNIC_INSCRIBER_GUI = Reference.GUI_RUNIC_FURNACE;
 
     @Nullable
     @Override
