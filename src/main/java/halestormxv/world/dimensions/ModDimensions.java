@@ -10,14 +10,15 @@ public class ModDimensions
     public static DimensionType mysteriumDimension;
     public static int mysteriumDimensionID = 12;
 
-    public static void init() {
+    public static void init()
+    {
         registerDimensionTypes();
         registerDimensions();
     }
 
     private static void registerDimensionTypes()
     {
-        mysteriumDimension = DimensionType.register(Reference.MODID, "_test", mysteriumDimensionID, ModWorldProviders.class, false);
+        mysteriumDimension = DimensionType.register("Mysterium", "_my", mysteriumDimensionID, ModWorldProviders.class, false);
     }
 
     private static void registerDimensions()

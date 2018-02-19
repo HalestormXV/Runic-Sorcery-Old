@@ -1,11 +1,13 @@
 package halestormxv.world.dimensions.providers;
 
+import halestormxv.init.BiomeInit;
 import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.dimensions.gen.MysteriumChunkGenerator;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
+import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.relauncher.Side;
@@ -13,28 +15,33 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ModWorldProviders extends WorldProvider
 {
+    private int mystID = ModDimensions.mysteriumDimensionID;
+
     @Override
-    public DimensionType getDimensionType()
-    {
-        return ModDimensions.mysteriumDimension;
-    }
+    public DimensionType getDimensionType() { return ModDimensions.mysteriumDimension; }
 
     @Override
     public String getSaveFolder()
     {
-        return "TEST";
+        int dimensionSelection = ModDimensions.mysteriumDimension.getId();
+            if (dimensionSelection == mystID) { return "Mysterium"; }
+
+            return "TEST";
     }
 
     @Override
-    public IChunkGenerator createChunkGenerator()
-    {
-        return new MysteriumChunkGenerator(world);
-    }
+    public IChunkGenerator createChunkGenerator() { return new MysteriumChunkGenerator(world); }
+
+    /*@Override
+    public float calculateCelestialAngle(long par1, float par3) { return 0.75F; }*/
 
     @Override
-    public float calculateCelestialAngle(long par1, float par3)
+    protected void init()
     {
-        return 0.75F;
+        int dimensionSelection = ModDimensions.mysteriumDimension.getId();
+
+        if (dimensionSelection == mystID)
+            biomeProvider = new BiomeProviderSingle(BiomeInit.MYSTIC_LANDS);
     }
 
     @Override
@@ -73,29 +80,21 @@ public class ModWorldProviders extends WorldProvider
 
     @Override
     @SideOnly(Side.CLIENT)
-    public boolean doesXZShowFog(int par1, int par2)
-    {
-        return true;
-    }
+    public boolean doesXZShowFog(int par1, int par2) { return true; }
 
     @Override
-    public float getStarBrightness(float par1)
-    {
-        return 1.3f;
-    }
+    public float getStarBrightness(float par1) { return 1.3f; }
 
     @Override
-    public boolean isSkyColored()
-    {
-        return true;
-    }
+    public boolean isSkyColored() { return true; }
 
-
-    /*@SideOnly(Side.CLIENT)
+    /*
+    @SideOnly(Side.CLIENT)
     @Nullable
     @Override
     public IRenderHandler getSkyRenderer()
     {
         return new RS_SkyRender(new ResourceLocation(Reference.MODID,"textures/environment/mysterium_sky.png"), 221, 153, 255);
-    }*/
+    }
+    */
 }

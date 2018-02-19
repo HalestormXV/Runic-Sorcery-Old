@@ -193,7 +193,5 @@ public class EntityCultist extends EntityMob implements IRangedAttackMob
         }
     }
 
-    public void setSwingingArms(boolean swingingArms)
-    {
-    }
+    public void setSwingingArms(boolean swingingArms) { }
 }
