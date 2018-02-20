@@ -9,26 +9,23 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketSyncRCLevel implements IMessage
-{
+public class PacketSyncRCLevel implements IMessage {
     private int rcLvL;
 
-    public PacketSyncRCLevel(){ }
+    public PacketSyncRCLevel() {
+    }
 
-    public PacketSyncRCLevel(int rcLvL)
-    {
+    public PacketSyncRCLevel(int rcLvL) {
         this.rcLvL = rcLvL;
     }
 
     @Override
-    public void fromBytes(ByteBuf buf)
-    {
+    public void fromBytes(ByteBuf buf) {
         this.rcLvL = buf.readInt();
     }
 
     @Override
-    public void toBytes(ByteBuf buf)
-    {
+    public void toBytes(ByteBuf buf) {
         buf.writeInt(rcLvL);
     }
 
@@ -46,7 +43,7 @@ public class PacketSyncRCLevel implements IMessage
                     EntityPlayer player = mc.getMinecraft().player;
                     IRuneCraftLevel runeCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
                     runeCraftLevel.setRuneLevel(message.rcLvL);
-                    System.out.println("The Rune Craft Level has been synced to: " + message.rcLvL);
+                    //System.out.println("The Rune Craft Level has been synced to: " + message.rcLvL);
                 }
             });
             return null;

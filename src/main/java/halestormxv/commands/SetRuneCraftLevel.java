@@ -72,7 +72,7 @@ public class SetRuneCraftLevel extends CommandBase
                 IRuneCraftLevel runeCraftLevel = ((EntityPlayer) sender).getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
                 runeCraftLevel.setRuneLevel(rc_Lvl);
                 sender.sendMessage(new TextComponentString(TextFormatting.DARK_AQUA + "Your Runecraft Level has been set to: "+ rc_Lvl));
-                if (!((EntityPlayer) sender).world.isRemote){PacketHandler.sendTo(new PacketSyncRCLevel(runeCraftLevel.getRuneLevel()), (EntityPlayerMP) sender); }
+                runeCraftLevel.syncToClient((EntityPlayer) sender);
             }
         }
     }

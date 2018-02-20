@@ -1,6 +1,7 @@
 package halestormxv.capabilities;
 
 import halestormxv.utils.interfaces.IRuneCraftLevel;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTPrimitive;
 import net.minecraft.nbt.NBTTagInt;

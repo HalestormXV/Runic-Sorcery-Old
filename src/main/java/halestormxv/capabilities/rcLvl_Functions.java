@@ -1,7 +1,10 @@
 package halestormxv.capabilities;
 
+import halestormxv.network.PacketHandler;
+import halestormxv.network.packets.PacketSyncRCLevel;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.MathHelper;
 
 public class rcLvl_Functions implements IRuneCraftLevel
@@ -9,7 +12,7 @@ public class rcLvl_Functions implements IRuneCraftLevel
     private int runeLevel = 0;
     private int min_runeLevel = 0;
     private int max_runeLevel = 100;
-    EntityPlayer entityPlayer;
+    private EntityPlayer entityPlayer;
 
 
     @Override
@@ -29,5 +32,11 @@ public class rcLvl_Functions implements IRuneCraftLevel
     public int getRuneLevel() { return this.runeLevel; }
 
     @Override
-    public void syncToClient() { }
+    public void syncToClient(EntityPlayer thePlayer)
+    {
+        if (!thePlayer.world.isRemote)
+        {
+            PacketHandler.sendTo(new PacketSyncRCLevel(this.runeLevel), (EntityPlayerMP) thePlayer);
+        }
+    }
 }
