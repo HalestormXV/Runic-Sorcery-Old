@@ -7,7 +7,6 @@ import halestormxv.init.BiomeInit;
 import halestormxv.init.BlockInit;
 import halestormxv.init.EntityInit;
 import halestormxv.init.ItemInit;
-import halestormxv.network.PacketHandler;
 import halestormxv.utils.Reference;
 import halestormxv.utils.handlers.CapabilityHandler;
 import halestormxv.utils.handlers.EventHandler;
@@ -40,7 +39,6 @@ public class CommonProxy
         BiomeInit.registerBiomes();
         EntityInit.registerEntities();
         CapabilityManager.INSTANCE.register(IRuneCraftLevel.class, new rcLvl_Storage(), rcLvl_Functions.class);
-        PacketHandler.registerMessages( "hsrrunebag");
         ModDimensions.init();
     }
 

@@ -1,6 +1,7 @@
 package halestormxv;
 
-import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
+import halestormxv.commands.SetRuneCraftLevel;
+import halestormxv.network.PacketHandler;
 import halestormxv.proxy.CommonProxy;
 import halestormxv.utils.Logging;
 import halestormxv.utils.Reference;
@@ -11,7 +12,7 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
@@ -35,6 +36,7 @@ public class RunicSorcery
         Logging.getLogger().info("Pre Initialize");
         logger = event.getModLog();
         proxy.preInit(event);
+        PacketHandler.setupMessages();
     }
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event)
@@ -47,5 +49,11 @@ public class RunicSorcery
     {
         Logging.getLogger().info("Post Initialize");
         proxy.postInit(event);
+    }
+
+    @Mod.EventHandler
+    public static void serverLoad(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new SetRuneCraftLevel());
     }
 }

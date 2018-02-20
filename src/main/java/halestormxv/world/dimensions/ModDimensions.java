@@ -18,7 +18,7 @@ public class ModDimensions
 
     private static void registerDimensionTypes()
     {
-        mysteriumDimension = DimensionType.register("Mysterium", "_my", mysteriumDimensionID, ModWorldProviders.class, false);
+        mysteriumDimension = DimensionType.register("the_mysterium", "_my", mysteriumDimensionID, ModWorldProviders.class, false);
     }
 
     private static void registerDimensions()

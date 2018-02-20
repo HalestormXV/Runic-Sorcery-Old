@@ -1,5 +1,6 @@
 package halestormxv;
 
+import halestormxv.utils.Reference;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -14,10 +15,10 @@ public class KeyBindings
 
     public static void init()
     {
-        runeBag = new KeyBinding("key.runicsorcery", Keyboard.KEY_T, "key.categories.runebag");
+        runeBag = new KeyBinding("key.runebag", Keyboard.KEY_T, Reference.KEY_BINDINGS_CATEGORY);
         ClientRegistry.registerKeyBinding(runeBag);
 
-        getRuneCraftLevel = new KeyBinding("key.runecraftlevel", Keyboard.KEY_O, "key.categories.runecraftlevel");
+        getRuneCraftLevel = new KeyBinding("key.runecraftlevel", Keyboard.KEY_O, Reference.KEY_BINDINGS_CATEGORY);
         ClientRegistry.registerKeyBinding(getRuneCraftLevel);
     }
 }

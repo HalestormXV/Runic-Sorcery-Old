@@ -9,6 +9,8 @@ public class Reference
     public static final String COMMON = "halestormxv.proxy.CommonProxy";
     public static final String SERVER = "halestormxv.proxy.ServerProxy";
     public static final String RESOURCE_PREFIX = MODID + ":";
+    public static final String KEY_BINDINGS_CATEGORY = MODID+"_keybindings";
+
     //public static final String GUI_FACTORY = "halestormxv.hsrs.config.ConfigGuiFactory";
 
     //ENTITIES
@@ -17,7 +19,7 @@ public class Reference
     public static final int ENTITY_HARBINGER = 122;
 
 
-    public static final String NETWORK_MODID = "hsrs_";
+    public static final String NETWORK_CHANNEL = "hsrs_channel";
 
     public static final int GUI_RUNIC_FURNACE = 0;
 }

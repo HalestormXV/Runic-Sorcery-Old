@@ -12,6 +12,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.Random;
@@ -47,5 +48,14 @@ public class EventHandler
                 PacketChatUtils.sendNoSpam(player,"\u00A73Rune Craft Level: " + runeCraftLevel.getRuneLevel());
             }
         }
+    }
+
+    @SubscribeEvent
+    public void onPlayerClone(PlayerEvent.Clone event)
+    {
+        EntityPlayer player = event.getEntityPlayer();
+        IRuneCraftLevel runeCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
+        IRuneCraftLevel oldLevel = event.getOriginal().getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
+        runeCraftLevel.setRuneLevel(oldLevel.getRuneLevel());
     }
 }

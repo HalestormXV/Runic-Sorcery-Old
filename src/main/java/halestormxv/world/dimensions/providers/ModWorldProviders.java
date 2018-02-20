@@ -24,7 +24,7 @@ public class ModWorldProviders extends WorldProvider
     public String getSaveFolder()
     {
         int dimensionSelection = ModDimensions.mysteriumDimension.getId();
-            if (dimensionSelection == mystID) { return "Mysterium"; }
+            if (dimensionSelection == mystID) { return "DIM_Mysterium"; }
 
             return "TEST";
     }

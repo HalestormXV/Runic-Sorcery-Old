@@ -2,7 +2,6 @@ package halestormxv.objects.blocks;
 
 import java.util.Random;
 
-import halestormxv.ConfigCreation;
 import halestormxv.RunicSorcery;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
@@ -181,10 +180,10 @@ public class BlockMysteriumPortal extends BlockBreakable
                     EntityPlayerMP thePlayer = (EntityPlayerMP)par5Entity;
 
                     thePlayer.timeUntilPortal = portalIsOnCooldown;
-                    if (thePlayer.dimension != ConfigCreation.Common.mysteriumDimensionID)
+                    if (thePlayer.dimension != ModDimensions.mysteriumDimensionID)
                     {
-                        if(!ForgeHooks.onTravelToDimension(thePlayer, ConfigCreation.Common.mysteriumDimensionID)) return;
-                        thePlayer.mcServer.getPlayerList().transferPlayerToDimension(thePlayer, ConfigCreation.Common.mysteriumDimensionID, new HSRSTeleporter(thePlayer.mcServer.getWorld(ConfigCreation.Common.mysteriumDimensionID), this, BlockInit.BLOCK_STONES.getStateFromMeta(7)));
+                        if(!ForgeHooks.onTravelToDimension(thePlayer, ModDimensions.mysteriumDimensionID)) return;
+                        thePlayer.mcServer.getPlayerList().transferPlayerToDimension(thePlayer, ModDimensions.mysteriumDimensionID, new HSRSTeleporter(thePlayer.mcServer.getWorld(ModDimensions.mysteriumDimensionID), this, BlockInit.BLOCK_STONES.getStateFromMeta(7)));
                     }
                     else {
                         if(!ForgeHooks.onTravelToDimension(thePlayer, 0)) return;
@@ -194,17 +193,17 @@ public class BlockMysteriumPortal extends BlockBreakable
                     MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
                     par5Entity.timeUntilPortal = par5Entity.getPortalCooldown();
 
-                    if(par5Entity.dimension != ConfigCreation.Common.mysteriumDimensionID){
-                        if(!ForgeHooks.onTravelToDimension(par5Entity, ConfigCreation.Common.mysteriumDimensionID)) return;
+                    if(par5Entity.dimension != ModDimensions.mysteriumDimensionID){
+                        if(!ForgeHooks.onTravelToDimension(par5Entity, ModDimensions.mysteriumDimensionID)) return;
 
                         int i = par5Entity.dimension;
 
-                        par5Entity.dimension = ConfigCreation.Common.mysteriumDimensionID;
+                        par5Entity.dimension = ModDimensions.mysteriumDimensionID;
                         par1World.removeEntityDangerously(par5Entity);
 
                         par5Entity.isDead = false;
 
-                        server.getPlayerList().transferEntityToWorld(par5Entity, i, server.getWorld(i), server.getWorld(ConfigCreation.Common.mysteriumDimensionID), new HSRSTeleporter(server.getWorld(ConfigCreation.Common.mysteriumDimensionID), this, BlockInit.BLOCK_STONES.getStateFromMeta(7)));
+                        server.getPlayerList().transferEntityToWorld(par5Entity, i, server.getWorld(i), server.getWorld(ModDimensions.mysteriumDimensionID), new HSRSTeleporter(server.getWorld(ModDimensions.mysteriumDimensionID), this, BlockInit.BLOCK_STONES.getStateFromMeta(7)));
                     } else {
                         if(!ForgeHooks.onTravelToDimension(par5Entity, 0)) return;
 
@@ -213,7 +212,7 @@ public class BlockMysteriumPortal extends BlockBreakable
 
                         par5Entity.isDead = false;
 
-                        server.getPlayerList().transferEntityToWorld(par5Entity, ConfigCreation.Common.mysteriumDimensionID, server.getWorld(ConfigCreation.Common.mysteriumDimensionID), server.getWorld(0), new HSRSTeleporter(server.getWorld(0), this, BlockInit.BLOCK_STONES.getStateFromMeta(7)));
+                        server.getPlayerList().transferEntityToWorld(par5Entity, ModDimensions.mysteriumDimensionID, server.getWorld(ModDimensions.mysteriumDimensionID), server.getWorld(0), new HSRSTeleporter(server.getWorld(0), this, BlockInit.BLOCK_STONES.getStateFromMeta(7)));
                     }
                 }
             } else par5Entity.timeUntilPortal = par5Entity.getPortalCooldown();
