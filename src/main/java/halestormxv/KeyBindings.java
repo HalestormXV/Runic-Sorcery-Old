@@ -10,11 +10,14 @@ import org.lwjgl.input.Keyboard;
 public class KeyBindings
 {
 
-    public static KeyBinding runeBag;
+    public static KeyBinding runeBag, getRuneCraftLevel;
 
     public static void init()
     {
         runeBag = new KeyBinding("key.runicsorcery", Keyboard.KEY_T, "key.categories.runebag");
         ClientRegistry.registerKeyBinding(runeBag);
+
+        getRuneCraftLevel = new KeyBinding("key.runecraftlevel", Keyboard.KEY_O, "key.categories.runecraftlevel");
+        ClientRegistry.registerKeyBinding(getRuneCraftLevel);
     }
 }

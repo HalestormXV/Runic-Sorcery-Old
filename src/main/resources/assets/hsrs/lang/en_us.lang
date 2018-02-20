@@ -16,6 +16,12 @@ item.item_runestone_water.name=Water Rune
 item.item_runestone_fire.name=Fire Rune
 item.item_runestone_earth.name=Earth Rune
 item.item_runestone_death.name=Death Rune
+item.item_runestone_barrier.name=Barrier Rune
+item.item_runestone_gravity.name=Gravity Rune
+item.item_runestone_light.name=Light Rune
+item.item_runestone_nightmare.name=Nightmare Rune
+item.item_runestone_poison.name=Poison Rune
+item.item_runestone_void.name=Void Rune
 
 #BLOCKS
 tile.block_phenet.name=Phenet Block

@@ -1,7 +1,7 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "hsrs:items/runestones/rune_basic"
+    "layer0": "hsrs:items/runestones/alt/rune_basic"
   },
 
   "display": {

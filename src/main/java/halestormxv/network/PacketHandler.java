@@ -1,5 +1,7 @@
 package halestormxv.network;
 
+import halestormxv.network.packets.PacketChatUtils;
+import halestormxv.network.packets.PacketFetchRunecraftLevel;
 import halestormxv.network.packets.PacketSendKey;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -24,8 +26,11 @@ public class PacketHandler
         registerMessages();
     }
 
-    public static void registerMessages() {
+    public static void registerMessages()
+    {
         // Register messages which are sent from the client to the server here:
         INSTANCE.registerMessage(PacketSendKey.Handler.class, PacketSendKey.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(PacketFetchRunecraftLevel.Handler.class, PacketFetchRunecraftLevel.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(PacketChatUtils.PacketNoSpamChat.Handler.class, PacketChatUtils.PacketNoSpamChat.class, nextID(), Side.CLIENT);
     }
 }

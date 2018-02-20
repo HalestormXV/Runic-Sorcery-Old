@@ -1,9 +1,13 @@
 package halestormxv.utils.handlers;
 
 import halestormxv.KeyBindings;
+import halestormxv.capabilities.rcLvl_Provider;
 import halestormxv.network.PacketHandler;
+import halestormxv.network.packets.PacketFetchRunecraftLevel;
 import halestormxv.network.packets.PacketSendKey;
+import halestormxv.utils.interfaces.IRuneCraftLevel;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -21,6 +25,13 @@ public class InputHandler
             RayTraceResult mouseOver = Minecraft.getMinecraft().objectMouseOver;
             BlockPos blockPos = mouseOver.getBlockPos();
             PacketHandler.INSTANCE.sendToServer(new PacketSendKey(blockPos));
+        }
+
+        if(KeyBindings.getRuneCraftLevel.isPressed())
+        {
+            EntityPlayer player = Minecraft.getMinecraft().player;
+            IRuneCraftLevel iRuneCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
+            PacketHandler.INSTANCE.sendToServer(new PacketFetchRunecraftLevel());
         }
     }
 }
