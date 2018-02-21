@@ -39,6 +39,7 @@ tile.stone_mystic_runestone.name=Mystic Runestone Brick
 tile.runic_inscriber.name=Runic Inscriber
 tile.grass_lupresium.name=Lupresium Touched Grass
 tile.grass_mystic.name=Mystic Touched Grass
+tile.runic_obelisk.name=Small Runic Obelisk
 
 #ORES
 tile.ore_siegre.name=Siegre Ore

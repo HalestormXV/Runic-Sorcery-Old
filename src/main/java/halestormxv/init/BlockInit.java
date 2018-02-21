@@ -39,4 +39,5 @@ public class BlockInit
     public static final Block LUPRESIUM_GRASS = new BlockGrasses("grass_lupresium", Material.GRASS);
     public static final Block MYSTIC_GRASS = new BlockGrasses("grass_mystic", Material.GRASS);
     public static final Block BLOCK_MYSTERIUM_PORTAL = new BlockMysteriumPortal("mysterium_portal");
+    public static final Block BLOCK_OBELISK = new BlockObelisk("runic_obelisk", Material.ROCK);
 }
