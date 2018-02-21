@@ -50,7 +50,7 @@
 		"sounds": [ {"name": "hsrs:blocks/inscriber/active", "stream": true }]
 	},
 
-	"music.mavismusic": { "sounds":[{"name": "eangel:music/mavistheme", "stream": true}] },
-	"music.kishuu": { "sounds":[{"name": "eangel:music/kishuumusic", "stream": true}] },
-	"music.motomiyaflute": { "sounds":[{"name": "eangel:music/motomiyaflute", "stream": true}] }
+	"music.mavismusic": { "sounds":[{"name": "hsrs:music/mavistheme", "stream": true}] },
+	"music.kishuu": { "sounds":[{"name": "hsrs:music/kishuumusic", "stream": true}] },
+	"music.motomiyaflute": { "sounds":[{"name": "hsrs:music/motomiyaflute", "stream": true}] }
 }

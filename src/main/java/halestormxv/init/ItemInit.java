@@ -1,6 +1,7 @@
 package halestormxv.init;
 
 import halestormxv.objects.items.ItemBase;
+import halestormxv.objects.items.ItemBaseStaff;
 import halestormxv.objects.items.ItemRunes;
 import net.minecraft.item.Item;
 
@@ -20,5 +21,8 @@ public class ItemInit
 
     //META DATA ITEMS\\
     public static final Item ITEM_RUNE = new ItemRunes("item_runestone");
+
+    //STAVES\\
+    public static final Item STAFF_FLEDGLING = new ItemBaseStaff("staff_fledgling");
 
 }
