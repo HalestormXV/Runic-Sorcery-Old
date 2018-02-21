@@ -17,6 +17,8 @@ import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -29,9 +31,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import javax.annotation.Nullable;
+
 @Mod.EventBusSubscriber
 public class CommonProxy
 {
+    @Nullable
+    public EntityPlayer getMyPlayer()
+    {
+        return null;
+    }
+
     public void preInit(FMLPreInitializationEvent e)
     {
         GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
@@ -58,6 +68,7 @@ public class CommonProxy
 
     public void registerVariantRenderer(Item item, int meta, String filename, String id) {}
 
+
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event)
     {
@@ -70,4 +81,5 @@ public class CommonProxy
     {
         event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
     }
+
 }
