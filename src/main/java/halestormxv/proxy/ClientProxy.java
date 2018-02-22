@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
 import javax.annotation.Nullable;
@@ -30,10 +31,16 @@ public class ClientProxy extends CommonProxy
 {
     @Nullable
     @Override
-    public EntityPlayer getMyPlayer()
+    public EntityPlayer getMyPlayer(MessageContext ctx)
     {
-        return Minecraft.getMinecraft().player;
+        // Note that if you simply return 'Minecraft.getMinecraft().thePlayer',
+        // your packets will not work because you will be getting a client
+        // player even when you are on the server! Sounds absurd, but it's true.
+
+        // Solution is to double-check side before returning the player:
+        return (ctx.side.isClient() ? Minecraft.getMinecraft().player : ctx.getServerHandler().player);
     }
+
 
     @Override
     public void registerItemRenderer(Item item, int meta, String id)

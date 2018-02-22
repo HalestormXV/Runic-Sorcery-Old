@@ -4,6 +4,7 @@ import halestormxv.RunicSorcery;
 import halestormxv.init.ItemInit;
 import halestormxv.utils.interfaces.IHasModel;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSword;
 
 public class ItemBaseStaff extends Item implements IHasModel
 {
@@ -13,7 +14,7 @@ public class ItemBaseStaff extends Item implements IHasModel
         setUnlocalizedName(name);
         setRegistryName(name);
         setCreativeTab(RunicSorcery.RUNICSORCERY);
-
+        setMaxStackSize(1);
         ItemInit.ITEMS.add(this);
     }
 
@@ -22,4 +23,7 @@ public class ItemBaseStaff extends Item implements IHasModel
     {
         RunicSorcery.proxy.registerItemRenderer(this, 0 , "inventory");
     }
+
+    @Override
+    public boolean isDamageable() { return false; }
 }

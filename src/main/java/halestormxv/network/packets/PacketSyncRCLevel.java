@@ -37,7 +37,7 @@ public class PacketSyncRCLevel implements IMessage {
         public IMessage onMessage(PacketSyncRCLevel message, MessageContext ctx)
         {
             FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> {
-                EntityPlayer player = RunicSorcery.proxy.getMyPlayer();
+                EntityPlayer player = RunicSorcery.proxy.getMyPlayer(ctx);
                 if (player != null)
                 {
                     IRuneCraftLevel runeCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);

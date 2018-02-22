@@ -3,6 +3,7 @@ package halestormxv.init;
 import halestormxv.objects.items.ItemBase;
 import halestormxv.objects.items.ItemBaseStaff;
 import halestormxv.objects.items.ItemRunes;
+import halestormxv.objects.items.staffs.ApprenticeStaff;
 import net.minecraft.item.Item;
 
 import java.util.ArrayList;
@@ -24,5 +25,6 @@ public class ItemInit
 
     //STAVES\\
     public static final Item STAFF_FLEDGLING = new ItemBaseStaff("staff_fledgling");
+    public static final Item STAFF_APRENTICE = new ApprenticeStaff("staff_apprentice");
 
 }

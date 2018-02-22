@@ -29,6 +29,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nullable;
@@ -37,9 +38,9 @@ import javax.annotation.Nullable;
 public class CommonProxy
 {
     @Nullable
-    public EntityPlayer getMyPlayer()
+    public EntityPlayer getMyPlayer(MessageContext ctx)
     {
-        return null;
+        return ctx.getServerHandler().player;
     }
 
     public void preInit(FMLPreInitializationEvent e)
