@@ -1,9 +1,6 @@
 package halestormxv.network;
 
-import halestormxv.network.packets.PacketChatUtils;
-import halestormxv.network.packets.PacketFetchRunecraftLevel;
-import halestormxv.network.packets.PacketSendKey;
-import halestormxv.network.packets.PacketSyncRCLevel;
+import halestormxv.network.packets.*;
 import halestormxv.utils.Reference;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
@@ -21,7 +18,7 @@ public class PacketHandler
     public PacketHandler() {
     }
 
-    public static int nextID() {
+    private static int nextID() {
         return packetId++;
     }
 
@@ -30,13 +27,13 @@ public class PacketHandler
         registerMessages();
     }
 
-    public static void registerMessages()
+    private static void registerMessages()
     {
-        // Register messages which are sent from the client to the server here:
         INSTANCE.registerMessage(PacketSendKey.Handler.class, PacketSendKey.class, nextID(), Side.SERVER);
         INSTANCE.registerMessage(PacketFetchRunecraftLevel.Handler.class, PacketFetchRunecraftLevel.class, nextID(), Side.SERVER);
         INSTANCE.registerMessage(PacketChatUtils.PacketNoSpamChat.Handler.class, PacketChatUtils.PacketNoSpamChat.class, nextID(), Side.CLIENT);
         INSTANCE.registerMessage(PacketSyncRCLevel.Handler.class, PacketSyncRCLevel.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(PacketCycleSpells.Handler.class, PacketCycleSpells.class, nextID(), Side.SERVER);
     }
 
     public static void sendToAllAround(IMessage message, TileEntity te, int range)

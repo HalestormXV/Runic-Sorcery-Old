@@ -7,10 +7,10 @@ import net.minecraft.world.World;
 
 public class ReagentControl
 {
-    public static void consumeReagent(ItemStack itemStack, int reagentCost, World worldIn, EntityPlayer entityLiving)
+    public static void consumeReagent(ItemStack itemStack, int meta, int reagentCost, World worldIn, EntityPlayer entityLiving)
     {
         Item reagentItem = itemStack.getItem();
-        entityLiving.inventory.clearMatchingItems(reagentItem, -1, reagentCost, null);
+        entityLiving.inventory.clearMatchingItems(reagentItem, meta, reagentCost, null);
     }
 
     public static int checkForReagentQuantity(ItemStack itemStack, EntityPlayer player)

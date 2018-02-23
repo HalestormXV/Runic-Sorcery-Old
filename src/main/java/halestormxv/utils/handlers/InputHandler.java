@@ -3,6 +3,7 @@ package halestormxv.utils.handlers;
 import halestormxv.KeyBindings;
 import halestormxv.capabilities.rcLvl_Provider;
 import halestormxv.network.PacketHandler;
+import halestormxv.network.packets.PacketCycleSpells;
 import halestormxv.network.packets.PacketFetchRunecraftLevel;
 import halestormxv.network.packets.PacketSendKey;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
@@ -32,6 +33,12 @@ public class InputHandler
             EntityPlayer player = Minecraft.getMinecraft().player;
             IRuneCraftLevel iRuneCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
             PacketHandler.INSTANCE.sendToServer(new PacketFetchRunecraftLevel());
+        }
+
+        if(KeyBindings.cycleMagicSpells.isPressed())
+        {
+            EntityPlayer player = Minecraft.getMinecraft().player;
+            PacketHandler.INSTANCE.sendToServer(new PacketCycleSpells(player));
         }
     }
 }

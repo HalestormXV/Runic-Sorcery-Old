@@ -11,14 +11,17 @@ import org.lwjgl.input.Keyboard;
 public class KeyBindings
 {
 
-    public static KeyBinding runeBag, getRuneCraftLevel;
+    public static KeyBinding runeBag, getRuneCraftLevel, cycleMagicSpells;
 
     public static void init()
     {
-        runeBag = new KeyBinding("key.runebag", Keyboard.KEY_T, Reference.KEY_BINDINGS_CATEGORY);
+        runeBag = new KeyBinding(Reference.MODID+"_key.runebag", Keyboard.KEY_T, Reference.KEY_BINDINGS_CATEGORY);
         ClientRegistry.registerKeyBinding(runeBag);
 
-        getRuneCraftLevel = new KeyBinding("key.runecraftlevel", Keyboard.KEY_O, Reference.KEY_BINDINGS_CATEGORY);
+        getRuneCraftLevel = new KeyBinding(Reference.MODID+"_key.runecraftlevel", Keyboard.KEY_O, Reference.KEY_BINDINGS_CATEGORY);
         ClientRegistry.registerKeyBinding(getRuneCraftLevel);
+
+        cycleMagicSpells = new KeyBinding(Reference.MODID+"_key.cyclespells", Keyboard.KEY_Z, Reference.KEY_BINDINGS_CATEGORY);
+        ClientRegistry.registerKeyBinding(cycleMagicSpells);
     }
 }

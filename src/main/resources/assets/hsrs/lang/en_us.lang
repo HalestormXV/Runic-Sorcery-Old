@@ -4,11 +4,19 @@ itemGroup.RunicSorcery=Runic Sorcery
 #CONTAINER
 container.runic_inscriber=Runic Inscriber
 
+#KEY BINDINGS
+hsrs_keybindings=Runic Sorcery
+hsrs_key.runebag=Open Rune Bag
+hsrs_key.runecraftlevel=Check Rune Craft Level
+hsrs_key.cyclespells=Cycle Spells
+
+
 #ITEMS
 item.ingot_phenet.name=Phenet Ingot
 item.dust_siegre.name=Siegre Dust
 item.dust_mysterium.name=Mysterium Dust
 item.staff_fledgling.name=Fledgling Staff
+item.staff_apprentice.name=Apprentice's Staff
 
 #ITEM RUNESTONES
 item.item_runestone_basic.name=Uncharged Rune
