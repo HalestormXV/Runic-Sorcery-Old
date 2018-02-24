@@ -12,13 +12,18 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 public class GuiRuneBag extends GuiContainer
 {
-    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/runebag.png");
+    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/runebag_alt.png");
 
     public GuiRuneBag(InventoryPlayer invPlayer, EnumHand hand, IItemHandlerModifiable invBag)
     {
+        /**
+         * When applying the actual size of the GUI you take the Bottom Right Corner of the image.
+         * This will allow you to obtain the proper X and Y coordinates for the actual GUI.
+         * The image will still always be a 256x256.
+         */
         super(new RuneBagContainer(invPlayer, hand, invBag));
-        this.xSize = 255;
-        this.ySize = 230;
+        this.xSize = 175;
+        this.ySize = 164;
     }
 
     @Override

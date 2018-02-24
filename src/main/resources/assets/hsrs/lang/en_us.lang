@@ -17,22 +17,7 @@ item.dust_siegre.name=Siegre Dust
 item.dust_mysterium.name=Mysterium Dust
 item.staff_fledgling.name=Fledgling Staff
 item.staff_apprentice.name=Apprentice's Staff
-item.item_runebag.name (White)= White Runestone Satchel
-item.item_runebag.name (Orange)= Orange Runestone Satchel
-item.item_runebag.name (Magenta)= Magenta Runestone Satchel
-item.item_runebag.name (Light Blue)= Light Blue Runestone Satchel
-item.item_runebag.name (Yellow)= Yellow Runestone Satchel
-item.item_runebag.name (Lime)= Lime Runestone Satchel
-item.item_runebag.name (Pink)= Pink Runestone Satchel
-item.item_runebag.name (Gray)= Gray Runestone Satchel
-item.item_runebag.name (Light Gray)= Light Gray Runestone Satchel
-item.item_runebag.name (Cyan)= Cyan Runestone Satchel
-item.item_runebag.name (Purple)= Purple Runestone Satchel
-item.item_runebag.name (Blue)= Blue Runestone Satchel
-item.item_runebag.name (Brown)= Brown Runestone Satchel
-item.item_runebag.name (Green)= Green Runestone Satchel
-item.item_runebag.name (Red)= Red Runestone Satchel
-item.item_runebag.name (Black)= Black Runestone Satchel
+item.item_runebag.name=Runestone Satchel
 
 #ITEM RUNESTONES
 item.item_runestone_basic.name=Uncharged Rune

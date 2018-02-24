@@ -23,9 +23,22 @@ import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 
+@SuppressWarnings("deprecation")
 public class RuneBag extends Item implements IHasModel
 {
     private String name;
+
+    // MC Lang files have these unlocalized names mapped to raw color names. Thank you Project E!
+    private final String[] unlocalizedColors = {
+            "item.fireworksCharge.white", "item.fireworksCharge.orange",
+            "item.fireworksCharge.magenta", "item.fireworksCharge.lightBlue",
+            "item.fireworksCharge.yellow", "item.fireworksCharge.lime",
+            "item.fireworksCharge.pink", "item.fireworksCharge.gray",
+            "item.fireworksCharge.silver", "item.fireworksCharge.cyan",
+            "item.fireworksCharge.purple", "item.fireworksCharge.blue",
+            "item.fireworksCharge.brown", "item.fireworksCharge.green",
+            "item.fireworksCharge.red", "item.fireworksCharge.black"
+    };
 
     public RuneBag(String name)
     {
@@ -40,18 +53,6 @@ public class RuneBag extends Item implements IHasModel
 
         ItemInit.ITEMS.add(this);
     }
-
-    // MC Lang files have these unlocalized names mapped to raw color names
-    private final String[] unlocalizedColors = {
-            "item.fireworksCharge.white", "item.fireworksCharge.orange",
-            "item.fireworksCharge.magenta", "item.fireworksCharge.lightBlue",
-            "item.fireworksCharge.yellow", "item.fireworksCharge.lime",
-            "item.fireworksCharge.pink", "item.fireworksCharge.gray",
-            "item.fireworksCharge.silver", "item.fireworksCharge.cyan",
-            "item.fireworksCharge.purple", "item.fireworksCharge.blue",
-            "item.fireworksCharge.brown", "item.fireworksCharge.green",
-            "item.fireworksCharge.red", "item.fireworksCharge.black"
-    };
 
     @Nonnull
     @Override
@@ -78,6 +79,12 @@ public class RuneBag extends Item implements IHasModel
     }
 
     @Override
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        return super.getUnlocalizedName();
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void getSubItems(CreativeTabs cTab, NonNullList<ItemStack> list) {
         if (isInCreativeTab(cTab)) {
@@ -93,28 +100,4 @@ public class RuneBag extends Item implements IHasModel
             ModelLoader.setCustomModelResourceLocation(ItemInit.ITEM_RUNE_BAG, e.getMetadata(), new ModelResourceLocation("hsrs:bags/runebag_" + e.getName(), "inventory"));
         }
     }
-
-    /*public static ItemStack getFirstBagWithSuctionItem(EntityPlayer player, NonNullList<ItemStack> inventory) {
-        for (ItemStack stack : inventory) {
-            if (stack.isEmpty()) {
-                continue;
-            }
-
-            if (stack.getItem() == ObjHandler.alchBag) {
-                IItemHandler inv = player.getCapability(ProjectEAPI.ALCH_BAG_CAPABILITY, null)
-                        .getBag(EnumDyeColor.byMetadata(stack.getItemDamage()));
-                for (int i = 0; i < inv.getSlots(); i++) {
-                    ItemStack ring = inv.getStackInSlot(i);
-
-                    if (!ring.isEmpty() && (ring.getItem() instanceof BlackHoleBand || ring.getItem() instanceof VoidRing)) {
-                        if (ItemHelper.getOrCreateCompound(ring).getBoolean(TAG_ACTIVE)) {
-                            return stack;
-                        }
-                    }
-                }
-            }
-        }
-
-        return ItemStack.EMPTY;
-    }*/
 }

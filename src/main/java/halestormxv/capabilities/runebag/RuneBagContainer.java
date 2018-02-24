@@ -1,5 +1,6 @@
 package halestormxv.capabilities.runebag;
 
+import halestormxv.init.ItemInit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ClickType;
@@ -19,21 +20,27 @@ public class RuneBagContainer extends Container
 
     public RuneBagContainer(InventoryPlayer invPlayer, EnumHand hand, IItemHandlerModifiable invBag)
     {
+        /**
+         * The X Position First Number is always the pixel of the Top Left Corner Box of your GUI Image
+         * The Y Position First Number is always the pixel of the Top Left Corner Box of your GUI Image
+         * Use Paint.net to check you pixel locations.
+         * 18 is the usual buffer between columns.
+         */
         this.hand = hand;
 
         //Bag Inventory
-        for (int i = 0; i < 8; i++)
-            for (int j = 0; j < 13; j++)
-                this.addSlotToContainer(new SlotItemHandler(invBag, j + i * 13, 12 + j * 18, 5 + i * 18));
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                this.addSlotToContainer(new RuneBagSlotHandler(invBag, j + i * 4, 53 + j * 18, 8 + i * 18));
 
         //Player Inventory
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 9; j++)
-                this.addSlotToContainer(new Slot(invPlayer, j + i * 9 + 9, 48 + j * 18, 152 + i * 18));
+                this.addSlotToContainer(new Slot(invPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 
         //Player Hotbar
         for (int i = 0; i < 9; i++)
-            this.addSlotToContainer(new Slot(invPlayer, i, 48 + i * 18, 210));
+            this.addSlotToContainer(new Slot(invPlayer, i, 8 + i * 18, 142));
 
         blocked = hand == EnumHand.MAIN_HAND ? (inventorySlots.size() - 1) - (8 - invPlayer.currentItem) : -1;
     }
@@ -58,13 +65,18 @@ public class RuneBagContainer extends Container
         ItemStack stack = slot.getStack();
         ItemStack newStack = stack.copy();
 
-        if (slotIndex < 104)
+        /**
+         * The slotIndex is how many actual slots your GUI
+         * contains. This will enable Shift+Clicking and such.
+         * Remember in code we start our count from 0.
+         */
+        if (slotIndex < 16)
         {
-            if (!this.mergeItemStack(stack, 104, this.inventorySlots.size(), true))
+            if (!this.mergeItemStack(stack, 16, this.inventorySlots.size(), true))
                 return ItemStack.EMPTY;
             slot.onSlotChanged();
         }
-        else if (!this.mergeItemStack(stack, 0, 104, false))
+        else if (!this.mergeItemStack(stack, 0, 16, false))
         {
             return ItemStack.EMPTY;
         }
