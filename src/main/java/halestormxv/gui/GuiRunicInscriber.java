@@ -1,6 +1,6 @@
 package halestormxv.gui;
 
-import halestormxv.objects.blocks.devices.inscriber.ContainerRunicInscriber;
+import halestormxv.inventory.runicinscriber.ContainerRunicInscriber;
 import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
 import halestormxv.utils.Reference;
 import net.minecraft.client.gui.inventory.GuiContainer;

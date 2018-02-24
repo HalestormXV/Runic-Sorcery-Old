@@ -1,5 +1,6 @@
-package halestormxv.objects.blocks.devices.inscriber;
+package halestormxv.inventory.runicinscriber;
 
+import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;

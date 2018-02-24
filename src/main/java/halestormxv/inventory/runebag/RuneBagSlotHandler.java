@@ -1,4 +1,4 @@
-package halestormxv.capabilities.runebag;
+package halestormxv.inventory.runebag;
 
 import halestormxv.init.ItemInit;
 import net.minecraft.item.ItemStack;

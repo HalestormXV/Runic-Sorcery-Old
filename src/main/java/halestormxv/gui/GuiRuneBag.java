@@ -1,6 +1,6 @@
 package halestormxv.gui;
 
-import halestormxv.capabilities.runebag.RuneBagContainer;
+import halestormxv.inventory.runebag.RuneBagContainer;
 import halestormxv.utils.Reference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;

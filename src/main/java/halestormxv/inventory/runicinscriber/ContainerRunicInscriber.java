@@ -1,5 +1,7 @@
-package halestormxv.objects.blocks.devices.inscriber;
+package halestormxv.inventory.runicinscriber;
 
+import halestormxv.objects.blocks.devices.inscriber.RunicInscriberRecipes;
+import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
