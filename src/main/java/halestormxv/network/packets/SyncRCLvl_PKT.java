@@ -10,13 +10,13 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketSyncRCLevel implements IMessage {
+public class SyncRCLvl_PKT implements IMessage {
     private int rcLvL;
 
-    public PacketSyncRCLevel() {
+    public SyncRCLvl_PKT() {
     }
 
-    public PacketSyncRCLevel(int rcLvL) {
+    public SyncRCLvl_PKT(int rcLvL) {
         this.rcLvL = rcLvL;
     }
 
@@ -30,10 +30,10 @@ public class PacketSyncRCLevel implements IMessage {
         buf.writeInt(rcLvL);
     }
 
-    public static class Handler implements IMessageHandler<PacketSyncRCLevel, IMessage>
+    public static class Handler implements IMessageHandler<SyncRCLvl_PKT, IMessage>
     {
         @Override
-        public IMessage onMessage(PacketSyncRCLevel message, MessageContext ctx)
+        public IMessage onMessage(SyncRCLvl_PKT message, MessageContext ctx)
         {
             FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> {
                 EntityPlayer player = RunicSorcery.proxy.getMyPlayer(ctx);

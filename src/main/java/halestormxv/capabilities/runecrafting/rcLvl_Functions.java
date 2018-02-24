@@ -1,7 +1,7 @@
 package halestormxv.capabilities.runecrafting;
 
 import halestormxv.network.PacketHandler;
-import halestormxv.network.packets.PacketSyncRCLevel;
+import halestormxv.network.packets.SyncRCLvl_PKT;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -36,7 +36,7 @@ public class rcLvl_Functions implements IRuneCraftLevel
     {
         if (!thePlayer.world.isRemote)
         {
-            PacketHandler.sendTo(new PacketSyncRCLevel(this.runeLevel), (EntityPlayerMP) thePlayer);
+            PacketHandler.sendTo(new SyncRCLvl_PKT(this.runeLevel), (EntityPlayerMP) thePlayer);
         }
     }
 }

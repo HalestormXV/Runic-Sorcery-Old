@@ -2,6 +2,8 @@ package halestormxv;
 
 import halestormxv.commands.SetRuneCraftLevel;
 import halestormxv.network.PacketHandler;
+import halestormxv.potion.PotionReference;
+import halestormxv.potion.recipes.PotionRecipes;
 import halestormxv.proxy.CommonProxy;
 import halestormxv.utils.Logging;
 import halestormxv.utils.Reference;
@@ -20,19 +22,20 @@ public class RunicSorcery
 {
     @Mod.Instance
     public static RunicSorcery instance;
-
     public static Logger logger;
 
     @SidedProxy(clientSide = Reference.CLIENT, serverSide = Reference.SERVER)
     public static CommonProxy proxy;
 
     public static final CreativeTabs RUNICSORCERY = new ModTab("Runic Sorcery");
+    public static final CreativeTabs RUNICSORCERY_POTS = new ModTab("Runic Sorcery Potions");
 
     static { FluidRegistry.enableUniversalBucket(); }
 
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event)
     {
+        PotionReference.INSTANCE.getClass();
         Logging.getLogger().info("Pre Initialize");
         logger = event.getModLog();
         proxy.preInit(event);
@@ -42,6 +45,7 @@ public class RunicSorcery
     public static void init(FMLInitializationEvent event)
     {
         Logging.getLogger().info("Initialize");
+        PotionRecipes.registerRecipes();
         proxy.init(event);
     }
     @Mod.EventHandler

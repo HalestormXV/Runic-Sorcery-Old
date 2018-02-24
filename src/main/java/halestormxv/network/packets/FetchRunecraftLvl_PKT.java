@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketFetchRunecraftLevel implements IMessage
+public class FetchRunecraftLvl_PKT implements IMessage
 {
     @Override
     public void fromBytes(ByteBuf buf) { }
@@ -19,15 +19,15 @@ public class PacketFetchRunecraftLevel implements IMessage
     @Override
     public void toBytes(ByteBuf buf) { }
 
-    public static class Handler implements IMessageHandler<PacketFetchRunecraftLevel, IMessage> {
+    public static class Handler implements IMessageHandler<FetchRunecraftLvl_PKT, IMessage> {
         @Override
-        public IMessage onMessage(PacketFetchRunecraftLevel message, MessageContext ctx)
+        public IMessage onMessage(FetchRunecraftLvl_PKT message, MessageContext ctx)
         {
             FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
             return null;
         }
 
-        private void handle(PacketFetchRunecraftLevel message, MessageContext ctx)
+        private void handle(FetchRunecraftLvl_PKT message, MessageContext ctx)
         {
             EntityPlayerMP playerEntity = ctx.getServerHandler().player;
             IRuneCraftLevel runeCraftLevel = playerEntity.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);

@@ -2,6 +2,8 @@ package halestormxv.proxy;
 
 import halestormxv.capabilities.runebag.RuneBagFunctions;
 import halestormxv.capabilities.runebag.RuneBagStorage;
+import halestormxv.potion.PotionReference;
+import halestormxv.potion.recipes.PotionRecipes;
 import halestormxv.utils.interfaces.IRuneBagProvider;
 import halestormxv.capabilities.runecrafting.rcLvl_Functions;
 import halestormxv.capabilities.runecrafting.rcLvl_Storage;
@@ -21,7 +23,10 @@ import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
+import net.minecraft.network.play.server.SPacketEntityEffect;
+import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
@@ -39,6 +44,8 @@ import javax.annotation.Nullable;
 @Mod.EventBusSubscriber
 public class CommonProxy
 {
+    public void registerItemDescriptions() {}
+
     @Nullable
     public EntityPlayer getMyPlayer(MessageContext ctx)
     {
@@ -87,5 +94,11 @@ public class CommonProxy
     {
         event.getRegistry().registerAll(ItemInit.ITEMS.toArray(new Item[0]));
     }
+
+    public void updatePlayerPotion(EntityPlayer e, PotionEffect fx) {
+        ((EntityPlayerMP)e).connection.sendPacket(new SPacketEntityEffect(e.getEntityId(), fx));
+    }
+
+    public void playDispelSound() {}
 
 }

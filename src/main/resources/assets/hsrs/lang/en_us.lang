@@ -10,6 +10,36 @@ hsrs_key.runebag=Open Rune Bag
 hsrs_key.runecraftlevel=Check Rune Craft Level
 hsrs_key.cyclespells=Cycle Spells
 
+#POTIONS
+item.breakable=(Breakable)
+
+potion.effect.fuse=Potion of Blast
+lingering_potion.effect.fuse=Lingering Potion of Blast
+splash_potion.effect.fuse=Splash Potion of Blast
+tipped_arrow.effect.fuse=Arrow of Blasting
+effect.fuse=Blast
+
+potion.effect.recall=Potion of Reminiscence
+lingering_potion.effect.recall=Lingering Potion of Reminiscence
+splash_potion.effect.recall=Splash Potion of Reminiscence
+tipped_arrow.effect.recall=Arrow of Reminiscence
+effect.recall=Reminiscence
+
+potion.effect.dispel=Potion of Dispel
+lingering_potion.effect.dispel=Lingering Potion of Dispel
+splash_potion.effect.dispel=Splash Potion of Dispel
+tipped_arrow.effect.dispel=Arrow of Dispel
+effect.dispel=Dispel
+
+potion.effect.learning=Potion of Learning
+lingering_potion.effect.learning=Lingering Potion of Learning
+splash_potion.effect.learning=Splash Potion of Learning
+tipped_arrow.effect.learning=Arrow of Learning
+effect.learning=Learning
+
+tooltip.credit=Effect added by %1$s
+tooltip.credit.uncertain=Effect maybe added by %1$s
+tooltip.loaded.credit=Item added by Runic Sorcery
 
 #ITEMS
 item.ingot_phenet.name=Phenet Ingot

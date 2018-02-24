@@ -2,10 +2,8 @@ package halestormxv.network.packets;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
@@ -14,7 +12,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketSendKey implements IMessage
+public class SendKey_PKT implements IMessage
 {
     private BlockPos blockPos;
 
@@ -32,17 +30,17 @@ public class PacketSendKey implements IMessage
         buf.writeLong(blockPos.toLong());
     }
 
-    public PacketSendKey(){}
+    public SendKey_PKT(){}
 
-    public PacketSendKey(BlockPos blockPos)
+    public SendKey_PKT(BlockPos blockPos)
     {
         // Calculate the position of the block we are looking at
         this.blockPos = blockPos;
     }
 
-    public static class Handler implements IMessageHandler<PacketSendKey, IMessage> {
+    public static class Handler implements IMessageHandler<SendKey_PKT, IMessage> {
         @Override
-        public IMessage onMessage(PacketSendKey message, MessageContext ctx)
+        public IMessage onMessage(SendKey_PKT message, MessageContext ctx)
         {
             // Always use a construct like this to actually handle your message. This ensures that
             // your 'handle' code is run on the main Minecraft thread. 'onMessage' itself
@@ -52,7 +50,7 @@ public class PacketSendKey implements IMessage
             return null;
         }
 
-        private void handle(PacketSendKey message, MessageContext ctx)
+        private void handle(SendKey_PKT message, MessageContext ctx)
         {
             // This code is run on the server side. So you can do server-side calculations here
             EntityPlayerMP playerEntity = ctx.getServerHandler().player;

@@ -7,7 +7,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 public class PacketHandler
@@ -29,12 +28,13 @@ public class PacketHandler
 
     private static void registerMessages()
     {
-        INSTANCE.registerMessage(PacketSendKey.Handler.class, PacketSendKey.class, nextID(), Side.SERVER);
-        INSTANCE.registerMessage(PacketFetchRunecraftLevel.Handler.class, PacketFetchRunecraftLevel.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(SendKey_PKT.Handler.class, SendKey_PKT.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(FetchRunecraftLvl_PKT.Handler.class, FetchRunecraftLvl_PKT.class, nextID(), Side.SERVER);
         INSTANCE.registerMessage(PacketChatUtils.PacketNoSpamChat.Handler.class, PacketChatUtils.PacketNoSpamChat.class, nextID(), Side.CLIENT);
-        INSTANCE.registerMessage(PacketSyncRCLevel.Handler.class, PacketSyncRCLevel.class, nextID(), Side.CLIENT);
-        INSTANCE.registerMessage(PacketCycleSpells.Handler.class, PacketCycleSpells.class, nextID(), Side.SERVER);
-        INSTANCE.registerMessage(SyncBagDataPKT.Handler.class, SyncBagDataPKT.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(SyncRCLvl_PKT.Handler.class, SyncRCLvl_PKT.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(CycleSpells_PKT.Handler.class, CycleSpells_PKT.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(SyncBagData_PKT.Handler.class, SyncBagData_PKT.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(DispelSuccess_PKT.Handler.class, DispelSuccess_PKT.class, nextID(), Side.CLIENT);
     }
 
     public static void sendToAllAround(IMessage message, TileEntity te, int range)

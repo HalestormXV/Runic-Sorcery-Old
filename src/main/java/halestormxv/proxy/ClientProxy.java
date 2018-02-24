@@ -2,6 +2,7 @@ package halestormxv.proxy;
 
 import halestormxv.KeyBindings;
 import halestormxv.capabilities.runebag.RuneBagProvider;
+import halestormxv.utils.handlers.PotionDescriptionTooltipHandler;
 import halestormxv.utils.interfaces.IRuneBagProvider;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
@@ -12,9 +13,16 @@ import halestormxv.utils.interfaces.IHasModel;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.color.IItemColor;
+import net.minecraft.client.renderer.color.ItemColors;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
@@ -98,5 +106,23 @@ public class ClientProxy extends CommonProxy
             }
         }
 
+    }
+
+    @Override
+    public void registerItemDescriptions()
+    {
+        MinecraftForge.EVENT_BUS.register(new PotionDescriptionTooltipHandler());
+    }
+
+    @Override
+    public void playDispelSound() {
+        EntityPlayer player = Minecraft.getMinecraft().player;
+        player.getEntityWorld().playSound(player.posX, player.posY, player.posZ, SoundEvent.REGISTRY.getObject(new ResourceLocation("entity.elder_guardian.curse")), SoundCategory.AMBIENT, 1.5F, 8F, false);
+    }
+
+    @Override
+    public void updatePlayerPotion(EntityPlayer e, PotionEffect fx)
+    {
+        e.addPotionEffect(new PotionEffect(fx));
     }
 }

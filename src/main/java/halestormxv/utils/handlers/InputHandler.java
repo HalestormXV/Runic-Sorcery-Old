@@ -3,9 +3,9 @@ package halestormxv.utils.handlers;
 import halestormxv.KeyBindings;
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.network.PacketHandler;
-import halestormxv.network.packets.PacketCycleSpells;
-import halestormxv.network.packets.PacketFetchRunecraftLevel;
-import halestormxv.network.packets.PacketSendKey;
+import halestormxv.network.packets.CycleSpells_PKT;
+import halestormxv.network.packets.FetchRunecraftLvl_PKT;
+import halestormxv.network.packets.SendKey_PKT;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,20 +25,20 @@ public class InputHandler
             // Someone pressed our tutorialKey. We send a message
             RayTraceResult mouseOver = Minecraft.getMinecraft().objectMouseOver;
             BlockPos blockPos = mouseOver.getBlockPos();
-            PacketHandler.INSTANCE.sendToServer(new PacketSendKey(blockPos));
+            PacketHandler.INSTANCE.sendToServer(new SendKey_PKT(blockPos));
         }
 
         if(KeyBindings.getRuneCraftLevel.isPressed())
         {
             EntityPlayer player = Minecraft.getMinecraft().player;
             IRuneCraftLevel iRuneCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
-            PacketHandler.INSTANCE.sendToServer(new PacketFetchRunecraftLevel());
+            PacketHandler.INSTANCE.sendToServer(new FetchRunecraftLvl_PKT());
         }
 
         if(KeyBindings.cycleMagicSpells.isPressed())
         {
             EntityPlayer player = Minecraft.getMinecraft().player;
-            PacketHandler.INSTANCE.sendToServer(new PacketCycleSpells(player));
+            PacketHandler.INSTANCE.sendToServer(new CycleSpells_PKT(player));
         }
     }
 }

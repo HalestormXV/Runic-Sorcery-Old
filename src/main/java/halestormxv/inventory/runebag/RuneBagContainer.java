@@ -1,5 +1,6 @@
 package halestormxv.inventory.runebag;
 
+import halestormxv.init.ItemInit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.ClickType;
@@ -7,7 +8,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumHand;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
+import net.minecraftforge.items.SlotItemHandler;
 
 import javax.annotation.Nonnull;
 
@@ -29,6 +32,8 @@ public class RuneBagContainer extends Container
         //Bag Inventory
         for (int i = 0; i < 4; i++)
             for (int j = 0; j < 4; j++)
+                //I just made a static class within this class because all I am doing is locking other items except Runestones out.
+                //There is really no need for an entire separate SlotHandler as nothing else is being overridden.
                 this.addSlotToContainer(new RuneBagSlotHandler(invBag, j + i * 4, 53 + j * 18, 8 + i * 18));
 
         //Player Inventory
@@ -100,5 +105,24 @@ public class RuneBagContainer extends Container
         }
 
         return super.slotClick(slot, button, flag, player);
+    }
+
+
+    /**
+     * I just made this Static Class Within this class because all I am doing
+     * is locking all items except Runestones out of the bag. No need for an
+     * entire separate class just to achieve this.
+     */
+    public static class RuneBagSlotHandler extends SlotItemHandler
+    {
+        private RuneBagSlotHandler(IItemHandler itemHandler, int index, int xPosition, int yPosition)
+        {
+            super(itemHandler, index, xPosition, yPosition);
+        }
+
+        @Override
+        public boolean isItemValid(@Nonnull ItemStack stack) {
+            return (stack.getItem() == ItemInit.ITEM_RUNE);
+        }
     }
 }

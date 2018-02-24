@@ -11,13 +11,13 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import java.nio.charset.Charset;
 import java.util.UUID;
 
-public class PacketCycleSpells implements IMessage
+public class CycleSpells_PKT implements IMessage
 {
     private EntityPlayer thePlayer;
 
-    public PacketCycleSpells() { }
+    public CycleSpells_PKT() { }
 
-    public PacketCycleSpells(EntityPlayer thePlayer)
+    public CycleSpells_PKT(EntityPlayer thePlayer)
     {
         this.thePlayer = thePlayer;
     }
@@ -40,16 +40,16 @@ public class PacketCycleSpells implements IMessage
         buf.writeCharSequence(thePlayer.getUniqueID().toString(), Charset.defaultCharset());
     }
 
-    public static class Handler implements IMessageHandler<PacketCycleSpells, IMessage>
+    public static class Handler implements IMessageHandler<CycleSpells_PKT, IMessage>
     {
         @Override
-        public IMessage onMessage(PacketCycleSpells message, MessageContext ctx)
+        public IMessage onMessage(CycleSpells_PKT message, MessageContext ctx)
         {
             FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
             return null;
         }
 
-        private void handle(PacketCycleSpells message, MessageContext ctx)
+        private void handle(CycleSpells_PKT message, MessageContext ctx)
         {
             CycleSpells.cycleSpells(message.thePlayer, message.thePlayer.getActiveHand());
         }
