@@ -1,16 +1,13 @@
 package halestormxv.commands;
 
 import com.google.common.collect.Lists;
-import halestormxv.capabilities.rcLvl_Provider;
-import halestormxv.network.PacketHandler;
-import halestormxv.network.packets.PacketSyncRCLevel;
+import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.utils.Reference;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;

@@ -1,10 +1,9 @@
 package halestormxv.network.packets;
 
 import halestormxv.RunicSorcery;
-import halestormxv.capabilities.rcLvl_Provider;
+import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;

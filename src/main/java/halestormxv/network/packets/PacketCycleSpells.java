@@ -1,16 +1,8 @@
 package halestormxv.network.packets;
 
-import halestormxv.RunicSorcery;
 import halestormxv.api.CycleSpells;
-import halestormxv.capabilities.rcLvl_Provider;
-import halestormxv.utils.interfaces.IRuneCraftLevel;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;

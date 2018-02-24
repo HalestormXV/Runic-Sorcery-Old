@@ -1,7 +1,10 @@
 package halestormxv.proxy;
 
-import halestormxv.capabilities.rcLvl_Functions;
-import halestormxv.capabilities.rcLvl_Storage;
+import halestormxv.capabilities.runebag.RuneBagFunctions;
+import halestormxv.capabilities.runebag.RuneBagStorage;
+import halestormxv.utils.interfaces.IRuneBagProvider;
+import halestormxv.capabilities.runecrafting.rcLvl_Functions;
+import halestormxv.capabilities.runecrafting.rcLvl_Storage;
 import halestormxv.gui.handlers.GeneralGuiHandler;
 import halestormxv.init.BiomeInit;
 import halestormxv.init.BlockInit;
@@ -17,7 +20,6 @@ import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,6 +45,8 @@ public class CommonProxy
         return ctx.getServerHandler().player;
     }
 
+    public IRuneBagProvider getClientBagProps() { return null; }
+
     public void preInit(FMLPreInitializationEvent e)
     {
         GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
@@ -50,6 +54,7 @@ public class CommonProxy
         BiomeInit.registerBiomes();
         EntityInit.registerEntities();
         CapabilityManager.INSTANCE.register(IRuneCraftLevel.class, new rcLvl_Storage(), rcLvl_Functions.class);
+        CapabilityManager.INSTANCE.register(IRuneBagProvider.class, new RuneBagStorage(), RuneBagFunctions.class);
         ModDimensions.init();
     }
 

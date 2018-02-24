@@ -10,27 +10,29 @@ import net.minecraft.util.EnumHand;
 
 public class CycleSpells {
     public static void cycleSpells(EntityPlayer playerIn, EnumHand handIn) {
-        ItemStack theStaff = playerIn.getHeldItem(handIn);
-        //Apprentice Staff
-        if (theStaff.getItem() instanceof ItemBaseStaff) {
-            NBTTagCompound activeSpell = theStaff.getTagCompound();
-            if (activeSpell != null) {
-                int currentSpell = activeSpell.getInteger("SpellSelected");
-                switch (currentSpell) {
-                    case 1:
-                        activeSpell.setInteger("SpellSelected", ++currentSpell);
-                        theStaff.setTagCompound(activeSpell);
-                        PacketChatUtils.sendNoSpam(playerIn, "\u00A7dSet spell to Boost Fire Resistance");
-                        break;
+        if (!playerIn.world.isRemote) {
+            ItemStack theStaff = playerIn.getHeldItem(handIn);
+            //Apprentice Staff
+            if (theStaff.getItem() instanceof ItemBaseStaff) {
+                NBTTagCompound activeSpell = theStaff.getTagCompound();
+                if (activeSpell != null) {
+                    int currentSpell = activeSpell.getInteger("SpellSelected");
+                    switch (currentSpell) {
+                        case 1:
+                            activeSpell.setInteger("SpellSelected", ++currentSpell);
+                            theStaff.setTagCompound(activeSpell);
+                            PacketChatUtils.sendNoSpam(playerIn, "\u00A7dSet spell to Boost Fire Resistance");
+                            break;
 
-                    case 2:
-                        activeSpell.setInteger("SpellSelected", --currentSpell);
-                        theStaff.setTagCompound(activeSpell);
-                        PacketChatUtils.sendNoSpam(playerIn, "\u00A7dSet spell to Boost Resistance");
-                        break;
+                        case 2:
+                            activeSpell.setInteger("SpellSelected", --currentSpell);
+                            theStaff.setTagCompound(activeSpell);
+                            PacketChatUtils.sendNoSpam(playerIn, "\u00A7dSet spell to Boost Resistance");
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
                 }
             }
         }

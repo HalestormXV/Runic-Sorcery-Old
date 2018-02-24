@@ -1,7 +1,7 @@
 package halestormxv.utils.handlers;
 
 import halestormxv.KeyBindings;
-import halestormxv.capabilities.rcLvl_Provider;
+import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.network.PacketHandler;
 import halestormxv.network.packets.PacketCycleSpells;
 import halestormxv.network.packets.PacketFetchRunecraftLevel;

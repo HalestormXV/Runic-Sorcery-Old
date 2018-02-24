@@ -1,4 +1,4 @@
-package halestormxv.capabilities;
+package halestormxv.capabilities.runecrafting;
 
 import halestormxv.utils.interfaces.IRuneCraftLevel;
 import net.minecraft.entity.player.EntityPlayer;

@@ -34,6 +34,7 @@ public class PacketHandler
         INSTANCE.registerMessage(PacketChatUtils.PacketNoSpamChat.Handler.class, PacketChatUtils.PacketNoSpamChat.class, nextID(), Side.CLIENT);
         INSTANCE.registerMessage(PacketSyncRCLevel.Handler.class, PacketSyncRCLevel.class, nextID(), Side.CLIENT);
         INSTANCE.registerMessage(PacketCycleSpells.Handler.class, PacketCycleSpells.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(SyncBagDataPKT.Handler.class, SyncBagDataPKT.class, nextID(), Side.CLIENT);
     }
 
     public static void sendToAllAround(IMessage message, TileEntity te, int range)

@@ -1,15 +1,16 @@
 package halestormxv.utils.handlers;
 
-import halestormxv.capabilities.rcLvl_Provider;
+import halestormxv.capabilities.runebag.RuneBagProvider;
+import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.init.ItemInit;
 import halestormxv.network.packets.PacketChatUtils;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -57,5 +58,21 @@ public class EventHandler
         IRuneCraftLevel runeCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
         IRuneCraftLevel oldLevel = event.getOriginal().getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
         runeCraftLevel.setRuneLevel(oldLevel.getRuneLevel());
+
+        NBTTagCompound bags = event.getOriginal().getCapability(RuneBagProvider.RUNEBAG_CAP, null).serializeNBT();
+        event.getEntityPlayer().getCapability(RuneBagProvider.RUNEBAG_CAP, null).deserializeNBT(bags);
+    }
+
+    @SubscribeEvent
+    public static void respawnEvent(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerRespawnEvent event)
+    {
+        event.player.getCapability(RuneBagProvider.RUNEBAG_CAP, null).sync(null, (EntityPlayerMP) event.player);
+    }
+
+    @SubscribeEvent
+    public static void playerConnect(net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent event)
+    {
+        EntityPlayerMP player = (EntityPlayerMP) event.player;
+        player.getCapability(RuneBagProvider.RUNEBAG_CAP, null).sync(null, player);
     }
 }

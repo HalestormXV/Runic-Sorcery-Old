@@ -1,4 +1,4 @@
-package halestormxv.capabilities;
+package halestormxv.capabilities.runecrafting;
 
 import halestormxv.network.PacketHandler;
 import halestormxv.network.packets.PacketSyncRCLevel;

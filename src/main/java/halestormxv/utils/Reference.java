@@ -22,4 +22,5 @@ public class Reference
     public static final String NETWORK_CHANNEL = "hsrs_channel";
 
     public static final int GUI_RUNIC_FURNACE = 0;
+    public static final int GUI_RUNE_BAG = 1;
 }

@@ -1,6 +1,8 @@
 package halestormxv.proxy;
 
 import halestormxv.KeyBindings;
+import halestormxv.capabilities.runebag.RuneBagProvider;
+import halestormxv.utils.interfaces.IRuneBagProvider;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.utils.Reference;
@@ -17,6 +19,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -39,6 +42,11 @@ public class ClientProxy extends CommonProxy
 
         // Solution is to double-check side before returning the player:
         return (ctx.side.isClient() ? Minecraft.getMinecraft().player : ctx.getServerHandler().player);
+    }
+
+    public IRuneBagProvider getClientBagProps()
+    {
+        return FMLClientHandler.instance().getClientPlayerEntity().getCapability(RuneBagProvider.RUNEBAG_CAP, null);
     }
 
 
