@@ -4,10 +4,10 @@ import halestormxv.potion.PotionBase;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class PotionFuse extends PotionBase
+public class PotionBlast extends PotionBase
 {
 
-    public PotionFuse(boolean isBadEffectIn, int liquidColorIn) {
+    public PotionBlast(boolean isBadEffectIn, int liquidColorIn) {
         super(isBadEffectIn, liquidColorIn, "fuse");
         this.setIconIndex(1, 1);
     }
