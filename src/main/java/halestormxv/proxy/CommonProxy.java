@@ -2,6 +2,8 @@ package halestormxv.proxy;
 
 import halestormxv.capabilities.runebag.RuneBagFunctions;
 import halestormxv.capabilities.runebag.RuneBagStorage;
+import halestormxv.capabilities.spellcastlevel.SpellCastLvLFunctions;
+import halestormxv.capabilities.spellcastlevel.SpellCastLvLStorage;
 import halestormxv.potion.PotionReference;
 import halestormxv.potion.recipes.PotionRecipes;
 import halestormxv.utils.interfaces.IRuneBagProvider;
@@ -18,6 +20,7 @@ import halestormxv.utils.handlers.EventHandler;
 import halestormxv.utils.handlers.SoundsHandler;
 import halestormxv.utils.handlers.TileEntityHandler;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
+import halestormxv.utils.interfaces.ISpellCastLevel;
 import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
@@ -62,6 +65,7 @@ public class CommonProxy
         EntityInit.registerEntities();
         CapabilityManager.INSTANCE.register(IRuneCraftLevel.class, new rcLvl_Storage(), rcLvl_Functions.class);
         CapabilityManager.INSTANCE.register(IRuneBagProvider.class, new RuneBagStorage(), RuneBagFunctions.class);
+        CapabilityManager.INSTANCE.register(ISpellCastLevel.class, new SpellCastLvLStorage(), SpellCastLvLFunctions.class);
         ModDimensions.init();
     }
 

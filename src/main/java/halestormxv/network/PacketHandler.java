@@ -35,6 +35,7 @@ public class PacketHandler
         INSTANCE.registerMessage(CycleSpells_PKT.Handler.class, CycleSpells_PKT.class, nextID(), Side.SERVER);
         INSTANCE.registerMessage(SyncBagData_PKT.Handler.class, SyncBagData_PKT.class, nextID(), Side.CLIENT);
         INSTANCE.registerMessage(DispelSuccess_PKT.Handler.class, DispelSuccess_PKT.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(SyncSpellCastLvl_PKT.Handler.class, SyncSpellCastLvl_PKT.class, nextID(), Side.CLIENT);
     }
 
     public static void sendToAllAround(IMessage message, TileEntity te, int range)

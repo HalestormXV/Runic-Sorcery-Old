@@ -18,7 +18,7 @@ public class rcLvl_Functions implements IRuneCraftLevel
     @Override
     public void gainRuneLevel(int value)
     {
-        int clampValue = this.runeLevel - value;
+        int clampValue = this.runeLevel + value;
         this.runeLevel = MathHelper.clamp(clampValue, this.min_runeLevel, this.max_runeLevel);
     }
 

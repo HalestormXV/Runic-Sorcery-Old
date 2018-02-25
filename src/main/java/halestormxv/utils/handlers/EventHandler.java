@@ -2,9 +2,11 @@ package halestormxv.utils.handlers;
 
 import halestormxv.capabilities.runebag.RuneBagProvider;
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
+import halestormxv.capabilities.spellcastlevel.SpellCastLvLProvider;
 import halestormxv.init.ItemInit;
 import halestormxv.network.packets.PacketChatUtils;
 import halestormxv.utils.interfaces.IRuneCraftLevel;
+import halestormxv.utils.interfaces.ISpellCastLevel;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,9 +46,11 @@ public class EventHandler
         {
             EntityPlayer player = (EntityPlayer) event.getEntity();
             IRuneCraftLevel runeCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
-            if (runeCraftLevel != null)
+            ISpellCastLevel spellCastLevel = player.getCapability(SpellCastLvLProvider.SPELL_CAST_LEVEL_CAP, null);
+            if (runeCraftLevel != null && spellCastLevel != null)
             {
-                PacketChatUtils.sendNoSpam(player,"\u00A73Rune Craft Level: " + runeCraftLevel.getRuneLevel());
+                PacketChatUtils.sendNoSpam(player,"\u00A73Rune Craft Level: " + runeCraftLevel.getRuneLevel(),
+                        "\u00A72Spell Casting Level: " + spellCastLevel.getSpellCastLevel() );
             }
         }
     }
@@ -55,10 +59,18 @@ public class EventHandler
     public void onPlayerClone(PlayerEvent.Clone event)
     {
         EntityPlayer player = event.getEntityPlayer();
+
+        //Make Sure the Rune Crafting Level Data is Saved
         IRuneCraftLevel runeCraftLevel = player.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
         IRuneCraftLevel oldLevel = event.getOriginal().getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
         runeCraftLevel.setRuneLevel(oldLevel.getRuneLevel());
 
+        //Make Sure the Spell Casting Level Data is Saved
+        ISpellCastLevel spellCastLevel = player.getCapability(SpellCastLvLProvider.SPELL_CAST_LEVEL_CAP, null);
+        ISpellCastLevel oldSpellCastLevel = event.getOriginal().getCapability(SpellCastLvLProvider.SPELL_CAST_LEVEL_CAP, null);
+        spellCastLevel.setSpellCastLevel(oldSpellCastLevel.getSpellCastLevel());
+
+        //Rune Satchel Bag Do What it Gotta Do
         NBTTagCompound bags = event.getOriginal().getCapability(RuneBagProvider.RUNEBAG_CAP, null).serializeNBT();
         event.getEntityPlayer().getCapability(RuneBagProvider.RUNEBAG_CAP, null).deserializeNBT(bags);
     }
