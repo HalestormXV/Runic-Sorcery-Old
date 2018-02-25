@@ -9,6 +9,9 @@ import net.minecraft.util.math.MathHelper;
 
 public class rcLvl_Functions implements IRuneCraftLevel
 {
+    //Level Up Formula = nextLevel(level)
+    //     return ( 0.04 * (level ^ 3) + 0.8 * (level ^ 2) + 2 * level)
+
     private int runeLevel = 0;
     private int min_runeLevel = 0;
     private int max_runeLevel = 100;

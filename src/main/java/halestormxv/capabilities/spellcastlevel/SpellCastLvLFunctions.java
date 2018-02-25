@@ -9,6 +9,9 @@ import net.minecraft.util.math.MathHelper;
 
 public class SpellCastLvLFunctions implements ISpellCastLevel
 {
+    //Level Up Formula = nextLevel(level)
+    //     return ( 0.03 * (level ^ 3) + 0.6 * (level ^ 2) + 2 * level)
+
     private int spellCastLevel = 0;
     private int min_spellCastLevel = 0;
     private int max_spellCastLevel = 100;
