@@ -1,5 +1,6 @@
 #CREATIVE TAB
 itemGroup.RunicSorcery=Runic Sorcery
+itemGroup.RunicSorceryPotions=Runic Sorcery Potions
 
 #CONTAINER
 container.runic_inscriber=Runic Inscriber
@@ -36,6 +37,18 @@ lingering_potion.effect.learning=Lingering Potion of Learning
 splash_potion.effect.learning=Splash Potion of Learning
 tipped_arrow.effect.learning=Arrow of Learning
 effect.learning=Learning
+
+potion.effect.charged=Charged Potion
+lingering_potion.effect.charged=Lingering Charged Potion
+splash_potion.effect.charged=Splash Charged Potion
+tipped_arrow.effect.charged=Charged Arrow
+effect.charged=Charged
+
+potion.effect.charged2=Charged Potion: Rank 2
+lingering_potion.effect.charged2=Lingering Charged Potion: Rank 2
+splash_potion.effect.charged2=Splash Charged Potion: Rank 2
+tipped_arrow.effect.charged2=Charged Arrow: Rank 2
+effect.charged2=Charged Rank 2
 
 tooltip.credit=Effect added by %1$s
 tooltip.credit.uncertain=Effect maybe added by %1$s

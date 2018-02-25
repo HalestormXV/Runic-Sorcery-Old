@@ -28,7 +28,7 @@ public class RunicSorcery
     public static CommonProxy proxy;
 
     public static final CreativeTabs RUNICSORCERY = new ModTab("Runic Sorcery");
-    public static final CreativeTabs RUNICSORCERY_POTS = new ModTab("Runic Sorcery Potions");
+    public static final CreativeTabs RUNICSORCERY_POTS = new ModTabEffects("Runic Sorcery Potions");
 
     static { FluidRegistry.enableUniversalBucket(); }
 
