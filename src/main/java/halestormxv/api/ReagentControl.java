@@ -15,11 +15,6 @@ import static halestormxv.utils.Logging.getLogger;
 
 public class ReagentControl
 {
-    public static void consumeReagent(ItemStack itemStack, int meta, int reagentCost, World worldIn, EntityPlayer entityLiving) {
-        Item reagentItem = itemStack.getItem();
-        entityLiving.inventory.clearMatchingItems(reagentItem, meta, reagentCost, null);
-    }
-
     public static boolean checkAndConsumeReagent(EntityPlayer thePlayer, ItemStack itemStack, int reagentCost)
     {
         int total;
@@ -27,7 +22,6 @@ public class ReagentControl
         IItemHandler playerInventory = thePlayer.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         IRuneBagProvider theRuneBag = thePlayer.getCapability(RuneBagProvider.RUNEBAG_CAP, null);
         reagentItem = itemStack.getItem();
-        IItemHandler bagInventory = theRuneBag.getBag(EnumDyeColor.WHITE);
         boolean hasReagent = thePlayer.inventory.hasItemStack(itemStack);
         if(hasReagent)
         {
@@ -52,6 +46,7 @@ public class ReagentControl
                 ItemStack stack = playerInventory.getStackInSlot(slot);
                 if (!stack.isEmpty() && stack.getItem() instanceof RuneBag)
                 {
+                    IItemHandler bagInventory = theRuneBag.getBag(EnumDyeColor.byMetadata(stack.getMetadata()));
                     reagentItem = itemStack.getItem();
                     for (int bagSlots = 0; bagSlots < bagInventory.getSlots(); bagSlots++)
                     {
@@ -102,7 +97,6 @@ public class ReagentControl
         return total;
     }
 
-
     public static int checkForReagentQuantity(ItemStack itemStack, EntityPlayer player) {
         int count = 0;
         Item reagentItem = itemStack.getItem();
@@ -120,6 +114,11 @@ public class ReagentControl
             return 0;
         }
         return 0;
+    }
+
+    public static void consumeReagent(ItemStack itemStack, int meta, int reagentCost, World worldIn, EntityPlayer entityLiving) {
+        Item reagentItem = itemStack.getItem();
+        entityLiving.inventory.clearMatchingItems(reagentItem, meta, reagentCost, null);
     }
 }
 
