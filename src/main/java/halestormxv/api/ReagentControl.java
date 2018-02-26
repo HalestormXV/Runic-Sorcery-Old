@@ -1,12 +1,26 @@
 package halestormxv.api;
 
+import halestormxv.capabilities.runebag.RuneBagProvider;
+import halestormxv.init.ItemInit;
+import halestormxv.objects.items.RuneBag;
+import halestormxv.utils.Logging;
+import halestormxv.utils.interfaces.IRuneBagProvider;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 
-public class ReagentControl {
+import java.util.stream.Stream;
+
+import static halestormxv.utils.Logging.getLogger;
+
+public class ReagentControl
+{
     public static void consumeReagent(ItemStack itemStack, int meta, int reagentCost, World worldIn, EntityPlayer entityLiving) {
         Item reagentItem = itemStack.getItem();
         entityLiving.inventory.clearMatchingItems(reagentItem, meta, reagentCost, null);
@@ -32,21 +46,41 @@ public class ReagentControl {
     }
 
     //Work on This Some More - almost got it? Maybe?
-    public static int checkForReagentQuantityRuneBag(ItemStack itemStack, IItemHandler itemHandler)
+    public static int checkForReagentQuantityRuneBag(ItemStack itemStack, EntityPlayer thePlayer)
     {
-        int count = 0;
-        Item reagentItem = itemStack.getItem();
-        for (int index = 0; index < itemHandler.getSlots(); index++)
+        int total = 0;
+        System.out.println("Good news is I am getting called at least.");
+        Item reagentItem;
+        for (int slot = 0; slot < thePlayer.inventory.getSizeInventory(); slot++)
         {
-            ItemStack stack = itemHandler.getStackInSlot(index);
-            if (!stack.isEmpty() && stack.getItem().equals(reagentItem))
+            ItemStack stack = thePlayer.inventory.getStackInSlot(slot);
+            if (!stack.isEmpty() && stack.getItem() instanceof RuneBag)
             {
-                int total = count += stack.getCount();
-                System.out.println("There are "+total+" "+stack.getDisplayName()+" in the inventory.");
-                return total;
+                //LEFT OFF OVER HERE\\
+                getLogger().info("I found the rune bag while going through all the slots!");
+                NBTTagCompound bagData = stack.serializeNBT();
+                getLogger().info(bagData);
+                IRuneBagProvider theRuneBag = stack.getCapability(RuneBagProvider.RUNEBAG_CAP, null);
+                theRuneBag.getBag(EnumDyeColor.WHITE);
+                reagentItem = itemStack.getItem();
+                IItemHandler bagHandler = new ItemStackHandler(theRuneBag.getBag(EnumDyeColor.WHITE).getSlots());
+                for (int bagSlots = 0; bagSlots < bagHandler.getSlots(); bagSlots++)
+                {
+                    getLogger().info("I made it all the way into the bag!");
+                    ItemStack stackInBagSlot = bagHandler.getStackInSlot(bagSlots);
+                    if (!stackInBagSlot.isEmpty() && stackInBagSlot.getItem().equals(reagentItem))
+                    {
+                        total = stackInBagSlot.getCount();
+                        System.out.println("Player has: " + total + stackInBagSlot.getDisplayName() + " in the Rune Bag.");
+                        return total;
+                    }
+                }
+            } else {
+                getLogger().info("Sorry Kappa, you almost got it.");
             }
-            else { return 0; }
+            getLogger().info("Loopy loopy loop. You have a problem in your loop!");
         }
-        return 0;
+        getLogger().info("Sorry Kappa, no Rune Bag here.");
+        return total;
     }
 }

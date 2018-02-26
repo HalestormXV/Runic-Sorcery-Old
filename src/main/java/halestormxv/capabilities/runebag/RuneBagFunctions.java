@@ -25,7 +25,7 @@ public class RuneBagFunctions implements IRuneBagProvider
     {
         if (!inventories.containsKey(color))
         {
-            inventories.put(color, new ItemStackHandler(104));
+            inventories.put(color, new ItemStackHandler(16));
         }
 
         return inventories.get(color);
@@ -66,7 +66,7 @@ public class RuneBagFunctions implements IRuneBagProvider
         {
             if (nbt.hasKey(e.getName()))
             {
-                IItemHandler inv = new ItemStackHandler(104);
+                IItemHandler inv = new ItemStackHandler(16);
                 CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.getStorage()
                         .readNBT(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, inv, null, nbt.getTag(e.getName()));
                 inventories.put(e, inv);
