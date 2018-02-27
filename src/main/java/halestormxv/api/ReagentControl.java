@@ -28,7 +28,7 @@ public class ReagentControl
             for (int slot = 0; slot < playerInventory.getSlots(); slot++)
             {
                 ItemStack stack = playerInventory.getStackInSlot(slot);
-                if (!stack.isEmpty() && stack.getItem().equals(reagentItem))
+                if (!stack.isEmpty() && stack.getItem().equals(reagentItem) && stack.getMetadata() == itemStack.getMetadata())
                 {
                     total = stack.getCount();
                     if (total >= reagentCost)
@@ -51,7 +51,7 @@ public class ReagentControl
                     for (int bagSlots = 0; bagSlots < bagInventory.getSlots(); bagSlots++)
                     {
                         ItemStack stackInBagSlot = bagInventory.getStackInSlot(bagSlots);
-                        if (!stackInBagSlot.isEmpty() && stackInBagSlot.getItem().equals(reagentItem))
+                        if (!stackInBagSlot.isEmpty() && stackInBagSlot.getItem().equals(reagentItem) && stackInBagSlot.getMetadata() == itemStack.getMetadata())
                         {
                             total = stackInBagSlot.getCount();
                             if (total >= reagentCost)

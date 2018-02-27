@@ -47,13 +47,13 @@ public class ApprenticeStaff extends ItemBaseStaff {
                 int spellSelected = activeSpell.getInteger("SpellSelected");
                 switch (spellSelected) {
                     case 1:
-                        reagentRequired = new ItemStack(ItemInit.ITEM_RUNE, 1, 4);
-                        Buff_Resistance.applyResistanceSelf(worldIn, playerIn, handIn, reagentRequired, 2);
+                        reagentRequired = new ItemStack(ItemInit.ITEM_RUNE, 3, 4);
+                        Buff_Resistance.applyResistanceSelf(playerIn, handIn, reagentRequired);
                         break;
 
                     case 2:
                         reagentRequired = new ItemStack(ItemInit.ITEM_RUNE, 1, 3);
-                        Buff_Resistance.applyFireResistance(worldIn, playerIn, handIn, reagentRequired, 1);
+                        Buff_Resistance.applyFireResistance(playerIn, handIn, reagentRequired);
                         break;
 
                     default:
