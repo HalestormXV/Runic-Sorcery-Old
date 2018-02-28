@@ -1,8 +1,6 @@
 package halestormxv.objects.items.staffs;
 
-import halestormxv.KeyBindings;
 import halestormxv.init.ItemInit;
-import halestormxv.network.packets.PacketChatUtils;
 import halestormxv.objects.items.staffs.abilities.*;
 import halestormxv.objects.items.ItemBaseStaff;
 import net.minecraft.client.util.ITooltipFlag;
@@ -17,10 +15,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ApprenticeStaff extends ItemBaseStaff {
     private int maxSpells = 2;
+    private List<ItemStack> getResistanceCost = new AbilityCosts().getResistanceReagents();
+    private List<ItemStack> getFireResistanceCost = new AbilityCosts().getFireResistanceReagents();
 
     public ApprenticeStaff(String name) {
         super(name);
@@ -33,6 +34,10 @@ public class ApprenticeStaff extends ItemBaseStaff {
             NBTTagCompound nbt;
             nbt = new NBTTagCompound();
             nbt.setInteger("SpellSelected", 1);
+            for (int i = 0; i < getResistanceCost.size(); i++) {
+                nbt.setString("RuneName" + (i), getResistanceCost.get(i).getDisplayName());
+                nbt.setInteger("RuneCost" + (i), getResistanceCost.get(i).getCount());
+            }
             stack.setTagCompound(nbt);
         }
     }
@@ -63,6 +68,10 @@ public class ApprenticeStaff extends ItemBaseStaff {
                 NBTTagCompound nbt;
                 nbt = new NBTTagCompound();
                 nbt.setInteger("SpellSelected", 1);
+                for (int i = 0; i < getResistanceCost.size(); i++) {
+                    nbt.setString("RuneName" + (i), getResistanceCost.get(i).getDisplayName());
+                    nbt.setInteger("RuneCost" + (i), getResistanceCost.get(i).getCount());
+                }
                 theStaff.setTagCompound(nbt);
                 return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
             }
@@ -77,7 +86,7 @@ public class ApprenticeStaff extends ItemBaseStaff {
         tooltip.add("");
         tooltip.add("\u00A76" + "A basic staff used for minor");
         tooltip.add("\u00A76" + "spell casting to wet your feet.");
-        tooltip.add("\u00A76" + "Press the "+"\u00A74Cycle Spells");
+        tooltip.add("\u00A76" + "Press the " + "\u00A74Cycle Spells");
         tooltip.add("\u00A76" + "key to change spells.");
         tooltip.add("");
         if (stack.getTagCompound() != null) {
@@ -85,10 +94,17 @@ public class ApprenticeStaff extends ItemBaseStaff {
             int currentSpell = nbt.getInteger("SpellSelected");
             if (currentSpell == 1) {
                 tooltip.add("\u00A73" + "Current Spell: Boost Resistance");
+                for (int i = 0; i < getResistanceCost.size(); i++) {
+                    tooltip.add("\u00A7dRune Required: " + nbt.getString("RuneName" + (i)) + " x" + nbt.getInteger("RuneCost" + (i)));
+                }
+                //tooltip.add("\u00A73" + "Spell Cost: "+runeName+);
             } else if (currentSpell == 2) {
                 tooltip.add("\u00A73" + "Current Spell: Boost Fire Resistance");
+                for (int i = 0; i < getFireResistanceCost.size(); i++) {
+                    tooltip.add("\u00A7dRune Required: " + nbt.getString("RuneName" + (i)) + " x" + nbt.getInteger("RuneCost" + (i)));
+                }
             }
-
+            tooltip.add("");
         }
     }
 }

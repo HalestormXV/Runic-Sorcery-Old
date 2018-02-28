@@ -11,10 +11,69 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
+import java.util.Iterator;
+import java.util.List;
+
 import static halestormxv.utils.Logging.getLogger;
 
 public class ReagentControl
 {
+    public static boolean checkReagentListAndConsume(EntityPlayer thePlayer, List<ItemStack> reagentsRequired)
+    {
+        IItemHandler playerInventory = thePlayer.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        IRuneBagProvider theRuneBag = thePlayer.getCapability(RuneBagProvider.RUNEBAG_CAP, null);
+        int counter = reagentsRequired.size();
+        for (int index = reagentsRequired.size() - 1; index >= 0; index--)
+        {
+            boolean hasReagent = thePlayer.inventory.hasItemStack(reagentsRequired.get(index));
+            if (hasReagent)
+            {
+                for (int slot = 0; slot < playerInventory.getSlots(); slot++)
+                {
+                    int total;
+                    ItemStack stack = playerInventory.getStackInSlot(slot);
+                    if (!stack.isEmpty() && stack.getItem().equals(reagentsRequired.get(index).getItem()) && stack.getMetadata() == reagentsRequired.get(index).getMetadata())
+                    {
+                        total = stack.getCount();
+                        if (total >= reagentsRequired.get(index).getCount())
+                        {
+                            stack.shrink(reagentsRequired.get(index).getCount());
+                            getLogger().info("Player has " + (total - reagentsRequired.get(index).getCount()) + " " + stack.getDisplayName() +
+                                    " in the slot cause I ate " + reagentsRequired.get(index).getCount());
+                            --counter;
+                        }
+                    }
+                }
+            } else {
+                for (int slot = 0; slot < playerInventory.getSlots(); slot++)
+                {
+                    ItemStack stack = playerInventory.getStackInSlot(slot);
+                    if (!stack.isEmpty() && stack.getItem() instanceof RuneBag)
+                    {
+                        IItemHandler bagInventory = theRuneBag.getBag(EnumDyeColor.byMetadata(stack.getMetadata()));
+                        for (int bagSlots = 0; bagSlots < bagInventory.getSlots(); bagSlots++)
+                        {
+                            int total;
+                            ItemStack stackInBagSlot = bagInventory.getStackInSlot(bagSlots);
+                            if (!stackInBagSlot.isEmpty() && stackInBagSlot.getItem().equals(reagentsRequired.get(index).getItem()) && stackInBagSlot.getMetadata() == reagentsRequired.get(index).getMetadata()) {
+                                total = stackInBagSlot.getCount();
+                                if (total >= reagentsRequired.get(index).getCount())
+                                {
+                                    bagInventory.getStackInSlot(bagSlots).shrink(reagentsRequired.get(index).getCount());
+                                    getLogger().info("Player has " + (total - reagentsRequired.get(index).getCount()) + " " + stackInBagSlot.getDisplayName() +
+                                            " in the Rune Bag cause I ate " + reagentsRequired.get(index).getCount());
+                                    --counter;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            reagentsRequired.remove(index);
+        }
+        return counter == 0;
+    }
+
     public static boolean checkAndConsumeReagent(EntityPlayer thePlayer, ItemStack itemStack, int reagentCost)
     {
         int total;
