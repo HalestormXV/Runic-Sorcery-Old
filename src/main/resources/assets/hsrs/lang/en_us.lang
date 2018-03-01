@@ -76,6 +76,20 @@ item.item_runestone_nightmare.name=Nightmare Rune
 item.item_runestone_poison.name=Poison Rune
 item.item_runestone_void.name=Void Rune
 
+#ITEM RUNE ESSENCE
+item.item_essence_basic.name=Basic Essence
+item.item_essence_air.name=Air Essence
+item.item_essence_water.name=Water Essence
+item.item_essence_fire.name=Fire Essence
+item.item_essence_earth.name=Earth Essence
+item.item_essence_death.name=Death Essence
+item.item_essence_barrier.name=Barrier Essence
+item.item_essence_gravity.name=Gravity Essence
+item.item_essence_light.name=Light Essence
+item.item_essence_nightmare.name=Nightmare Essence
+item.item_essence_poison.name=Poison Essence
+item.item_essence_void.name=Void Essence
+
 #BLOCKS
 tile.block_phenet.name=Phenet Block
 tile.ore_phenet.name=Phenet Ore

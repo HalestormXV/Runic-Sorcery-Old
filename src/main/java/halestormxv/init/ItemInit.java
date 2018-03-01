@@ -22,6 +22,7 @@ public class ItemInit
     //META DATA ITEMS\\
     public static final Item ITEM_RUNE = new ItemRunes("item_runestone");
     public static final Item ITEM_RUNE_BAG = new RuneBag("item_runebag");
+    public static final Item RUNE_ESSENCE = new ItemEssence("item_essence");
 
     //STAVES\\
     public static final Item STAFF_FLEDGLING = new ItemBaseStaff("staff_fledgling");

@@ -15,10 +15,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ApprenticeStaff extends ItemBaseStaff {
+public class ApprenticeStaff extends ItemBaseStaff
+{
     private int maxSpells = 2;
     private List<ItemStack> getResistanceCost = new AbilityCosts().getResistanceReagents();
     private List<ItemStack> getFireResistanceCost = new AbilityCosts().getFireResistanceReagents();
@@ -46,19 +46,16 @@ public class ApprenticeStaff extends ItemBaseStaff {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         if (!worldIn.isRemote) {
             ItemStack theStaff = playerIn.getHeldItem(handIn);
-            ItemStack reagentRequired;
             NBTTagCompound activeSpell = theStaff.getTagCompound();
             if (activeSpell != null) {
                 int spellSelected = activeSpell.getInteger("SpellSelected");
                 switch (spellSelected) {
                     case 1:
-                        reagentRequired = new ItemStack(ItemInit.ITEM_RUNE, 3, 4);
-                        Buff_Resistance.applyResistanceSelf(playerIn, handIn, reagentRequired);
+                        Buff_Resistance.applyResistanceSelf(playerIn, handIn);
                         break;
 
                     case 2:
-                        reagentRequired = new ItemStack(ItemInit.ITEM_RUNE, 1, 3);
-                        Buff_Resistance.applyFireResistance(playerIn, handIn, reagentRequired);
+                        Buff_Resistance.applyFireResistance(playerIn, handIn);
                         break;
 
                     default:
@@ -95,13 +92,13 @@ public class ApprenticeStaff extends ItemBaseStaff {
             if (currentSpell == 1) {
                 tooltip.add("\u00A73" + "Current Spell: Boost Resistance");
                 for (int i = 0; i < getResistanceCost.size(); i++) {
-                    tooltip.add("\u00A7dRune Required: " + nbt.getString("RuneName" + (i)) + " x" + nbt.getInteger("RuneCost" + (i)));
+                    tooltip.add("\u00A7dReagents: " + nbt.getString("RuneName" + (i)) + " x" + nbt.getInteger("RuneCost" + (i)));
                 }
                 //tooltip.add("\u00A73" + "Spell Cost: "+runeName+);
             } else if (currentSpell == 2) {
                 tooltip.add("\u00A73" + "Current Spell: Boost Fire Resistance");
                 for (int i = 0; i < getFireResistanceCost.size(); i++) {
-                    tooltip.add("\u00A7dRune Required: " + nbt.getString("RuneName" + (i)) + " x" + nbt.getInteger("RuneCost" + (i)));
+                    tooltip.add("\u00A7dReagents: " + nbt.getString("RuneName" + (i)) + " x" + nbt.getInteger("RuneCost" + (i)));
                 }
             }
             tooltip.add("");

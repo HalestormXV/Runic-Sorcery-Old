@@ -84,6 +84,7 @@ public class ClientProxy extends CommonProxy
         super.init(e);
         MinecraftForge.EVENT_BUS.register(new InputHandler());
         KeyBindings.init();
+        MinecraftForge.EVENT_BUS.register(new PotionDescriptionTooltipHandler());
     }
 
 
@@ -106,12 +107,6 @@ public class ClientProxy extends CommonProxy
             }
         }
 
-    }
-
-    @Override
-    public void registerItemDescriptions()
-    {
-        MinecraftForge.EVENT_BUS.register(new PotionDescriptionTooltipHandler());
     }
 
     @Override

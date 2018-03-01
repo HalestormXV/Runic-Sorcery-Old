@@ -13,4 +13,7 @@ public interface IRuneCraftLevel
     public int getRuneLevel();
 
     public void syncToClient(EntityPlayer entityPlayer);
+
+    public void runeCraftLevelCalc(int lvl);
+
 }

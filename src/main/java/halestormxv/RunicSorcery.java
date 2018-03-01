@@ -7,6 +7,7 @@ import halestormxv.potion.recipes.PotionRecipes;
 import halestormxv.proxy.CommonProxy;
 import halestormxv.utils.Logging;
 import halestormxv.utils.Reference;
+import halestormxv.utils.misc.LevelExpCalc;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -28,7 +29,7 @@ public class RunicSorcery
     public static CommonProxy proxy;
 
     public static final CreativeTabs RUNICSORCERY = new ModTab("Runic Sorcery");
-    public static final CreativeTabs RUNICSORCERY_POTS = new ModTabEffects("Runic Sorcery Potions");
+    public static final CreativeTabs RUNICSORCERY_SPECIAL = new ModTabEffects("Runic Sorcery Special");
 
     static { FluidRegistry.enableUniversalBucket(); }
 
@@ -52,6 +53,7 @@ public class RunicSorcery
     public static void postInit(FMLPostInitializationEvent event)
     {
         Logging.getLogger().info("Post Initialize");
+        //LevelExpCalc.runeCraftLevelCalc();
         proxy.postInit(event);
     }
 

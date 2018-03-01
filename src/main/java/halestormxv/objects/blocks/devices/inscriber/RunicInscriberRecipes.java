@@ -1,7 +1,11 @@
 package halestormxv.objects.blocks.devices.inscriber;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
@@ -10,8 +14,44 @@ import halestormxv.init.ItemInit;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
+import static halestormxv.objects.items.ItemEssence.EnumHandlerEssences.EnumTypeEssences.*;
+import static halestormxv.utils.handlers.EnumHandlerRunes.EnumTypeRunes.*;
+
+
 public class RunicInscriberRecipes
 {
+    private List<ItemStack> essenceRequired = Stream
+            .of(
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, BASIC_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, AIR_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, WATER_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, FIRE_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, EARTH_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, DEATH_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, GRAVITY_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, BARRIER_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, LIGHT_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, VOID_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, NIGHTMARE_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, POISON_ESSENCE.getMeta())
+            ).collect(Collectors.toList());
+
+    private List<ItemStack> runeStoneResults = Stream
+            .of(
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, BASIC_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, AIR_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, WATER_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, FIRE_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, EARTH_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, DEATH_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, GRAVITY_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, BARRIER_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, LIGHT_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, VOID_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, NIGHTMARE_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, POISON_RUNE.getMeta())
+            ).collect(Collectors.toList());
+
     private static final RunicInscriberRecipes INSTANCE = new RunicInscriberRecipes();
     private final Table<ItemStack, ItemStack, ItemStack> smeltingList = HashBasedTable.<ItemStack, ItemStack, ItemStack>create();
     private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
@@ -23,8 +63,12 @@ public class RunicInscriberRecipes
 
     private RunicInscriberRecipes()
     {
-        addInscriberRecipe(new ItemStack(ItemInit.DUST_SIEGRE), new ItemStack(BlockInit.ORE_OVERWORLD), new ItemStack(ItemInit.ITEM_RUNE), 5.0F);
-        addInscriberRecipe(new ItemStack(Blocks.ACACIA_FENCE), new ItemStack(Blocks.ACACIA_FENCE_GATE), new ItemStack(BlockInit.RUNIC_INSCRIBER), 5.0F);
+        List<ItemStack> getEssence = getEssenceRequired();
+        List<ItemStack> getResults = getRuneStoneResults();
+        for (int i = 0; i < essenceRequired.size(); i++)
+        {
+            addInscriberRecipe(getEssence.get(i), new ItemStack(ItemInit.ITEM_RUNE, 1, 0), getResults.get(i), 3.0f);
+        }
     }
 
 
@@ -73,5 +117,14 @@ public class RunicInscriberRecipes
             }
         }
         return 0.0F;
+    }
+
+    private List<ItemStack> getEssenceRequired()
+    {
+        return essenceRequired;
+    }
+    private List<ItemStack> getRuneStoneResults()
+    {
+        return runeStoneResults;
     }
 }

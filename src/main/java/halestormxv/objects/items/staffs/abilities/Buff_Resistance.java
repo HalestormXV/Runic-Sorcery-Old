@@ -14,7 +14,7 @@ public class Buff_Resistance
 {
     //IRuneCraftLevel runeCraftLevel = playerIn.getCapability(rcLvl_Provider.RUNECRAFT_LEVEL, null);
     //Make a Caster Level Perhaps?
-    public static void applyResistanceSelf(EntityPlayer playerIn, EnumHand handIn, ItemStack reagentRequired)
+    public static void applyResistanceSelf(EntityPlayer playerIn, EnumHand handIn)
     {
         ItemStack heldItem = playerIn.getHeldItem(handIn);
         List<ItemStack> getResistanceCost = new AbilityCosts().getResistanceReagents();
@@ -26,7 +26,7 @@ public class Buff_Resistance
         }
     }
 
-    public static void applyFireResistance(EntityPlayer playerIn, EnumHand handIn, ItemStack reagentRequired)
+    public static void applyFireResistance(EntityPlayer playerIn, EnumHand handIn)
     {
         ItemStack heldItem = playerIn.getHeldItem(handIn);
         List<ItemStack> getFireResistanceCost = new AbilityCosts().getFireResistanceReagents();

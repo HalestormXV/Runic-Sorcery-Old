@@ -47,8 +47,6 @@ import javax.annotation.Nullable;
 @Mod.EventBusSubscriber
 public class CommonProxy
 {
-    public void registerItemDescriptions() {}
-
     @Nullable
     public EntityPlayer getMyPlayer(MessageContext ctx)
     {
