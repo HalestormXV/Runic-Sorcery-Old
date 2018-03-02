@@ -49,6 +49,11 @@
 		"subtitle": "effect.runic_inscriber.active",
 		"sounds": [ {"name": "hsrs:blocks/inscriber/active", "stream": true }]
 	},
+	"effect.spell_cast_fizzle": {
+		"category": "master",
+		"subtitle": "effect.spell_cast_fizzle",
+		"sounds": [ {"name": "hsrs:entity/spell_fizzle", "stream": true }]
+	},
 
 	"music.mavismusic": { "sounds":[{"name": "hsrs:music/mavistheme", "stream": true}] },
 	"music.kishuu": { "sounds":[{"name": "hsrs:music/kishuumusic", "stream": true}] },

@@ -1,12 +1,14 @@
-package halestormxv.objects.items.staffs.abilities;
+package halestormxv.abilities;
 
 import halestormxv.api.ReagentControl;
 import halestormxv.network.packets.PacketChatUtils;
+import halestormxv.utility.handlers.SoundsHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundCategory;
 
 import java.util.List;
 
@@ -23,6 +25,8 @@ public class Buff_Resistance
         {
             playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("resistance"), 1800, 1));
             heldItem.damageItem(1, playerIn);
+        }else{
+            playerIn.getEntityWorld().playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundsHandler.EFFECT_SPELL_FIZZLE, SoundCategory.MASTER, 1.0F, 1.0F);
         }
     }
 
@@ -35,6 +39,9 @@ public class Buff_Resistance
         {
             playerIn.addPotionEffect(new PotionEffect(Potion.getPotionFromResourceLocation("fire_resistance"), 1800, 1));
             heldItem.damageItem(1, playerIn);
+        }else{
+            playerIn.getEntityWorld().playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundsHandler.EFFECT_SPELL_FIZZLE, SoundCategory.MASTER, 1.0F, 1.0F);
+            PacketChatUtils.sendNoSpam(playerIn, "\u00A7cYour spell Fizzled out due to a lack of some reagent.");
         }
     }
 }

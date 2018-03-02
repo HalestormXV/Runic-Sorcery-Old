@@ -1,9 +1,8 @@
 package halestormxv.api;
 
 import halestormxv.network.packets.PacketChatUtils;
-import halestormxv.objects.items.ItemBaseStaff;
 import halestormxv.objects.items.staffs.ApprenticeStaff;
-import halestormxv.objects.items.staffs.abilities.AbilityCosts;
+import halestormxv.abilities.AbilityCosts;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -21,7 +20,7 @@ public class CycleSpells
         if (!playerIn.world.isRemote) {
             ItemStack theStaff = playerIn.getHeldItem(handIn);
             //Apprentice Staff
-            if (theStaff.getItem() instanceof ItemBaseStaff) {
+            if (theStaff.getItem() instanceof ApprenticeStaff) {
                 NBTTagCompound activeSpell = theStaff.getTagCompound();
                 if (activeSpell != null) {
                     String runeName = activeSpell.getString("RuneName");

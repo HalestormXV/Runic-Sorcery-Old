@@ -1,7 +1,6 @@
 package halestormxv.objects.items.staffs;
 
-import halestormxv.init.ItemInit;
-import halestormxv.objects.items.staffs.abilities.*;
+import halestormxv.abilities.*;
 import halestormxv.objects.items.ItemBaseStaff;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;

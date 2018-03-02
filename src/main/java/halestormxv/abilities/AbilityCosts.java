@@ -1,4 +1,4 @@
-package halestormxv.objects.items.staffs.abilities;
+package halestormxv.abilities;
 
 import static halestormxv.utility.handlers.EnumHandlerRunes.EnumTypeRunes.*;
 

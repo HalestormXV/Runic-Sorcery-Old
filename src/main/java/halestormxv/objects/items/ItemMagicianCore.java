@@ -82,12 +82,21 @@ public class ItemMagicianCore extends Item implements IMetaName, IHasModel {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-        tooltip.add("");
-        tooltip.add("\u00A76" + "A valuable core used for crafting a");
-        tooltip.add("\u00A76" + "variety of items. Charge it by casting");
-        tooltip.add("\u00A7c" + "Empower" + " \u00A76with the Core in your Inventory.");
-        tooltip.add("");
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        if(stack.getItemDamage() == 0) {
+            tooltip.add("");
+            tooltip.add("\u00A76" + "A valuable core used for crafting a");
+            tooltip.add("\u00A76" + "variety of items. Charge it by casting");
+            tooltip.add("\u00A7c" + "Empower" + " \u00A76with the Core in your Inventory.");
+            tooltip.add("");
+        } else {
+            tooltip.add("");
+            tooltip.add("\u00A76" + "A valuable core used for crafting a");
+            tooltip.add("\u00A76" + "variety of items. This is the charged");
+            tooltip.add("\u00A76" + "variant of the item. It has different uses.");
+            tooltip.add("");
+        }
     }
 
     /**
