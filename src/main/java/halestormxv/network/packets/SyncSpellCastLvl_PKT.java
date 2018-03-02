@@ -1,10 +1,8 @@
 package halestormxv.network.packets;
 
 import halestormxv.RunicSorcery;
-import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.capabilities.spellcastlevel.SpellCastLvLProvider;
-import halestormxv.utils.interfaces.IRuneCraftLevel;
-import halestormxv.utils.interfaces.ISpellCastLevel;
+import halestormxv.utility.interfaces.ISpellCastLevel;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.FMLCommonHandler;

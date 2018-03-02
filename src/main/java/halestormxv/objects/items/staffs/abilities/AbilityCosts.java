@@ -1,6 +1,6 @@
 package halestormxv.objects.items.staffs.abilities;
 
-import static halestormxv.utils.handlers.EnumHandlerRunes.EnumTypeRunes.*;
+import static halestormxv.utility.handlers.EnumHandlerRunes.EnumTypeRunes.*;
 
 import halestormxv.init.ItemInit;
 import net.minecraft.item.ItemStack;

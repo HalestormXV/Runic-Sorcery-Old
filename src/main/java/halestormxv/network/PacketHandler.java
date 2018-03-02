@@ -1,7 +1,7 @@
 package halestormxv.network;
 
 import halestormxv.network.packets.*;
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;

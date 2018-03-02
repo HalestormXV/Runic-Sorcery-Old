@@ -2,8 +2,8 @@ package halestormxv.objects.items;
 
 import halestormxv.RunicSorcery;
 import halestormxv.init.ItemInit;
-import halestormxv.utils.interfaces.IHasModel;
-import halestormxv.utils.interfaces.IMetaName;
+import halestormxv.utility.interfaces.IHasModel;
+import halestormxv.utility.interfaces.IMetaName;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;

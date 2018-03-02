@@ -4,7 +4,7 @@ import halestormxv.RunicSorcery;
 import halestormxv.entity.EntityCultist;
 import halestormxv.entity.EntityHarbinger;
 import halestormxv.entity.EntityPhantom;
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;

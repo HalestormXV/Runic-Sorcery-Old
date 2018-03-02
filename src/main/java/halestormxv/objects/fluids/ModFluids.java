@@ -4,7 +4,7 @@ import halestormxv.RunicSorcery;
 import halestormxv.objects.fluids.types.LiquidMysterium;
 import halestormxv.objects.fluids.types.NonFlowFluid;
 import halestormxv.objects.fluids.types.PortalDisplacement;
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.MaterialLiquid;

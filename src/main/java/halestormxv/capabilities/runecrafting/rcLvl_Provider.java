@@ -1,6 +1,6 @@
 package halestormxv.capabilities.runecrafting;
 
-import halestormxv.utils.interfaces.IRuneCraftLevel;
+import halestormxv.utility.interfaces.IRuneCraftLevel;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;

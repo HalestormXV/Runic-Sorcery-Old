@@ -1,6 +1,6 @@
 package halestormxv.network.packets;
 
-import halestormxv.utils.Lang;
+import halestormxv.utility.Lang;
 import halestormxv.network.PacketHandler;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;

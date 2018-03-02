@@ -1,7 +1,7 @@
 package halestormxv.world.gen.generators;
 
-import halestormxv.utils.Reference;
-import halestormxv.utils.interfaces.IStructure;
+import halestormxv.utility.Reference;
+import halestormxv.utility.interfaces.IStructure;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;

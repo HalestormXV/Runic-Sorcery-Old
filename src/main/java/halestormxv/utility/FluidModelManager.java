@@ -1,4 +1,4 @@
-package halestormxv.utils;
+package halestormxv.utility;
 
 import halestormxv.objects.fluids.ModFluids;
 import net.minecraft.block.Block;

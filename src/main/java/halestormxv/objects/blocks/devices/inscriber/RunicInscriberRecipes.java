@@ -9,13 +9,11 @@ import java.util.stream.Stream;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
-import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 import static halestormxv.objects.items.ItemEssence.EnumHandlerEssences.EnumTypeEssences.*;
-import static halestormxv.utils.handlers.EnumHandlerRunes.EnumTypeRunes.*;
+import static halestormxv.utility.handlers.EnumHandlerRunes.EnumTypeRunes.*;
 
 
 public class RunicInscriberRecipes
@@ -119,11 +117,11 @@ public class RunicInscriberRecipes
         return 0.0F;
     }
 
-    private List<ItemStack> getEssenceRequired()
+    public List<ItemStack> getEssenceRequired()
     {
         return essenceRequired;
     }
-    private List<ItemStack> getRuneStoneResults()
+    public List<ItemStack> getRuneStoneResults()
     {
         return runeStoneResults;
     }

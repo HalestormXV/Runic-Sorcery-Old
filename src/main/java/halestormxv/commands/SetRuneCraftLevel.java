@@ -2,8 +2,8 @@ package halestormxv.commands;
 
 import com.google.common.collect.Lists;
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
-import halestormxv.utils.Reference;
-import halestormxv.utils.interfaces.IRuneCraftLevel;
+import halestormxv.utility.Reference;
+import halestormxv.utility.interfaces.IRuneCraftLevel;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;

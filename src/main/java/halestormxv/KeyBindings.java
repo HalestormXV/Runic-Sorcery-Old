@@ -1,6 +1,6 @@
 package halestormxv;
 
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;

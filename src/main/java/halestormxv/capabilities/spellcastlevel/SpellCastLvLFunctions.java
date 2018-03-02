@@ -2,7 +2,7 @@ package halestormxv.capabilities.spellcastlevel;
 
 import halestormxv.network.PacketHandler;
 import halestormxv.network.packets.SyncSpellCastLvl_PKT;
-import halestormxv.utils.interfaces.ISpellCastLevel;
+import halestormxv.utility.interfaces.ISpellCastLevel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.MathHelper;

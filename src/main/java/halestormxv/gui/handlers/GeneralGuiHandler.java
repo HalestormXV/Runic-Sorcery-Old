@@ -7,7 +7,7 @@ import halestormxv.inventory.runebag.RuneBagContainer;
 import halestormxv.gui.GuiRunicInscriber;
 import halestormxv.inventory.runicinscriber.ContainerRunicInscriber;
 import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.tileentity.TileEntity;

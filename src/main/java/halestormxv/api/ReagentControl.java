@@ -2,7 +2,7 @@ package halestormxv.api;
 
 import halestormxv.capabilities.runebag.RuneBagProvider;
 import halestormxv.objects.items.RuneBag;
-import halestormxv.utils.interfaces.IRuneBagProvider;
+import halestormxv.utility.interfaces.IRuneBagProvider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
@@ -11,10 +11,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-import java.util.Iterator;
 import java.util.List;
 
-import static halestormxv.utils.Logging.getLogger;
+import static halestormxv.utility.Logging.getLogger;
 
 public class ReagentControl
 {

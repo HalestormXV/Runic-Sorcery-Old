@@ -1,4 +1,4 @@
-package halestormxv.utils;
+package halestormxv.utility;
 
 import java.util.List;
 import com.google.common.collect.Lists;

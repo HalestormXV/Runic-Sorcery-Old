@@ -1,4 +1,4 @@
-package halestormxv.utils;
+package halestormxv.utility;
 
 public class Reference
 {
@@ -10,8 +10,10 @@ public class Reference
     public static final String SERVER = "halestormxv.proxy.ServerProxy";
     public static final String RESOURCE_PREFIX = MODID + ":";
     public static final String KEY_BINDINGS_CATEGORY = MODID+"_keybindings";
+    public static final String DEPENDENCIES = "after:jei";
 
     //public static final String GUI_FACTORY = "halestormxv.hsrs.config.ConfigGuiFactory";
+    public static final String GUI_TEXTURE_DIR = "textures/gui/";
 
     //ENTITIES
     public static final int ENTITY_PHANTOM = 120;
@@ -23,4 +25,10 @@ public class Reference
 
     public static final int GUI_RUNIC_FURNACE = 0;
     public static final int GUI_RUNE_BAG = 1;
+
+    public static class JEI
+    {
+        public static final String INSCRIBER_CRAFTING_UID = MODID + ":inscriberCrafting";
+        public static final String INSCRIBER_CRAFTING_TITLE_UNLOC = "jei.recipe.runicInscriber";
+    }
 }

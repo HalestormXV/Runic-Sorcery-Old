@@ -6,7 +6,7 @@ import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockLeaf;
 import halestormxv.objects.blocks.BlockLogs;
 import halestormxv.objects.blocks.BlockSaplings;
-import halestormxv.utils.handlers.EnumHandlerWood;
+import halestormxv.utility.handlers.EnumHandlerWood;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

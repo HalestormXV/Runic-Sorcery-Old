@@ -5,9 +5,8 @@ import halestormxv.network.PacketHandler;
 import halestormxv.potion.PotionReference;
 import halestormxv.potion.recipes.PotionRecipes;
 import halestormxv.proxy.CommonProxy;
-import halestormxv.utils.Logging;
-import halestormxv.utils.Reference;
-import halestormxv.utils.misc.LevelExpCalc;
+import halestormxv.utility.Logging;
+import halestormxv.utility.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -18,7 +17,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import org.apache.logging.log4j.Logger;
 
-@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION)
+@Mod(modid = Reference.MODID, name = Reference.NAME, version = Reference.VERSION, dependencies=Reference.DEPENDENCIES)
 public class RunicSorcery
 {
     @Mod.Instance

@@ -1,8 +1,8 @@
 package halestormxv.entity;
 
 import halestormxv.init.ItemInit;
-import halestormxv.utils.handlers.LootTableHandler;
-import halestormxv.utils.handlers.SoundsHandler;
+import halestormxv.utility.handlers.LootTableHandler;
+import halestormxv.utility.handlers.SoundsHandler;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.*;

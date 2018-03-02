@@ -2,8 +2,8 @@ package halestormxv.objects.items;
 
 import halestormxv.RunicSorcery;
 import halestormxv.init.ItemInit;
-import halestormxv.utils.Reference;
-import halestormxv.utils.interfaces.IHasModel;
+import halestormxv.utility.Reference;
+import halestormxv.utility.interfaces.IHasModel;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +19,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
 

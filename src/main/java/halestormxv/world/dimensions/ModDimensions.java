@@ -1,6 +1,5 @@
 package halestormxv.world.dimensions;
 
-import halestormxv.utils.Reference;
 import halestormxv.world.dimensions.providers.ModWorldProviders;
 import net.minecraft.world.DimensionType;
 import net.minecraftforge.common.DimensionManager;

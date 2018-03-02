@@ -3,10 +3,9 @@ package halestormxv.objects.blocks.devices.inscriber;
 import halestormxv.RunicSorcery;
 import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockBase;
-import halestormxv.utils.Reference;
-import halestormxv.utils.handlers.SoundsHandler;
-import halestormxv.utils.interfaces.IHasModel;
-import net.minecraft.block.Block;
+import halestormxv.utility.Reference;
+import halestormxv.utility.handlers.SoundsHandler;
+import halestormxv.utility.interfaces.IHasModel;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.SoundType;
@@ -18,7 +17,6 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,7 +27,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.util.Objects;
 import java.util.Random;
 
 @SuppressWarnings("deprecation")

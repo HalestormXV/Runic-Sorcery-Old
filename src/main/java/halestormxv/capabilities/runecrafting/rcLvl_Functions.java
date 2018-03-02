@@ -2,7 +2,7 @@ package halestormxv.capabilities.runecrafting;
 
 import halestormxv.network.PacketHandler;
 import halestormxv.network.packets.SyncRCLvl_PKT;
-import halestormxv.utils.interfaces.IRuneCraftLevel;
+import halestormxv.utility.interfaces.IRuneCraftLevel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.MathHelper;
