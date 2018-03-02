@@ -1,9 +1,9 @@
-package halestormxv.utils.handlers;
+package halestormxv.utility.handlers;
 
 import halestormxv.capabilities.runebag.RuneBagProvider;
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.capabilities.spellcastlevel.SpellCastLvLProvider;
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;

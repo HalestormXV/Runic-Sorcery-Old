@@ -1,8 +1,8 @@
-package halestormxv.utils.handlers;
+package halestormxv.utility.handlers;
 
 import com.mojang.realmsclient.gui.ChatFormatting;
 import halestormxv.potion.PotionTypeBase;
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionType;

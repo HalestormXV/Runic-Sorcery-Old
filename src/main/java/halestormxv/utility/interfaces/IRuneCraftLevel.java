@@ -1,8 +1,6 @@
-package halestormxv.utils.interfaces;
+package halestormxv.utility.interfaces;
 
 import net.minecraft.entity.player.EntityPlayer;
-
-import java.util.Optional;
 
 public interface IRuneCraftLevel
 {

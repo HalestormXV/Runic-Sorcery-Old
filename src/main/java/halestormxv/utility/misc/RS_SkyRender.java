@@ -1,4 +1,4 @@
-package halestormxv.utils.misc;
+package halestormxv.utility.misc;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;

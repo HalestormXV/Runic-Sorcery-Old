@@ -1,7 +1,7 @@
-package halestormxv.utils.handlers;
+package halestormxv.utility.handlers;
 
 import halestormxv.objects.blocks.devices.inscriber.TileEntityRunicInscriber;
-import halestormxv.utils.Reference;
+import halestormxv.utility.Reference;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class TileEntityHandler

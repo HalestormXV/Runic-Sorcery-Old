@@ -1,4 +1,4 @@
-package halestormxv.utils.handlers;
+package halestormxv.utility.handlers;
 
 import halestormxv.KeyBindings;
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
@@ -6,7 +6,7 @@ import halestormxv.network.PacketHandler;
 import halestormxv.network.packets.CycleSpells_PKT;
 import halestormxv.network.packets.FetchRunecraftLvl_PKT;
 import halestormxv.network.packets.SendKey_PKT;
-import halestormxv.utils.interfaces.IRuneCraftLevel;
+import halestormxv.utility.interfaces.IRuneCraftLevel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

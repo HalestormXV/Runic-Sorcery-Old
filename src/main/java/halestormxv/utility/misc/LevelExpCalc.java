@@ -1,4 +1,4 @@
-package halestormxv.utils.misc;
+package halestormxv.utility.misc;
 
 public class LevelExpCalc
 {

@@ -1,4 +1,4 @@
-package halestormxv.utils.handlers;
+package halestormxv.utility.handlers;
 
 import net.minecraft.util.IStringSerializable;
 

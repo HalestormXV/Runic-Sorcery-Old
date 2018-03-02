@@ -1,12 +1,12 @@
-package halestormxv.utils.handlers;
+package halestormxv.utility.handlers;
 
 import halestormxv.capabilities.runebag.RuneBagProvider;
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.capabilities.spellcastlevel.SpellCastLvLProvider;
 import halestormxv.init.ItemInit;
 import halestormxv.network.packets.PacketChatUtils;
-import halestormxv.utils.interfaces.IRuneCraftLevel;
-import halestormxv.utils.interfaces.ISpellCastLevel;
+import halestormxv.utility.interfaces.IRuneCraftLevel;
+import halestormxv.utility.interfaces.ISpellCastLevel;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;

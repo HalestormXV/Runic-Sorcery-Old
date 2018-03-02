@@ -1,4 +1,4 @@
-package halestormxv.utils.interfaces;
+package halestormxv.utility.interfaces;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumDyeColor;
