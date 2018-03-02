@@ -18,11 +18,15 @@ public class ItemInit
 
     //BASIC ITEMS\\
     public static final Item INGOT_PHENET = new ItemBase("ingot_phenet");
+    public static final Item INGOT_LUPRESIUM = new ItemBase("ingot_lupresium");
+    public static final Item INGOT_APRONYX = new ItemBase("ingot_apronyx");
+    public static final Item INGOT_XOSHIAN = new ItemBase("ingot_xoshian");
 
     //META DATA ITEMS\\
     public static final Item ITEM_RUNE = new ItemRunes("item_runestone");
     public static final Item ITEM_RUNE_BAG = new RuneBag("item_runebag");
     public static final Item RUNE_ESSENCE = new ItemEssence("item_essence");
+    public static final Item MAGICIANS_CORE = new ItemMagicianCore("magicians_core");
 
     //STAVES\\
     public static final Item STAFF_FLEDGLING = new ItemBaseStaff("staff_fledgling");

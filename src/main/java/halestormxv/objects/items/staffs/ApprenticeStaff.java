@@ -19,7 +19,6 @@ import java.util.List;
 
 public class ApprenticeStaff extends ItemBaseStaff
 {
-    private int maxSpells = 2;
     private List<ItemStack> getResistanceCost = new AbilityCosts().getResistanceReagents();
     private List<ItemStack> getFireResistanceCost = new AbilityCosts().getFireResistanceReagents();
 

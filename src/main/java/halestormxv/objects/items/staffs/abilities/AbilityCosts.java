@@ -26,6 +26,15 @@ public class AbilityCosts
 
             ).collect(Collectors.toList());
 
+    private List<ItemStack> empowerReagents = Stream
+            .of(
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, FIRE_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, AIR_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, WATER_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, EARTH_RUNE.getMeta())
+
+            ).collect(Collectors.toList());
+
 
     public List<ItemStack> getResistanceReagents()
     {
@@ -34,5 +43,9 @@ public class AbilityCosts
 
     public List<ItemStack> getFireResistanceReagents() {
         return fireResistanceReagents;
+    }
+
+    public List<ItemStack> getEmpowerReagents() {
+        return empowerReagents;
     }
 }

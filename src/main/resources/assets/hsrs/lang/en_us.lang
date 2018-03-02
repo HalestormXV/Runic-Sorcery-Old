@@ -61,6 +61,13 @@ item.dust_mysterium.name=Mysterium Dust
 item.staff_fledgling.name=Fledgling Staff
 item.staff_apprentice.name=Apprentice's Staff
 item.item_runebag.name=Runestone Satchel
+item.ingot_xoshian.name=Xoshian Ingot
+item.ingot_apronyx.name=Apronyx Ingot
+item.ingot_lupresium.name=Lupresium Ingot
+
+#MAGICIAN ORBS
+item.magicians_core_basic_uncharged.name=Magician's Orb
+item.magicians_core_basic_charged.name=Magician's Orb (Charged)
 
 #ITEM RUNESTONES
 item.item_runestone_basic.name=Uncharged Rune
