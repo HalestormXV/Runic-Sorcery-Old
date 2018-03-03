@@ -1,5 +1,6 @@
 package halestormxv.abilities;
 
+import halestormxv.RunicSorcery;
 import halestormxv.api.ReagentControl;
 import halestormxv.init.ItemInit;
 import halestormxv.network.packets.PacketChatUtils;
@@ -41,9 +42,11 @@ public class Empower
                 }
             }
         } else {
+            DamageSource backFire = RunicSorcery.aetherChaos;
+            backFire.setDamageBypassesArmor().isUnblockable();
             playerIn.getEntityWorld().playSound(null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundsHandler.EFFECT_SPELL_FIZZLE, SoundCategory.MASTER, 1.0F, 1.0F);
             PacketChatUtils.sendNoSpam(playerIn, "\u00A7cYour spell Fizzled out due to a lack of some reagent.");
-
+            playerIn.attackEntityFrom(backFire, 6.0f);
         }
     }
 }

@@ -8,6 +8,7 @@ import halestormxv.proxy.CommonProxy;
 import halestormxv.utility.Logging;
 import halestormxv.utility.Reference;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.util.DamageSource;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -29,6 +30,7 @@ public class RunicSorcery
 
     public static final CreativeTabs RUNICSORCERY = new ModTab("Runic Sorcery");
     public static final CreativeTabs RUNICSORCERY_SPECIAL = new ModTabEffects("Runic Sorcery Special");
+    public static DamageSource aetherChaos = new DamageSource("aetherChaos");
 
     static { FluidRegistry.enableUniversalBucket(); }
 

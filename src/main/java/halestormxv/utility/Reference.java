@@ -20,6 +20,9 @@ public class Reference
     public static final int ENTITY_CULTIST = 121;
     public static final int ENTITY_HARBINGER = 122;
 
+    //SPELLS
+    public static final int SPELL_EMPOWER = 1;
+
 
     public static final String NETWORK_CHANNEL = "hsrs_channel";
 

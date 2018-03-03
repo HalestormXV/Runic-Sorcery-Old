@@ -64,6 +64,8 @@ item.item_runebag.name=Runestone Satchel
 item.ingot_xoshian.name=Xoshian Ingot
 item.ingot_apronyx.name=Apronyx Ingot
 item.ingot_lupresium.name=Lupresium Ingot
+item.spell_tome_base.name=Basic Tome
+item.spell_tome_empower.name=Tome: Empower
 
 #MAGICIAN ORBS
 item.magicians_core_basic_uncharged.name=Magician's Orb
@@ -156,3 +158,6 @@ tile.leaves_mystic.name=Mystic Leaves
 #ENTITIES
 entity.phantom.name=Specter
 entity.cultist.name=Runic Cultist
+
+#DAMAGE
+death.attack.aetherChaos=%1$s was killed by backfiring Aether Damage!
