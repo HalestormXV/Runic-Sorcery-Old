@@ -1,7 +1,7 @@
 package halestormxv.network.packets;
 
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
-import halestormxv.utility.interfaces.IRuneCraftLevel;
+import halestormxv.capabilities.runecrafting.IRuneCraftLevel;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.TextComponentString;

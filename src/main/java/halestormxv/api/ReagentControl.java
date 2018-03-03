@@ -2,7 +2,7 @@ package halestormxv.api;
 
 import halestormxv.capabilities.runebag.RuneBagProvider;
 import halestormxv.objects.items.RuneBag;
-import halestormxv.utility.interfaces.IRuneBagProvider;
+import halestormxv.capabilities.runebag.IRuneBagProvider;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;

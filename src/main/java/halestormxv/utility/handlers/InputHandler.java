@@ -6,7 +6,7 @@ import halestormxv.network.PacketHandler;
 import halestormxv.network.packets.CycleSpells_PKT;
 import halestormxv.network.packets.FetchRunecraftLvl_PKT;
 import halestormxv.network.packets.SendKey_PKT;
-import halestormxv.utility.interfaces.IRuneCraftLevel;
+import halestormxv.capabilities.runecrafting.IRuneCraftLevel;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;

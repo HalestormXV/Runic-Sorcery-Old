@@ -1,94 +1,30 @@
 package halestormxv.potion.potions;
 
-import halestormxv.api.TeleportNewDimension;
-import halestormxv.potion.PotionBase;
-import halestormxv.potion.PotionReference;
-import net.minecraft.entity.Entity;
+import halestormxv.potion.PotionInstant;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
 import net.minecraft.entity.player.EntityPlayer;
-import halestormxv.utility.Logging;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.util.math.BlockPos;
 
-public class PotionRecall extends PotionBase {
-
-
-
-    public PotionRecall(boolean isBadEffectIn, int liquidColorIn) {
-        super(isBadEffectIn, liquidColorIn, "recall");
-        this.setIconIndex(3, 0);
+public class PotionRecall extends PotionInstant
+{
+    public PotionRecall(boolean isBadEffectIn, int liquidColorIn)
+    {
+        super(isBadEffectIn, liquidColorIn, "return");
     }
 
     @Override
-    public void performEffect(EntityLivingBase e, int modifier) {
-        if (e instanceof EntityPlayer && ((EntityPlayer)e).isSpectator()) return;
-        if (!e.getEntityWorld().isRemote) try {
+    public void applyInstantEffect(EntityLivingBase e, int amp) {
+        if (!e.getEntityWorld().isRemote && e instanceof EntityPlayer) {
 
-            Logging.getLogger().debug("Applying recall to "+e);
-            Logging.getLogger().debug(e.getEntityData());
-
-            NBTTagCompound pos = e.getEntityData().getCompoundTag("recall");
-            if (e.dimension!=pos.getInteger("dim")) {
-                if(modifier==0) e.attackEntityFrom(DamageSource.GENERIC, 4F);
-                else {
-                    if (e instanceof EntityPlayer) {
-                       TeleportNewDimension.teleportMe((EntityPlayer) e, pos.getInteger("dim"), pos.getDouble("posX"), pos.getDouble("posY"), pos.getDouble("posZ"));
-                    } else {
-                        e.dismountRidingEntity();
-                        e.changeDimension(pos.getInteger("dim"));
-                        e.setPositionAndUpdate(pos.getDouble("posX"), pos.getDouble("posY"), pos.getDouble("posZ"));
-                    }
+            if (((EntityPlayer)e).getBedLocation()!=null) {
+                BlockPos l= EntityPlayer.getBedSpawnLocation(e.getEntityWorld(), ((EntityPlayer)e).getBedLocation(), false);
+                if (l!=null) {
+                    e.setPositionAndUpdate(l.getX(), l.getY()+0.5, l.getZ());
                 }
-            } else {
-                e.dismountRidingEntity();
-                e.setPositionAndUpdate(pos.getDouble("posX"), pos.getDouble("posY"), pos.getDouble("posZ"));
             }
-
-        } catch (Exception er) {
-            Logging.getLogger().error(er.getMessage());
-        } finally {
-            try {
-                e.getEntityData().removeTag("recall");
-            } catch (Exception ex2) {}
+            e.getEntityWorld().playSound(null, e.prevPosX, e.prevPosY, e.prevPosZ, SoundEvents.ENTITY_ENDERMEN_TELEPORT, e.getSoundCategory(), 1.0F, 1.0F);
+            e.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
         }
-        e.getEntityData().removeTag("recall");
-    }
-
-    @Override
-    public boolean isReady(int duration, int amplifier) {
-        return duration==1;
-    }
-
-    @Override
-    public void applyAttributesModifiersToEntity(EntityLivingBase e, AbstractAttributeMap attributeMapIn, int amplifier) {
-        super.applyAttributesModifiersToEntity(e, attributeMapIn, amplifier);
-        savePosition(e);
-    }
-
-    @Override
-    public void affectEntity(Entity source, Entity indirectSource, EntityLivingBase e, int amplifier, double health) {
-        super.affectEntity(source, indirectSource, e, amplifier, health);
-        if (e instanceof EntityPlayer && ((EntityPlayer)e).isSpectator()) return;
-        savePosition(e);
-    }
-
-    private void savePosition(EntityLivingBase e) {
-        if (e instanceof EntityPlayer && ((EntityPlayer)e).isSpectator()) return;
-        if (!e.getEntityData().hasKey("recall") || !e.isPotionActive(PotionReference.INSTANCE.RECALL)) {
-            NBTTagCompound position = new NBTTagCompound();
-            position.setDouble("posX", e.posX);
-            position.setDouble("posY", e.posY);
-            position.setDouble("posZ", e.posZ);
-            position.setInteger("dim", e.dimension);
-            e.getEntityData().setTag("recall", position);
-        }
-    }
-
-    @Override
-    public void removeAttributesModifiersFromEntity(EntityLivingBase e, AbstractAttributeMap attributeMapIn, int amplifier) {
-        super.removeAttributesModifiersFromEntity(e, attributeMapIn, amplifier);
-        if (e instanceof EntityPlayer && ((EntityPlayer)e).isSpectator()) return;
-        e.getEntityData().removeTag("recall");
     }
 }

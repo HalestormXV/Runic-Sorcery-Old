@@ -3,7 +3,7 @@ package halestormxv.proxy;
 import halestormxv.KeyBindings;
 import halestormxv.capabilities.runebag.RuneBagProvider;
 import halestormxv.utility.handlers.PotionDescriptionTooltipHandler;
-import halestormxv.utility.interfaces.IRuneBagProvider;
+import halestormxv.capabilities.runebag.IRuneBagProvider;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
 import halestormxv.utility.Reference;

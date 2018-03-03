@@ -1,4 +1,4 @@
-package halestormxv.utility.interfaces;
+package halestormxv.capabilities.spellcastlevel;
 
 import net.minecraft.entity.player.EntityPlayer;
 

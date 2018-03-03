@@ -2,7 +2,6 @@ package halestormxv.capabilities.runebag;
 
 import halestormxv.network.PacketHandler;
 import halestormxv.network.packets.SyncBagData_PKT;
-import halestormxv.utility.interfaces.IRuneBagProvider;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.nbt.NBTBase;

@@ -1,4 +1,4 @@
-package halestormxv.utility.interfaces;
+package halestormxv.capabilities.runecrafting;
 
 import net.minecraft.entity.player.EntityPlayer;
 

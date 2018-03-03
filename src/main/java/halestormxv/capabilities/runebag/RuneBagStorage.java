@@ -1,6 +1,5 @@
 package halestormxv.capabilities.runebag;
 
-import halestormxv.utility.interfaces.IRuneBagProvider;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;

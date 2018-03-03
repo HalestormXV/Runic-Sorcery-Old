@@ -3,7 +3,7 @@ package halestormxv.commands;
 import com.google.common.collect.Lists;
 import halestormxv.capabilities.runecrafting.rcLvl_Provider;
 import halestormxv.utility.Reference;
-import halestormxv.utility.interfaces.IRuneCraftLevel;
+import halestormxv.capabilities.runecrafting.IRuneCraftLevel;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;

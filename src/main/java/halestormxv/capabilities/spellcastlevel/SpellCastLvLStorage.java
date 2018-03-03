@@ -1,6 +1,5 @@
 package halestormxv.capabilities.spellcastlevel;
 
-import halestormxv.utility.interfaces.ISpellCastLevel;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTPrimitive;
 import net.minecraft.nbt.NBTTagInt;

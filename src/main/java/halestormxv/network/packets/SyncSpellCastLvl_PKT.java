@@ -2,7 +2,7 @@ package halestormxv.network.packets;
 
 import halestormxv.RunicSorcery;
 import halestormxv.capabilities.spellcastlevel.SpellCastLvLProvider;
-import halestormxv.utility.interfaces.ISpellCastLevel;
+import halestormxv.capabilities.spellcastlevel.ISpellCastLevel;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.FMLCommonHandler;

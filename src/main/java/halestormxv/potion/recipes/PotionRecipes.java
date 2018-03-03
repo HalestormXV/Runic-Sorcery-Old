@@ -1,6 +1,7 @@
 package halestormxv.potion.recipes;
 
 
+import halestormxv.init.ItemInit;
 import halestormxv.potion.PotionReference;
 import halestormxv.potion.recipes.brew.RecipeManager;
 import net.minecraft.init.Blocks;
@@ -35,8 +36,11 @@ public class PotionRecipes
                 PotionReference.INSTANCE.TYPE_RECALL_STRONG);
 
 
+
+
         //Potions with 1 Variant Goes Here
         RecipeManager.registerRecipe(PotionReference.INSTANCE.TYPE_LEARNING_STRONG, PotionReference.INSTANCE.TYPE_DISPEL, Items.POISONOUS_POTATO);
+        RecipeManager.registerRecipe(PotionTypes.LEAPING, PotionReference.INSTANCE.TYPE_RETURN, new ItemStack(ItemInit.DUST_MYSTERIUM));
     }
 
     @SubscribeEvent

@@ -1,6 +1,5 @@
 package halestormxv.capabilities.spellcastlevel;
 
-import halestormxv.utility.interfaces.ISpellCastLevel;
 import net.minecraft.nbt.NBTBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
