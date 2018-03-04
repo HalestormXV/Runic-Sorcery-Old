@@ -1,5 +1,6 @@
 package halestormxv;
 
+import halestormxv.commands.LearnSpell;
 import halestormxv.commands.SetRuneCraftLevel;
 import halestormxv.network.PacketHandler;
 import halestormxv.potion.PotionReference;
@@ -62,5 +63,6 @@ public class RunicSorcery
     public static void serverLoad(FMLServerStartingEvent event)
     {
         event.registerServerCommand(new SetRuneCraftLevel());
+        event.registerServerCommand(new LearnSpell());
     }
 }

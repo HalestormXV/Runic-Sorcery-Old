@@ -11,5 +11,7 @@ import javax.annotation.Nonnull;
 
 public interface ILearnedSpells extends INBTSerializable<NBTTagCompound>
 {
+    void learnedSpell(int spellLearned);
+
     void sync(EntityPlayerMP entityPlayer);
 }

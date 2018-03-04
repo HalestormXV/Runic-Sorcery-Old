@@ -1,5 +1,7 @@
 package halestormxv.proxy;
 
+import halestormxv.capabilities.learnedspells.ILearnedSpells;
+import halestormxv.capabilities.learnedspells.LearnedSpellsMain;
 import halestormxv.capabilities.runebag.RuneBagFunctions;
 import halestormxv.capabilities.runebag.RuneBagStorage;
 import halestormxv.capabilities.spellcastlevel.SpellCastLvLFunctions;
@@ -13,7 +15,7 @@ import halestormxv.init.BlockInit;
 import halestormxv.init.EntityInit;
 import halestormxv.init.ItemInit;
 import halestormxv.utility.Reference;
-import halestormxv.utility.handlers.CapabilityHandler;
+import halestormxv.capabilities.CapabilityHandler;
 import halestormxv.utility.handlers.EventHandler;
 import halestormxv.utility.handlers.SoundsHandler;
 import halestormxv.utility.handlers.TileEntityHandler;
@@ -62,6 +64,7 @@ public class CommonProxy
         CapabilityManager.INSTANCE.register(IRuneCraftLevel.class, new rcLvl_Storage(), rcLvl_Functions.class);
         CapabilityManager.INSTANCE.register(IRuneBagProvider.class, new RuneBagStorage(), RuneBagFunctions.class);
         CapabilityManager.INSTANCE.register(ISpellCastLevel.class, new SpellCastLvLStorage(), SpellCastLvLFunctions.class);
+        CapabilityManager.INSTANCE.register(ILearnedSpells.class, new LearnedSpellsMain.LearnedSpellsStorage(), LearnedSpellsMain.LearnedSpellsFunctions.class);
         ModDimensions.init();
     }
 
