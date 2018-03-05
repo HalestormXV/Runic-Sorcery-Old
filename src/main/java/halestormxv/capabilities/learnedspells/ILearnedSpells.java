@@ -8,10 +8,14 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.items.IItemHandler;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 
 public interface ILearnedSpells extends INBTSerializable<NBTTagCompound>
 {
     void learnedSpell(int spellLearned);
 
-    void sync(EntityPlayerMP entityPlayer);
+    int[] getSpellList();
+
+    void setSpellList(int[] spellList);
+
 }

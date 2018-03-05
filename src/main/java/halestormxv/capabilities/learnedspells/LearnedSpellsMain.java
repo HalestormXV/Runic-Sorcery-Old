@@ -1,5 +1,6 @@
 package halestormxv.capabilities.learnedspells;
 
+import com.google.common.primitives.Ints;
 import halestormxv.utility.Reference;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.*;
@@ -8,6 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
+import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.items.CapabilityItemHandler;
 
 import javax.annotation.Nonnull;
@@ -24,50 +26,41 @@ public class LearnedSpellsMain
      * The actions take place in this
      * code segment.
      **********************************/
-    public static class LearnedSpellsFunctions implements ILearnedSpells
+    public static class LearnedSpellsFunctions implements ILearnedSpells, INBTSerializable<NBTTagCompound>
     {
         private List<Integer> knownSpells = new ArrayList<>();
+        private int[] convertedList = Ints.toArray(knownSpells);
 
         public void learnedSpell(int spellLearned)
         {
             this.knownSpells.add(spellLearned);
+            this.convertedList = Ints.toArray(this.knownSpells);
         }
 
-        private int[] convert2Primative(List<Integer> integers)
+        public int[] getSpellList()
         {
-            int[] ret = new int[integers.size()];
-            Iterator<Integer> iterator = integers.iterator();
-            for (int i = 0; i < ret.length; i++) {
-                ret[i] = iterator.next();
-            }
-            return ret;
+            return this.convertedList;
         }
 
-        private NBTTagCompound writeNBT(List<Integer> knownSpells)
+        @Override
+        public void setSpellList(int[] spellList)
         {
-            NBTTagCompound nbt = new NBTTagCompound();
-            nbt.setIntArray("LearnedSpells", convert2Primative(knownSpells));
-            return nbt;
+            this.convertedList = spellList;
         }
 
         @Override
         public NBTTagCompound serializeNBT()
         {
-            return writeNBT(this.knownSpells);
+            NBTTagCompound nbt = new NBTTagCompound();
+            this.convertedList = Ints.toArray(this.knownSpells);
+            nbt.setIntArray("LearnedSpells", this.convertedList);
+            return nbt;
         }
 
         @Override
         public void deserializeNBT(NBTTagCompound nbt)
         {
-            if (nbt.hasKey("LearnedSpells"))
-            {
-                nbt.getIntArray("LearnedSpells");
-            }
-        }
-
-        @Override
-        public void sync(EntityPlayerMP entityPlayer) {
-
+            this.convertedList = nbt.getIntArray("LearnedSpells");
         }
     }
     /***********************************
@@ -75,17 +68,20 @@ public class LearnedSpellsMain
      * It gives us the Capability Storage
      * like a good little egg.
      **********************************/
-    public static class LearnedSpellsStorage implements Capability.IStorage<ILearnedSpells> {
-
-        @Override
-        public NBTTagCompound writeNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side) {
-            return instance.serializeNBT();
+    public static class LearnedSpellsStorage implements Capability.IStorage<ILearnedSpells>
+    {
+        public NBTBase writeNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side)
+        {
+            NBTTagCompound nbt = new NBTTagCompound();
+            nbt.setIntArray("LearnedSpells", instance.getSpellList());
+            return nbt;
         }
 
         @Override
-        public void readNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side, NBTBase nbt) {
-            if (nbt instanceof NBTTagCompound)
-                instance.deserializeNBT(((NBTTagCompound) nbt));
+        public void readNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side, NBTBase base)
+        {
+            NBTTagCompound nbt = (NBTTagCompound) base;
+            instance.setSpellList(nbt.getIntArray("LearnedSpells"));
         }
     }
     /***********************************
@@ -93,7 +89,8 @@ public class LearnedSpellsMain
      * It gives us the Capability and
      * looks for it
      **********************************/
-    public static class LearnedSpellsProvider implements ICapabilitySerializable<NBTTagCompound> {
+    public static class LearnedSpellsProvider implements ICapabilitySerializable<NBTBase>
+    {
         @CapabilityInject(ILearnedSpells.class)
         public static final Capability<ILearnedSpells> LEARNED_SPELLS_CAPABILITY = null;
 
@@ -111,46 +108,13 @@ public class LearnedSpellsMain
         }
 
         @Override
-        public NBTTagCompound serializeNBT() {
-            return null;
-        }
-
-        @Override
-        public void deserializeNBT(NBTTagCompound nbt) {
-
-        }
-    }
-    /***********************************
-     * This class is the Handler Class
-     * It gives us out interactions
-     * and getters and setters like a
-     * good little egg.
-     **********************************/
-    public static class LearnedSpellsHandler implements ICapabilitySerializable<NBTBase> {
-        @CapabilityInject(ILearnedSpells.class)
-        public final Capability<ILearnedSpells> LEARNED_SPELLS_CAP = null;
-
-        private ILearnedSpells instance = LEARNED_SPELLS_CAP.getDefaultInstance();
-
-        @Override
-        public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) {
-            return capability == LEARNED_SPELLS_CAP;
-        }
-
-        @Nullable
-        @Override
-        public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) {
-            return capability == LEARNED_SPELLS_CAP ? LEARNED_SPELLS_CAP.<T>cast(this.instance) : null;
-        }
-
-        @Override
         public NBTBase serializeNBT() {
-            return LEARNED_SPELLS_CAP.getStorage().writeNBT(LEARNED_SPELLS_CAP, this.instance, null);
+            return LEARNED_SPELLS_CAPABILITY.getStorage().writeNBT(LEARNED_SPELLS_CAPABILITY, this.instance, null);
         }
 
         @Override
         public void deserializeNBT(NBTBase nbt) {
-            LEARNED_SPELLS_CAP.getStorage().readNBT(LEARNED_SPELLS_CAP, this.instance, null, nbt);
+            LEARNED_SPELLS_CAPABILITY.getStorage().readNBT(LEARNED_SPELLS_CAPABILITY, this.instance, null, nbt);
         }
     }
 }

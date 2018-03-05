@@ -54,21 +54,21 @@ public class LearnSpell extends CommandBase
             return;
         }
         String s = args[0];
-        int rc_Lvl;
+        int spellID;
         try {
-            rc_Lvl = Integer.parseInt(s);
+            spellID = Integer.parseInt(s);
         } catch (NumberFormatException e) {
             sender.sendMessage(new TextComponentString(TextFormatting.RED + "Error parsing value!"));
             return;
         }
-        if (rc_Lvl != MathHelper.clamp(rc_Lvl, 0, 100)) {
+        if (spellID != MathHelper.clamp(spellID, 0, 100)) {
             sender.sendMessage(new TextComponentString(TextFormatting.RED + "The Minimum value is 0 and the Maximum value is 100!"));
         } else {
             if (sender instanceof EntityPlayer)
             {
                 ILearnedSpells learnedSpells = ((EntityPlayer) sender).getCapability(LearnedSpellsMain.LearnedSpellsProvider.LEARNED_SPELLS_CAPABILITY, null);
-                learnedSpells.learnedSpell(Reference.SPELL_EMPOWER);
-                //sender.sendMessage(new TextComponentString(TextFormatting.DARK_AQUA + "Your Runecraft Level has been set to: "+ rc_Lvl));
+                learnedSpells.learnedSpell(spellID);
+                sender.sendMessage(new TextComponentString(TextFormatting.DARK_AQUA + "You have learned spell "+ spellID));
                 //runeCraftLevel.syncToClient((EntityPlayer) sender);
             }
         }
