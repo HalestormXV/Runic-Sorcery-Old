@@ -1,12 +1,12 @@
 package halestormxv.capabilities.learnedspells;
 
 import com.google.common.primitives.Ints;
+import halestormxv.utility.Logging;
 import net.minecraft.nbt.*;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
-import net.minecraftforge.common.util.INBTSerializable;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -23,7 +23,7 @@ public class LearnedSpellsMain
      **********************************/
     public static class LearnedSpellsFunctions implements ILearnedSpells
     {
-        private List<Integer> knownSpells = new ArrayList<>();
+        public List<Integer> knownSpells = new ArrayList<>();
 
         public void learnedSpell(int spellLearned)
         {
@@ -51,6 +51,7 @@ public class LearnedSpellsMain
         public NBTBase writeNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side)
         {
             NBTTagCompound nbt = new NBTTagCompound();
+            nbt.getIntArray("LearnedSpells");
             nbt.setIntArray("LearnedSpells", instance.getSpellList());
             return nbt;
         }
@@ -59,7 +60,12 @@ public class LearnedSpellsMain
         public void readNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side, NBTBase base)
         {
             NBTTagCompound nbt = (NBTTagCompound) base;
-            instance.setSpellList(nbt.getIntArray("LearnedSpells"));
+            int[] intArray = nbt.getIntArray("LearnedSpells");
+            Logging.getLogger().info("Injecting spells into player.");
+            for (int anIntArray : intArray) {
+                instance.learnedSpell(anIntArray);
+            }
+            Logging.getLogger().info("Injection completed.");
         }
     }
     /***********************************
