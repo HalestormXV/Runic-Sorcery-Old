@@ -1,21 +1,16 @@
 package halestormxv.capabilities.learnedspells;
 
 import com.google.common.primitives.Ints;
-import halestormxv.utility.Reference;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.*;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.items.CapabilityItemHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 
@@ -26,41 +21,24 @@ public class LearnedSpellsMain
      * The actions take place in this
      * code segment.
      **********************************/
-    public static class LearnedSpellsFunctions implements ILearnedSpells, INBTSerializable<NBTTagCompound>
+    public static class LearnedSpellsFunctions implements ILearnedSpells
     {
         private List<Integer> knownSpells = new ArrayList<>();
-        private int[] convertedList = Ints.toArray(knownSpells);
 
         public void learnedSpell(int spellLearned)
         {
             this.knownSpells.add(spellLearned);
-            this.convertedList = Ints.toArray(this.knownSpells);
         }
 
         public int[] getSpellList()
         {
-            return this.convertedList;
+            return Ints.toArray(knownSpells);
         }
 
         @Override
         public void setSpellList(int[] spellList)
         {
-            this.convertedList = spellList;
-        }
-
-        @Override
-        public NBTTagCompound serializeNBT()
-        {
-            NBTTagCompound nbt = new NBTTagCompound();
-            this.convertedList = Ints.toArray(this.knownSpells);
-            nbt.setIntArray("LearnedSpells", this.convertedList);
-            return nbt;
-        }
-
-        @Override
-        public void deserializeNBT(NBTTagCompound nbt)
-        {
-            this.convertedList = nbt.getIntArray("LearnedSpells");
+            spellList = this.knownSpells.stream().mapToInt(i->i).toArray();
         }
     }
     /***********************************
