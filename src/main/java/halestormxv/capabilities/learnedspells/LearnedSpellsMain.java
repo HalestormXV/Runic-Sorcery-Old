@@ -13,6 +13,7 @@ import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -38,8 +39,20 @@ public class LearnedSpellsMain
         }
 
         @Override
-        public void setSpellList(int[] spellList) {
-            spellList = this.knownSpells.stream().mapToInt(i -> i).toArray();
+        public void setSpellList(int[] spellList)
+        {
+            int[] arr = new int[10];
+            int count = 0;
+            for (Integer i : this.knownSpells)
+            {
+                int i1 = i;
+                if (arr.length == count) arr = Arrays.copyOf(arr, count * 2);
+                arr[count++] = i1;
+            }
+            arr = Arrays.copyOfRange(arr, 0, count);
+            arr = spellList;
+
+            //this.knownSpells.stream().mapToInt(i -> i).toArray();
         }
 
         @Override
@@ -74,6 +87,7 @@ public class LearnedSpellsMain
             for (int anIntArray : intArray) {
                 instance.learnedSpell(anIntArray);
             }
+            //instance.setSpellList(nbt.getIntArray("LearnedSpells"));
         }
     }
 

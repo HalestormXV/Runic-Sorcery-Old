@@ -10,13 +10,13 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class SyncSpellCastLvl_PKT implements IMessage
+public class SyncSpellCastLvl implements IMessage
 {
     private int scLvL;
 
-    public SyncSpellCastLvl_PKT() { }
+    public SyncSpellCastLvl() { }
 
-    public SyncSpellCastLvl_PKT(int scLvL) {
+    public SyncSpellCastLvl(int scLvL) {
         this.scLvL = scLvL;
     }
 
@@ -30,10 +30,10 @@ public class SyncSpellCastLvl_PKT implements IMessage
         buf.writeInt(scLvL);
     }
 
-    public static class Handler implements IMessageHandler<SyncSpellCastLvl_PKT, IMessage>
+    public static class Handler implements IMessageHandler<SyncSpellCastLvl, IMessage>
     {
         @Override
-        public IMessage onMessage(SyncSpellCastLvl_PKT message, MessageContext ctx)
+        public IMessage onMessage(SyncSpellCastLvl message, MessageContext ctx)
         {
             FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> {
                 EntityPlayer player = RunicSorcery.proxy.getMyPlayer(ctx);

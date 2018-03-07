@@ -1,6 +1,5 @@
 package halestormxv.network.packets;
 
-import halestormxv.api.CycleSpells;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -11,13 +10,13 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import java.nio.charset.Charset;
 import java.util.UUID;
 
-public class CycleSpells_PKT implements IMessage
+public class CycleSpells implements IMessage
 {
     private EntityPlayer thePlayer;
 
-    public CycleSpells_PKT() { }
+    public CycleSpells() { }
 
-    public CycleSpells_PKT(EntityPlayer thePlayer)
+    public CycleSpells(EntityPlayer thePlayer)
     {
         this.thePlayer = thePlayer;
     }
@@ -40,18 +39,18 @@ public class CycleSpells_PKT implements IMessage
         buf.writeCharSequence(thePlayer.getUniqueID().toString(), Charset.defaultCharset());
     }
 
-    public static class Handler implements IMessageHandler<CycleSpells_PKT, IMessage>
+    public static class Handler implements IMessageHandler<CycleSpells, IMessage>
     {
         @Override
-        public IMessage onMessage(CycleSpells_PKT message, MessageContext ctx)
+        public IMessage onMessage(CycleSpells message, MessageContext ctx)
         {
             FMLCommonHandler.instance().getWorldThread(ctx.netHandler).addScheduledTask(() -> handle(message, ctx));
             return null;
         }
 
-        private void handle(CycleSpells_PKT message, MessageContext ctx)
+        private void handle(CycleSpells message, MessageContext ctx)
         {
-            CycleSpells.cycleSpells(message.thePlayer, message.thePlayer.getActiveHand());
+            halestormxv.api.CycleSpells.cycleSpells(message.thePlayer, message.thePlayer.getActiveHand());
         }
     }
 }

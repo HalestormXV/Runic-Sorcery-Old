@@ -1,7 +1,7 @@
 package halestormxv.potion.potions;
 
 import halestormxv.network.PacketHandler;
-import halestormxv.network.packets.DispelSuccess_PKT;
+import halestormxv.network.packets.DispelSuccess;
 import halestormxv.potion.PotionInstant;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -65,7 +65,7 @@ public class PotionDispel extends PotionInstant
         }
 
         if (flag && e!=null) {
-            PacketHandler.INSTANCE.sendToAllAround(new DispelSuccess_PKT(), new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 10));
+            PacketHandler.INSTANCE.sendToAllAround(new DispelSuccess(), new NetworkRegistry.TargetPoint(e.dimension, e.posX, e.posY, e.posZ, 10));
         }
 
     }

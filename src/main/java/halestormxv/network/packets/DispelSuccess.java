@@ -6,10 +6,10 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class DispelSuccess_PKT implements IMessage
+public class DispelSuccess implements IMessage
 {
 
-    public DispelSuccess_PKT() {
+    public DispelSuccess() {
     }
 
 
@@ -19,10 +19,10 @@ public class DispelSuccess_PKT implements IMessage
     @Override
     public void toBytes(ByteBuf buf) { }
 
-    public static class Handler implements IMessageHandler<DispelSuccess_PKT, IMessage> {
+    public static class Handler implements IMessageHandler<DispelSuccess, IMessage> {
 
         @Override
-        public IMessage onMessage(DispelSuccess_PKT message, MessageContext ctx) {
+        public IMessage onMessage(DispelSuccess message, MessageContext ctx) {
             RunicSorcery.proxy.playDispelSound();
             return null;
         }

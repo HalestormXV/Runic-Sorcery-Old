@@ -54,6 +54,7 @@ public class CommonProxy
     }
 
     public IRuneBagProvider getClientBagProps() { return null; }
+    public ILearnedSpells getClientData() { return null; }
 
     public void preInit(FMLPreInitializationEvent e)
     {

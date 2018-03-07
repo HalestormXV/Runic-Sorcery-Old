@@ -1,7 +1,7 @@
 package halestormxv.capabilities.spellcastlevel;
 
 import halestormxv.network.PacketHandler;
-import halestormxv.network.packets.SyncSpellCastLvl_PKT;
+import halestormxv.network.packets.SyncSpellCastLvl;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.math.MathHelper;
@@ -39,7 +39,7 @@ public class SpellCastLvLFunctions implements ISpellCastLevel
     {
         if (!thePlayer.world.isRemote)
         {
-            PacketHandler.sendTo(new SyncSpellCastLvl_PKT(this.spellCastLevel), (EntityPlayerMP) thePlayer);
+            PacketHandler.sendTo(new SyncSpellCastLvl(this.spellCastLevel), (EntityPlayerMP) thePlayer);
         }
 
     }

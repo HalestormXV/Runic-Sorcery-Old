@@ -9,13 +9,13 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class SyncBagData_PKT implements IMessage
+public class SyncBagData implements IMessage
 {
     private NBTTagCompound nbt;
 
-    public SyncBagData_PKT() {}
+    public SyncBagData() {}
 
-    public SyncBagData_PKT(NBTTagCompound nbt)
+    public SyncBagData(NBTTagCompound nbt)
     {
         this.nbt = nbt;
     }
@@ -32,10 +32,10 @@ public class SyncBagData_PKT implements IMessage
         ByteBufUtils.writeTag(buf, nbt);
     }
 
-    public static class Handler implements IMessageHandler<SyncBagData_PKT, IMessage>
+    public static class Handler implements IMessageHandler<SyncBagData, IMessage>
     {
         @Override
-        public IMessage onMessage(final SyncBagData_PKT message, MessageContext ctx)
+        public IMessage onMessage(final SyncBagData message, MessageContext ctx)
         {
             Minecraft.getMinecraft().addScheduledTask(new Runnable() {
                 @Override

@@ -1,7 +1,7 @@
 package halestormxv.capabilities.runebag;
 
 import halestormxv.network.PacketHandler;
-import halestormxv.network.packets.SyncBagData_PKT;
+import halestormxv.network.packets.SyncBagData;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.nbt.NBTBase;
@@ -33,7 +33,7 @@ public class RuneBagFunctions implements IRuneBagProvider
     @Override
     public void sync(@Nonnull EnumDyeColor color, @Nonnull EntityPlayerMP player)
     {
-        PacketHandler.sendTo(new SyncBagData_PKT(writeNBT(color)), player);
+        PacketHandler.sendTo(new SyncBagData(writeNBT(color)), player);
     }
 
     private NBTTagCompound writeNBT(EnumDyeColor color)

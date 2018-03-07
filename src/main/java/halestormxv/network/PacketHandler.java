@@ -28,14 +28,18 @@ public class PacketHandler
 
     private static void registerMessages()
     {
+        //Server Packets
         INSTANCE.registerMessage(SendKey_PKT.Handler.class, SendKey_PKT.class, nextID(), Side.SERVER);
-        INSTANCE.registerMessage(FetchRunecraftLvl_PKT.Handler.class, FetchRunecraftLvl_PKT.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(FetchRunecraftLvl.Handler.class, FetchRunecraftLvl.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(CycleSpells.Handler.class, CycleSpells.class, nextID(), Side.SERVER);
+        INSTANCE.registerMessage(FetchKnownSpells.Handler.class, FetchKnownSpells.class, nextID(), Side.SERVER);
+
+        //Client Packets
         INSTANCE.registerMessage(PacketChatUtils.PacketNoSpamChat.Handler.class, PacketChatUtils.PacketNoSpamChat.class, nextID(), Side.CLIENT);
-        INSTANCE.registerMessage(SyncRCLvl_PKT.Handler.class, SyncRCLvl_PKT.class, nextID(), Side.CLIENT);
-        INSTANCE.registerMessage(CycleSpells_PKT.Handler.class, CycleSpells_PKT.class, nextID(), Side.SERVER);
-        INSTANCE.registerMessage(SyncBagData_PKT.Handler.class, SyncBagData_PKT.class, nextID(), Side.CLIENT);
-        INSTANCE.registerMessage(DispelSuccess_PKT.Handler.class, DispelSuccess_PKT.class, nextID(), Side.CLIENT);
-        INSTANCE.registerMessage(SyncSpellCastLvl_PKT.Handler.class, SyncSpellCastLvl_PKT.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(SyncRCLvl.Handler.class, SyncRCLvl.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(SyncBagData.Handler.class, SyncBagData.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(DispelSuccess.Handler.class, DispelSuccess.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(SyncSpellCastLvl.Handler.class, SyncSpellCastLvl.class, nextID(), Side.CLIENT);
     }
 
     public static void sendToAllAround(IMessage message, TileEntity te, int range)
