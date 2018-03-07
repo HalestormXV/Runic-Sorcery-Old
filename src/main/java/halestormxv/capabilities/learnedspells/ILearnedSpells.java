@@ -1,5 +1,6 @@
 package halestormxv.capabilities.learnedspells;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.INBTSerializable;
 
@@ -11,4 +12,5 @@ public interface ILearnedSpells
 
     void setSpellList(int[] spellIDs);
 
+    void syncToClient(EntityPlayer entityPlayer);
 }

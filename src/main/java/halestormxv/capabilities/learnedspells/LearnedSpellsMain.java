@@ -1,6 +1,9 @@
 package halestormxv.capabilities.learnedspells;
 
 import com.google.common.primitives.Ints;
+import halestormxv.network.PacketHandler;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.*;
 import net.minecraft.util.EnumFacing;
 import net.minecraftforge.common.capabilities.Capability;
@@ -20,7 +23,8 @@ public class LearnedSpellsMain
      * The actions take place in this
      * code segment.
      **********************************/
-    public static class LearnedSpellsFunctions implements ILearnedSpells {
+    public static class LearnedSpellsFunctions implements ILearnedSpells
+    {
         private List<Integer> knownSpells = new ArrayList<>();
 
         @Override
@@ -37,6 +41,15 @@ public class LearnedSpellsMain
         public void setSpellList(int[] spellList) {
             spellList = this.knownSpells.stream().mapToInt(i -> i).toArray();
         }
+
+        @Override
+        public void syncToClient(EntityPlayer entityPlayer)
+        {
+            //if (!entityPlayer.world.isRemote)
+           // {
+                //PacketHandler.sendTo(new SyncRCLvl_PKT(this.knownSpells), (EntityPlayerMP) entityPlayer);
+            //}
+        }
     }
 
     /***********************************
@@ -44,15 +57,18 @@ public class LearnedSpellsMain
      * It gives us the Capability Storage
      * like a good little egg.
      **********************************/
-    public static class LearnedSpellsStorage implements Capability.IStorage<ILearnedSpells> {
-        public NBTBase writeNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side) {
+    public static class LearnedSpellsStorage implements Capability.IStorage<ILearnedSpells>
+    {
+        public NBTBase writeNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side)
+        {
             NBTTagCompound nbt = new NBTTagCompound();
             nbt.setIntArray("LearnedSpells", instance.getSpellList());
             return nbt;
         }
 
         @Override
-        public void readNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side, NBTBase base) {
+        public void readNBT(Capability<ILearnedSpells> capability, ILearnedSpells instance, EnumFacing side, NBTBase base)
+        {
             NBTTagCompound nbt = (NBTTagCompound) base;
             int[] intArray = nbt.getIntArray("LearnedSpells");
             for (int anIntArray : intArray) {
@@ -66,7 +82,8 @@ public class LearnedSpellsMain
      * It gives us the Capability and
      * looks for it
      **********************************/
-    public static class LearnedSpellsProvider implements ICapabilitySerializable<NBTBase> {
+    public static class LearnedSpellsProvider implements ICapabilitySerializable<NBTBase>
+    {
         @CapabilityInject(ILearnedSpells.class)
         public static final Capability<ILearnedSpells> LEARNED_SPELLS_CAPABILITY = null;
 
