@@ -8,6 +8,7 @@ import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -25,19 +26,19 @@ public class LearnSpell extends CommandBase
 
     public LearnSpell()
     {
-        aliases = Lists.newArrayList(Reference.MODID, "learn_spell");
+        aliases = Lists.newArrayList(Reference.MODID, "rs learn_spell");
     }
 
     @Override
     public String getName()
     {
-        return "learn_spell";
+        return "rs learn_spell";
     }
 
     @Override
     public String getUsage(ICommandSender sender)
     {
-        return "learn_spell <Value>";
+        return "rs learn_spell <Value>";
     }
 
     @Override
@@ -64,12 +65,11 @@ public class LearnSpell extends CommandBase
         if (spellID != MathHelper.clamp(spellID, 0, 100)) {
             sender.sendMessage(new TextComponentString(TextFormatting.RED + "The Minimum value is 0 and the Maximum value is 100!"));
         } else {
-            if (sender instanceof EntityPlayer)
+            if (sender instanceof EntityPlayer && sender.canUseCommand(4, ""))
             {
                 ILearnedSpells learnedSpells = ((EntityPlayer) sender).getCapability(LearnedSpellsMain.LearnedSpellsProvider.LEARNED_SPELLS_CAPABILITY, null);
                 learnedSpells.learnedSpell(spellID);
                 sender.sendMessage(new TextComponentString(TextFormatting.DARK_AQUA + "You have learned spell "+ spellID));
-                //runeCraftLevel.syncToClient((EntityPlayer) sender);
             }
         }
     }

@@ -2,6 +2,7 @@ package halestormxv.capabilities.learnedspells;
 
 import com.google.common.primitives.Ints;
 import halestormxv.network.PacketHandler;
+import halestormxv.network.packets.SyncLearnedSpellsData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.*;
@@ -27,6 +28,13 @@ public class LearnedSpellsMain
     public static class LearnedSpellsFunctions implements ILearnedSpells
     {
         private List<Integer> knownSpells = new ArrayList<>();
+        private EntityPlayer thePlayer;
+
+        @Override
+        public EntityPlayer getMyPlayer(EntityPlayer player)
+        {
+            return this.thePlayer = player;
+        }
 
         @Override
         public void learnedSpell(int spellLearned) {
@@ -56,12 +64,9 @@ public class LearnedSpellsMain
         }
 
         @Override
-        public void syncToClient(EntityPlayer entityPlayer)
+        public void syncToClient(NBTTagCompound nbt, EntityPlayer entityPlayer)
         {
-            //if (!entityPlayer.world.isRemote)
-           // {
-                //PacketHandler.sendTo(new SyncRCLvl_PKT(this.knownSpells), (EntityPlayerMP) entityPlayer);
-            //}
+            if (!getMyPlayer(entityPlayer).world.isRemote) { PacketHandler.sendTo(new SyncLearnedSpellsData(nbt), (EntityPlayerMP) getMyPlayer(entityPlayer)); }
         }
     }
 
