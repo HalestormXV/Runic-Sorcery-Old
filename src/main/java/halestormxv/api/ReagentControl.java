@@ -37,8 +37,8 @@ public class ReagentControl
                         if (total >= reagentsRequired.get(index).getCount())
                         {
                             stack.shrink(reagentsRequired.get(index).getCount());
-                            getLogger().info("Player has " + (total - reagentsRequired.get(index).getCount()) + " " + stack.getDisplayName() +
-                                    " in the slot cause I ate " + reagentsRequired.get(index).getCount());
+                            /*getLogger().info("Player has " + (total - reagentsRequired.get(index).getCount()) + " " + stack.getDisplayName() +
+                                    " in the slot cause I ate " + reagentsRequired.get(index).getCount());*/
                             --counter;
                         }
                     }
@@ -59,8 +59,8 @@ public class ReagentControl
                                 if (total >= reagentsRequired.get(index).getCount())
                                 {
                                     bagInventory.getStackInSlot(bagSlots).shrink(reagentsRequired.get(index).getCount());
-                                    getLogger().info("Player has " + (total - reagentsRequired.get(index).getCount()) + " " + stackInBagSlot.getDisplayName() +
-                                            " in the Rune Bag cause I ate " + reagentsRequired.get(index).getCount());
+                                    /*getLogger().info("Player has " + (total - reagentsRequired.get(index).getCount()) + " " + stackInBagSlot.getDisplayName() +
+                                            " in the Rune Bag cause I ate " + reagentsRequired.get(index).getCount());*/
                                     --counter;
                                 }
                             }
@@ -73,7 +73,7 @@ public class ReagentControl
         return counter == 0;
     }
 
-    public static boolean checkAndConsumeReagent(EntityPlayer thePlayer, ItemStack itemStack, int reagentCost)
+    public static boolean checkAndConsumeReagent(EntityPlayer thePlayer, ItemStack itemStack)
     {
         int total;
         Item reagentItem;
@@ -89,11 +89,9 @@ public class ReagentControl
                 if (!stack.isEmpty() && stack.getItem().equals(reagentItem) && stack.getMetadata() == itemStack.getMetadata())
                 {
                     total = stack.getCount();
-                    if (total >= reagentCost)
+                    if (total >= itemStack.getCount())
                     {
-                        stack.shrink(reagentCost);
-                        getLogger().info("Player has " + (total-reagentCost) +" "+ stack.getDisplayName() +
-                                " in the slot cause I ate "+reagentCost);
+                        stack.shrink(itemStack.getCount());
                         return true;
                     }
                 }
@@ -112,11 +110,11 @@ public class ReagentControl
                         if (!stackInBagSlot.isEmpty() && stackInBagSlot.getItem().equals(reagentItem) && stackInBagSlot.getMetadata() == itemStack.getMetadata())
                         {
                             total = stackInBagSlot.getCount();
-                            if (total >= reagentCost)
+                            if (total >= itemStack.getCount())
                             {
-                                bagInventory.getStackInSlot(bagSlots).shrink(reagentCost);
-                                getLogger().info("Player has " + (total-reagentCost) +" "+ stackInBagSlot.getDisplayName() +
-                                        " in the Rune Bag cause I ate "+reagentCost);
+                                bagInventory.getStackInSlot(bagSlots).shrink(itemStack.getCount());
+                                /*getLogger().info("Player has " + (total-itemStack.getCount()) +" "+ stackInBagSlot.getDisplayName() +
+                                        " in the Rune Bag cause I ate "+itemStack.getCount());*/
                                 return true;
                             }
                         }
@@ -127,9 +125,10 @@ public class ReagentControl
         return false;
     }
 
-    public static int checkForReagentQuantityRuneBag(ItemStack itemStack, EntityPlayer thePlayer, int reagentCost)
+    public static int checkForReagentQuantityRuneBag(ItemStack itemStack, EntityPlayer thePlayer)
     {
         int total = 0;
+        int reagentCost = itemStack.getCount();
         Item reagentItem;
         IItemHandler itemHandler = thePlayer.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
         for (int slot = 0; slot < itemHandler.getSlots(); slot++)

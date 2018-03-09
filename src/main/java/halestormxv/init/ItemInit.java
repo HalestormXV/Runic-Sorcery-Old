@@ -22,6 +22,7 @@ public class ItemInit
     public static final Item INGOT_LUPRESIUM = new ItemBase("ingot_lupresium");
     public static final Item INGOT_APRONYX = new ItemBase("ingot_apronyx");
     public static final Item INGOT_XOSHIAN = new ItemBase("ingot_xoshian");
+    public static final Item ITEM_SCRYING_ORB = new ItemScryingOrb("scrying_orb");
 
     //SPELL TOMES\\
     public static final Item TOME_BASE = new SpellTomeBase("spell_tome_base");

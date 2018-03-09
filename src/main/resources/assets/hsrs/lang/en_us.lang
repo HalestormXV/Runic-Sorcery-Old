@@ -66,6 +66,7 @@ item.ingot_apronyx.name=Apronyx Ingot
 item.ingot_lupresium.name=Lupresium Ingot
 item.spell_tome_base.name=Basic Tome
 item.spell_tome_empower.name=Tome: Empower
+item.scrying_orb.name=Scrying Orb
 
 #MAGICIAN ORBS
 item.magicians_core_basic_uncharged.name=Magician's Orb

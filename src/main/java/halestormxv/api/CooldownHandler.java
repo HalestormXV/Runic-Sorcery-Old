@@ -20,7 +20,7 @@ public class CooldownHandler
         }
     }
 
-    public void setNewWorldTime(ItemStack stack, EntityPlayer player)
+    public static void setNewWorldTime(ItemStack stack, EntityPlayer player)
     {
         if (stack.getTagCompound() != null)
         {
@@ -29,7 +29,7 @@ public class CooldownHandler
         }
     }
 
-    public long getStoredWorldTime(ItemStack stack)
+    public static long getStoredWorldTime(ItemStack stack)
     {
         if ( (stack.getTagCompound() != null) && (stack.getTagCompound().hasKey("totalWorldTime")) )
         {
