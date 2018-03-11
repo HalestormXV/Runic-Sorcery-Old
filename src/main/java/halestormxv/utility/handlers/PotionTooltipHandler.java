@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.List;
 
 @SideOnly(Side.CLIENT)
-public class PotionDescriptionTooltipHandler
+public class PotionTooltipHandler
 {
     @SubscribeEvent
     public void onTooltipEvent(ItemTooltipEvent evt)

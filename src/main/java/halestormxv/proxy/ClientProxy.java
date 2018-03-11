@@ -2,7 +2,7 @@ package halestormxv.proxy;
 
 import halestormxv.KeyBindings;
 import halestormxv.capabilities.runebag.RuneBagProvider;
-import halestormxv.utility.handlers.PotionDescriptionTooltipHandler;
+import halestormxv.utility.handlers.PotionTooltipHandler;
 import halestormxv.capabilities.runebag.IRuneBagProvider;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
@@ -80,7 +80,7 @@ public class ClientProxy extends CommonProxy
         super.init(e);
         MinecraftForge.EVENT_BUS.register(new InputHandler());
         KeyBindings.init();
-        MinecraftForge.EVENT_BUS.register(new PotionDescriptionTooltipHandler());
+        MinecraftForge.EVENT_BUS.register(new PotionTooltipHandler());
     }
 
 
