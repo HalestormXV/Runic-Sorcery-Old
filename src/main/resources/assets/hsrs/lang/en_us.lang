@@ -67,6 +67,15 @@ item.ingot_lupresium.name=Lupresium Ingot
 item.spell_tome_base.name=Basic Tome
 item.spell_tome_empower.name=Tome: Empower
 item.scrying_orb.name=Scrying Orb
+item.spellblade_flame.name=Spellblade of Atziluth
+item.spellblade_weakness.name=Spellblade of Xytlena
+
+#RECORDS
+item.hsrs:record_kishuu.name=Yasuharu Takanashi - Kishuu
+item.record.hsrs:kishuuMusic.desc=Yasuharu Takanashi - Kishuu
+
+item.hsrs:record_motomiya.name=Hiromi Motomiya - Breath
+item.record.hsrs:motomiyaMusic.desc=Hiromi Motomiya - Breath
 
 #MAGICIAN ORBS
 item.magicians_core_basic_uncharged.name=Magician's Orb

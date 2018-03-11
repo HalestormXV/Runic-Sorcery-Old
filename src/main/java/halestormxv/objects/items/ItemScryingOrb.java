@@ -62,7 +62,7 @@ public class ItemScryingOrb extends Item implements IHasModel
                     long totWorldTime = CooldownHandler.getStoredWorldTime(stack);
                     long currentWorldTime = player.world.getTotalWorldTime();
                     //Check for Reagent
-                    ItemStack reagentRequired = new ItemStack(ItemInit.DUST_MYSTERIUM, 3, 0);
+                    ItemStack reagentRequired = new ItemStack(ItemInit.DUST_SIEGRE, 3, 0);
                     boolean castRequirement = ReagentControl.checkAndConsumeReagent(player, reagentRequired);
                     if (castRequirement)
                     {
@@ -81,7 +81,7 @@ public class ItemScryingOrb extends Item implements IHasModel
                             player.setPositionAndUpdate(posX + 0.6, posY, posZ + 0.6);
                             CooldownHandler.setNewWorldTime(stack, player);
                         } else {
-                            PacketChatUtils.sendNoSpam(player, "\u00A74The Scrying Orb is on cooldown but still consumed the "+reagentRequired.getDisplayName());
+                            PacketChatUtils.sendNoSpam(player, "\u00A74The Scrying Orb is on cooldown but still consumed the "+reagentRequired.getDisplayName()+". One cannot force magic, "+player.getDisplayNameString());
                         }
                     } else {
                         PacketChatUtils.sendNoSpam(player, "\u00A74The Scrying Orb requires "+reagentRequired.getCount()+" "+ reagentRequired.getDisplayName()+" for use.");

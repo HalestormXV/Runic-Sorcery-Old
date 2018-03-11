@@ -14,6 +14,7 @@ import halestormxv.init.BiomeInit;
 import halestormxv.init.BlockInit;
 import halestormxv.init.EntityInit;
 import halestormxv.init.ItemInit;
+import halestormxv.objects.items.spellblades.SpellBlade_Abilities;
 import halestormxv.utility.Reference;
 import halestormxv.capabilities.CapabilityHandler;
 import halestormxv.utility.handlers.EventHandler;
@@ -79,6 +80,7 @@ public class CommonProxy
     {
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
+        MinecraftForge.EVENT_BUS.register(new SpellBlade_Abilities());
     }
 
     public void registerItemRenderer(Item item, int meta, String id) {}

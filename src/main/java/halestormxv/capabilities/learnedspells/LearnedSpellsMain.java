@@ -2,6 +2,7 @@ package halestormxv.capabilities.learnedspells;
 
 import com.google.common.primitives.Ints;
 import halestormxv.network.PacketHandler;
+import halestormxv.network.packets.PacketChatUtils;
 import halestormxv.network.packets.SyncLearnedSpellsData;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -37,13 +38,26 @@ public class LearnedSpellsMain
         }
 
         @Override
-        public void learnedSpell(int spellLearned) {
-            this.knownSpells.add(spellLearned);
+        public void learnedSpell(int spellLearned)
+        {
+            if(alreadyLearned(spellLearned))
+            {
+                this.knownSpells.add(spellLearned);
+                PacketChatUtils.sendNoSpamClient("\u00A76You have learned the spell: "+spellLearned);
+            }else{
+                PacketChatUtils.sendNoSpamClient( "\u00A7cYou have already learned this ability.");
+            }
+        }
+
+        @Override
+        public boolean alreadyLearned(int spellID)
+        {
+            return !this.knownSpells.contains(spellID);
         }
 
         @Override
         public int[] getSpellList() {
-            return Ints.toArray(knownSpells);
+            return Ints.toArray(this.knownSpells);
         }
 
         @Override
@@ -59,8 +73,6 @@ public class LearnedSpellsMain
             }
             arr = Arrays.copyOfRange(arr, 0, count);
             arr = spellList;
-
-            //this.knownSpells.stream().mapToInt(i -> i).toArray();
         }
 
         @Override

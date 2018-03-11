@@ -7,6 +7,8 @@ import net.minecraftforge.common.util.INBTSerializable;
 
 public interface ILearnedSpells
 {
+    boolean alreadyLearned(int spellID);
+
     void learnedSpell(int spellLearned);
 
     int[] getSpellList();

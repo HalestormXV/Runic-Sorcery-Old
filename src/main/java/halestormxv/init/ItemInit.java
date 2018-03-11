@@ -1,16 +1,24 @@
 package halestormxv.init;
 
 import halestormxv.objects.items.*;
+import halestormxv.objects.items.records.Record_Kishuu;
+import halestormxv.objects.items.records.Record_Motomiya;
+import halestormxv.objects.items.spellblades.SpellBlade_Fire;
+import halestormxv.objects.items.spellblades.SpellBlade_Weakness;
 import halestormxv.objects.items.staffs.ApprenticeStaff;
 import halestormxv.objects.items.tomes.Tome_Empower;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPotion;
+import net.minecraftforge.common.util.EnumHelper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ItemInit
 {
+    //Materials
+    private static Item.ToolMaterial SpecialItems = EnumHelper.addToolMaterial("SpecialItems", 4, 1340, 11.0F, 9.2F, 25);
+
     public static final List<Item> ITEMS = new ArrayList<Item>();
 
     //DUSTS\\
@@ -37,4 +45,12 @@ public class ItemInit
     //STAVES\\
     public static final Item STAFF_FLEDGLING = new ItemBaseStaff("staff_fledgling");
     public static final Item STAFF_APRENTICE = new ApprenticeStaff("staff_apprentice");
+
+    //SPELL BLADES\\
+    public static final Item SPELL_BLADE_FIRE = new SpellBlade_Fire("spellblade_flame", SpecialItems);
+    public static final Item SPELL_BLADE_WEAKNESS = new SpellBlade_Weakness("spellblade_weakness", SpecialItems);
+
+    //RECORDS\\
+    public static final Item RECORD_KISHUU = new Record_Kishuu();
+    public static final Item RECORD_MOTOMIYA = new Record_Motomiya();
 }
