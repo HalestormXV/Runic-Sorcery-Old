@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "hsrs:items/runeblade_basic"
+  }
+}

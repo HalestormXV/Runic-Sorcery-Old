@@ -18,6 +18,8 @@ public class ItemInit
 {
     //Materials
     private static Item.ToolMaterial SpecialItems = EnumHelper.addToolMaterial("SpecialItems", 4, 1340, 11.0F, 9.2F, 25);
+    private static Item.ToolMaterial RuneBlades = EnumHelper.addToolMaterial("RuneBlades", 4, 1040, 10.0F, 8.3F, 0);
+
 
     public static final List<Item> ITEMS = new ArrayList<Item>();
 
@@ -46,9 +48,10 @@ public class ItemInit
     public static final Item STAFF_FLEDGLING = new ItemBaseStaff("staff_fledgling");
     public static final Item STAFF_APRENTICE = new ApprenticeStaff("staff_apprentice");
 
-    //SPELL BLADES\\
+    //SPELL BLADES & RUNE BLADES\\
     public static final Item SPELL_BLADE_FIRE = new SpellBlade_Fire("spellblade_flame", SpecialItems);
     public static final Item SPELL_BLADE_WEAKNESS = new SpellBlade_Weakness("spellblade_weakness", SpecialItems);
+    public static final Item RUNE_BLADE_BASIC = new ItemRuneBlade("runeblade_basic", RuneBlades);
 
     //RECORDS\\
     public static final Item RECORD_KISHUU = new Record_Kishuu();

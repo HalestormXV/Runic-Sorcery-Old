@@ -25,6 +25,7 @@ lingering_potion.effect.recall=Lingering Potion of Reminiscence
 splash_potion.effect.recall=Splash Potion of Reminiscence
 tipped_arrow.effect.recall=Arrow of Reminiscence
 effect.recall=Reminiscence
+description.effect.recall=§3Through study of Chronomancy runes it would appear possible to create some form of Chrono Anchor,that stores a location and after a set period of time will cause whatever entity is afflicted to return to that point in time.
 
 potion.effect.dispel=Potion of Dispel
 lingering_potion.effect.dispel=Lingering Potion of Dispel
@@ -37,6 +38,12 @@ lingering_potion.effect.learning=Lingering Potion of Learning
 splash_potion.effect.learning=Splash Potion of Learning
 tipped_arrow.effect.learning=Arrow of Learning
 effect.learning=Learning
+
+potion.effect.return=Potion of Disapparation
+lingering_potion.effect.return=Lingering Potion of Disapparation
+splash_potion.effect.return=Splash Potion of Disapparation
+tipped_arrow.effect.return=Arrow of Disapparation
+effect.return=Disapparate
 
 potion.effect.charged=Charged Potion
 lingering_potion.effect.charged=Lingering Charged Potion
