@@ -12,7 +12,7 @@ import net.minecraftforge.items.IItemHandlerModifiable;
 
 public class GuiRuneBag extends GuiContainer
 {
-    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/runebag_alt.png");
+    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/runebag.png");
 
     public GuiRuneBag(InventoryPlayer invPlayer, EnumHand hand, IItemHandlerModifiable invBag)
     {

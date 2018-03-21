@@ -28,12 +28,14 @@ import java.util.Set;
 
 public class GeneralGuiHandler implements IGuiHandler {
     private static final Set<Integer> ITEM_IDS = ImmutableSet.of(Reference.GUI_RUNE_BAG);
+    private static final Set<Integer> RUNE_BLADE_ID = ImmutableSet.of(Reference.GUI_RUNE_BLADE);
 
     @Nullable
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tile = !ITEM_IDS.contains(ID) ? world.getTileEntity(new BlockPos(x, y, z)) : null;
         EnumHand hand = ITEM_IDS.contains(ID) ? (x == 1 ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND) : null;
+        EnumHand bladeHand = RUNE_BLADE_ID.contains(ID) ? (x == 2 ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND) : null;
         switch (ID) {
             case Reference.GUI_RUNIC_FURNACE:
                 if (tile != null && tile instanceof TileEntityRunicInscriber)
@@ -47,15 +49,10 @@ public class GeneralGuiHandler implements IGuiHandler {
             }
 
             case Reference.GUI_RUNE_BLADE: {
-                ItemStack stack = player.getHeldItem(player.getActiveHand());
-                if (stack != null) {
-                    if (stack.getItem() == ItemInit.RUNE_BLADE_BASIC) {
-                        System.out.println("Server: Opend the Runeblade Inventory");
-                        IItemHandlerModifiable inventory = (IItemHandlerModifiable) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-                        return new ContainerRuneBlade(player.inventory, hand, inventory);
-                    }
-                }
-
+                ItemStack stack = player.getHeldItem(bladeHand);
+                System.out.println("Server: Opened the Runeblade Container");
+                IItemHandlerModifiable inventory = (IItemHandlerModifiable) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+                return new ContainerRuneBlade(player.inventory, bladeHand, inventory);
             }
         }
         return null;
@@ -63,10 +60,10 @@ public class GeneralGuiHandler implements IGuiHandler {
 
     @Nullable
     @Override
-    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-    {
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tile = !ITEM_IDS.contains(ID) ? world.getTileEntity(new BlockPos(x, y, z)) : null;
         EnumHand hand = ITEM_IDS.contains(ID) ? (x == 1 ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND) : null;
+        EnumHand bladeHand = RUNE_BLADE_ID.contains(ID) ? (x == 2 ? EnumHand.OFF_HAND : EnumHand.MAIN_HAND) : null;
         switch (ID)
         {
             case Reference.GUI_RUNIC_FURNACE:
@@ -74,25 +71,17 @@ public class GeneralGuiHandler implements IGuiHandler {
                     return new GuiRunicInscriber(player.inventory, (TileEntityRunicInscriber) tile);
                 break;
 
-            case Reference.GUI_RUNE_BAG:
-            {
+            case Reference.GUI_RUNE_BAG: {
                 EnumDyeColor color = EnumDyeColor.byMetadata(player.getHeldItem(hand).getItemDamage());
                 IItemHandlerModifiable inventory = (IItemHandlerModifiable) player.getCapability(RuneBagProvider.RUNEBAG_CAP, null).getBag(color);
                 return new GuiRuneBag(player.inventory, hand, inventory);
             }
 
-            case Reference.GUI_RUNE_BLADE:
-            {
-                ItemStack stack = player.getHeldItem(player.getActiveHand());
-                if (stack != null)
-                {
-                    if (stack.getItem() == ItemInit.RUNE_BLADE_BASIC)
-                    {
-                        System.out.println("Client: Opend the Runeblade Inventory");
-                        IItemHandlerModifiable inventory = (IItemHandlerModifiable) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-                        return new GuiRuneBlade(player.inventory, hand, inventory);
-                    }
-                }
+            case Reference.GUI_RUNE_BLADE: {
+                ItemStack stack = player.getHeldItem(bladeHand);
+                System.out.println("Client: Opened the Runeblade Inventory");
+                IItemHandlerModifiable inventory = (IItemHandlerModifiable) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+                return new GuiRuneBlade(player.inventory, bladeHand, inventory);
             }
         }
         return null;

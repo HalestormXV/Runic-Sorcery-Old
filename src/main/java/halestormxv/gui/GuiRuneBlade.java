@@ -10,9 +10,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.items.IItemHandlerModifiable;
 
-public class GuiRuneBlade extends GuiContaine
+public class GuiRuneBlade extends GuiContainer
 {
-    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/runeblade_inv.png");
+    private static final ResourceLocation texture = new ResourceLocation(Reference.MODID.toLowerCase(), "textures/gui/runeblade_slots.png");
 
     public GuiRuneBlade(InventoryPlayer invPlayer, EnumHand hand, IItemHandlerModifiable invBag)
     {

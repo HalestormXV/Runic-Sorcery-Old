@@ -11,7 +11,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
@@ -61,7 +60,7 @@ public class ItemRuneBlade extends ItemSword implements IHasModel, ICapabilityPr
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand)
     {
-        if (!world.isRemote && player.isSneaking())
+        if (player.isSneaking())
         {
             player.openGui(RunicSorcery.instance, Reference.GUI_RUNE_BLADE, world, hand.ordinal(), -1, -1);
         }
