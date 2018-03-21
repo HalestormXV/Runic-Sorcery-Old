@@ -35,9 +35,9 @@ public class PotionTooltipHandler
             String potName = ((PotionTypeBase)pt).getPotion().getName();
             String textRaw = I18n.format("description."+potName);
             toolTip.add("");
-            toolTip.add(ChatFormatting.GOLD+I18n.format("tooltip.credit", Reference.NAME));	//Added by Extra Alchemy
-            toolTip.add("");
             toolTip.add(textRaw);
+            toolTip.add("");
+            toolTip.add(ChatFormatting.GOLD+I18n.format("tooltip.credit", Reference.NAME));
         }
 
         else if (evt.getItemStack().hasTagCompound() && evt.getItemStack().getTagCompound().hasKey("brewdata"))

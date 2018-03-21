@@ -23,6 +23,11 @@ public class PotionReference
     public PotionTypeBase TYPE_LEARNING_STRONG = new PotionTypeBase(LEARNING, 20*60*2, 1, "learning_strong");
     public PotionTypeBase TYPE_LEARNING_LONG = new PotionTypeBase(LEARNING, 20*60*6, 0, "learning_long");
 
+    public PotionBase RUNECRAFT_MASTERY = new PotionRuneCraftMastery(false, 13984042);
+    public PotionTypeBase TYPE_RUNECRAFT_MASTERY_NORMAL = new PotionTypeBase(RUNECRAFT_MASTERY, 20*60*4, 0, "runecraftMastery_normal");
+    public PotionTypeBase TYPE_RUNECRAFT_MASTERY_STRONG = new PotionTypeBase(RUNECRAFT_MASTERY, 20*60*2, 1, "runecraftMastery_strong");
+    public PotionTypeBase TYPE_RUNECRAFT_MASTERY_LONG = new PotionTypeBase(RUNECRAFT_MASTERY, 20*60*6, 0, "runecraftMastery_long");
+
     public PotionBase DISPEL = new PotionDispel(true, 0x105955);
     public PotionTypeBase TYPE_DISPEL = new PotionTypeBase(DISPEL, 0, 0, "dispel_normal");
 

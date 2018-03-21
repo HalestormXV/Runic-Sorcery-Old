@@ -17,6 +17,7 @@ public class CapabilityHandler
     private static final ResourceLocation RUNEBAG_CAP = new ResourceLocation(Reference.MODID, "runeBagCapability");
     private static final ResourceLocation SPELL_CAST_LEVEL_CAP = new ResourceLocation(Reference.MODID, "spellCastLevel");
     private static final ResourceLocation LEARNED_SPELLS_CAPABILITY = new ResourceLocation(Reference.MODID, "learnedSpellList");
+    private static final ResourceLocation RUNE_BLADE_CAPABILITY = new ResourceLocation(Reference.MODID, "runeBladeCapability");
 
     @SubscribeEvent
     public void attachCapability(AttachCapabilitiesEvent<Entity> event)

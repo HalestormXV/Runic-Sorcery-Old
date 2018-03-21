@@ -7,6 +7,7 @@ import halestormxv.utility.interfaces.IHasModel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
@@ -20,6 +21,7 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
 
 public class ItemRuneBlade extends ItemSword implements IHasModel, ICapabilityProvider
 {
@@ -60,11 +62,22 @@ public class ItemRuneBlade extends ItemSword implements IHasModel, ICapabilityPr
     @Override
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand)
     {
-        if (player.isSneaking())
+        if (!world.isRemote)
         {
+            if (player.isSneaking())
             player.openGui(RunicSorcery.instance, Reference.GUI_RUNE_BLADE, world, hand.ordinal(), -1, -1);
         }
 
         return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+    }
+
+    public void setStackInSlot (ItemStack stack)
+    {
+        this.handler.setStackInSlot(0, stack);
+    }
+
+    public ItemStack getStackInSlot ()
+    {
+        return this.handler.getStackInSlot(0);
     }
 }

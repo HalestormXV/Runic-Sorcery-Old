@@ -19,13 +19,23 @@ lingering_potion.effect.fuse=Lingering Potion of Blast
 splash_potion.effect.fuse=Splash Potion of Blast
 tipped_arrow.effect.fuse=Arrow of Blasting
 effect.fuse=Blast
+description.effect.fuse=§3Through study of Fire Essence it would appear possible to create some form of Blast Potion, that condenses the Fire Essence and can be applied to create some type of Living Bomb effect.
+
 
 potion.effect.recall=Potion of Reminiscence
 lingering_potion.effect.recall=Lingering Potion of Reminiscence
 splash_potion.effect.recall=Splash Potion of Reminiscence
 tipped_arrow.effect.recall=Arrow of Reminiscence
 effect.recall=Reminiscence
-description.effect.recall=§3Through study of Chronomancy runes it would appear possible to create some form of Chrono Anchor,that stores a location and after a set period of time will cause whatever entity is afflicted to return to that point in time.
+description.effect.recall=§3Through study of Chronomancy runes it would appear possible to create some form of Chrono Anchor, that stores a location and after a set period of time will cause whatever entity is afflicted to return to that point in time.
+
+potion.effect.runecraftMastery=Potion of Runecraft Mastery
+lingering_potion.effect.runecraftMastery=Lingering Potion of Runecraft Mastery
+splash_potion.effect.runecraftMastery=Splash Potion of Runecraft Mastery
+tipped_arrow.effect.runecraftMastery=Arrow of Runecraft Mastery
+effect.runecraftMastery=Runecraft Mastery
+description.effect.runecraftMastery=§3Through study of Runecraft it would appear possible to create some form of elixir, that amplifies the amount of experience gained from crafting Runes.
+
 
 potion.effect.dispel=Potion of Dispel
 lingering_potion.effect.dispel=Lingering Potion of Dispel
@@ -38,6 +48,7 @@ lingering_potion.effect.learning=Lingering Potion of Learning
 splash_potion.effect.learning=Splash Potion of Learning
 tipped_arrow.effect.learning=Arrow of Learning
 effect.learning=Learning
+description.effect.learning=§3Lapis has some interesting properties that have yet to be discovered. Learning allows intelligence to reach new heights increasing experience gained by around 10 percent. Furthermore, you can also absorb xp orbs instantly and in a larger radius.
 
 potion.effect.return=Potion of Disapparation
 lingering_potion.effect.return=Lingering Potion of Disapparation

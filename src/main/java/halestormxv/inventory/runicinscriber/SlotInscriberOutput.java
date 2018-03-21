@@ -1,6 +1,7 @@
 package halestormxv.inventory.runicinscriber;
 
 import halestormxv.objects.blocks.devices.inscriber.RunicInscriberRecipes;
+import halestormxv.potion.PotionReference;
 import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -56,8 +57,13 @@ public class SlotInscriberOutput extends Slot
         if(!this.player.world.isRemote)
         {
             int i = this.removeCount;
-            float f = RunicInscriberRecipes.getInstance().getInscriberExperience(stack);
-
+            float f;
+            if (this.player.isPotionActive(PotionReference.INSTANCE.RUNECRAFT_MASTERY))
+            {
+                 f = RunicInscriberRecipes.getInstance().getInscriberExperience(stack) * 2;
+            } else {
+                 f = RunicInscriberRecipes.getInstance().getInscriberExperience(stack);
+            }
             if(f == 0.0F)
                 i = 0;
             else if(f < 1.0F) {
@@ -73,6 +79,8 @@ public class SlotInscriberOutput extends Slot
                 i -= k;
 
                 this.player.world.spawnEntity(new EntityXPOrb(this.player.world, this.player.posX, this.player.posY + 0.5D, this.player.posZ + 0.5D, k));
+                System.out.println("The amount of EXP for that craft was: " + f);
+
             }
         }
         this.removeCount = 0;

@@ -30,8 +30,8 @@ public class RunicInscriberRecipes
                     new ItemStack(ItemInit.RUNE_ESSENCE, 1, BARRIER_ESSENCE.getMeta()),
                     new ItemStack(ItemInit.RUNE_ESSENCE, 1, LIGHT_ESSENCE.getMeta()),
                     new ItemStack(ItemInit.RUNE_ESSENCE, 1, VOID_ESSENCE.getMeta()),
-                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, NIGHTMARE_ESSENCE.getMeta()),
-                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, POISON_ESSENCE.getMeta())
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, POISON_ESSENCE.getMeta()),
+                    new ItemStack(ItemInit.RUNE_ESSENCE, 1, NIGHTMARE_ESSENCE.getMeta())
             ).collect(Collectors.toList());
 
     private List<ItemStack> runeStoneResults = Stream
@@ -46,8 +46,24 @@ public class RunicInscriberRecipes
                     new ItemStack(ItemInit.ITEM_RUNE, 1, BARRIER_RUNE.getMeta()),
                     new ItemStack(ItemInit.ITEM_RUNE, 1, LIGHT_RUNE.getMeta()),
                     new ItemStack(ItemInit.ITEM_RUNE, 1, VOID_RUNE.getMeta()),
-                    new ItemStack(ItemInit.ITEM_RUNE, 1, NIGHTMARE_RUNE.getMeta()),
-                    new ItemStack(ItemInit.ITEM_RUNE, 1, POISON_RUNE.getMeta())
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, POISON_RUNE.getMeta()),
+                    new ItemStack(ItemInit.ITEM_RUNE, 1, NIGHTMARE_RUNE.getMeta())
+            ).collect(Collectors.toList());
+
+    private List<Float> runeStoneEXP = Stream
+            .of(
+                    1.4f,   //Basic Rune
+                    3.4f,   //Air Rune
+                    3.4f,   //Water Rune
+                    3.4f,   //Fire Rune
+                    3.4f,   //Earth Rune
+                    6.2f,   //Death Rune
+                    6.2f,   //Gravity Rune
+                    8.2f,   //Barrier Rune
+                    8.2f,   //Light Rune
+                    10.2f,  //Void Rune
+                    10.2f,  //Poison Rune
+                    14.6f   //Nightmare Rune
             ).collect(Collectors.toList());
 
     private static final RunicInscriberRecipes INSTANCE = new RunicInscriberRecipes();
@@ -65,7 +81,7 @@ public class RunicInscriberRecipes
         List<ItemStack> getResults = getRuneStoneResults();
         for (int i = 0; i < essenceRequired.size(); i++)
         {
-            addInscriberRecipe(getEssence.get(i), new ItemStack(ItemInit.ITEM_RUNE, 1, 0), getResults.get(i), 3.0f);
+            addInscriberRecipe(getEssence.get(i), new ItemStack(ItemInit.ITEM_RUNE, 1, 0), getResults.get(i), getRuneStoneEXP().get(i));
         }
     }
 
@@ -121,8 +137,6 @@ public class RunicInscriberRecipes
     {
         return essenceRequired;
     }
-    public List<ItemStack> getRuneStoneResults()
-    {
-        return runeStoneResults;
-    }
+    public List<ItemStack> getRuneStoneResults() { return runeStoneResults; }
+    private List<Float> getRuneStoneEXP(){ return runeStoneEXP; }
 }
