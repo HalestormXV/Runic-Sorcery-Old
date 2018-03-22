@@ -31,10 +31,7 @@ public class ContainerRuneBlade extends Container
 
         //Bag Inventory
         for (int i = 0; i < 4; i++)
-            for (int j = 0; j < 4; j++)
-                //I just made a static class within this class because all I am doing is locking other items except Runestones out.
-                //There is really no need for an entire separate SlotHandler as nothing else is being overridden.
-                this.addSlotToContainer(new RuneBladeSlotHandler(invBag, j + i * 4, 24 + j * 38, 32 + i * 38));
+                this.addSlotToContainer(new RuneBladeSlotHandler(invBag, i, 24 + i * 38, 32));
 
         //Player Inventory
         for(int i = 0; i < 3; i++)
