@@ -4,6 +4,7 @@ import halestormxv.RunicSorcery;
 import halestormxv.init.ItemInit;
 import halestormxv.utility.Reference;
 import halestormxv.utility.interfaces.IHasModel;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ItemStackHelper;
@@ -26,6 +27,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -45,6 +47,13 @@ public class ItemRuneBlade extends ItemSword implements IHasModel
     }
 
     @Override
+    public String getItemStackDisplayName(ItemStack stack)
+    {
+        String colorName = super.getItemStackDisplayName(stack);
+        return "\u00A75" + colorName;
+    }
+
+    @Override
     public void registerModels()
     {
         RunicSorcery.proxy.registerItemRenderer(this, 0 , "inventory");
@@ -55,17 +64,11 @@ public class ItemRuneBlade extends ItemSword implements IHasModel
     public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand)
     {
         ItemStack stackToSaveTo = player.getHeldItem(hand);
-        if(handler == null)
-        {
-            handler = (ItemStackHandler) initCapabilities(stackToSaveTo, null).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
-        }
         NBTTagCompound nbt = new NBTTagCompound();
+
+        if(handler == null) { handler = (ItemStackHandler) initCapabilities(stackToSaveTo, null).getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null); }
+        if (!world.isRemote && player.isSneaking()) { player.openGui(RunicSorcery.instance, Reference.GUI_RUNE_BLADE, world, hand.ordinal(), -1, -1); }
         handler.deserializeNBT(nbt);
-        if (!world.isRemote)
-        {
-            if (player.isSneaking())
-            player.openGui(RunicSorcery.instance, Reference.GUI_RUNE_BLADE, world, hand.ordinal(), -1, -1);
-        }
 
         return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
@@ -85,6 +88,20 @@ public class ItemRuneBlade extends ItemSword implements IHasModel
         return null;
     }
 
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+    {
+        tooltip.add("");
+        tooltip.add("\u00A7a" + "A person’s strength in this world is just an illusion.");
+        tooltip.add("\u00A7a" + "I’d rather stay the way I am until the last moment.");
+        tooltip.add("\u00A7a" + "The world is beautiful, even when it’s filled");
+        tooltip.add("\u00A7a" + "with sadness and tears.");
+    }
+
+    /**Capability Handler for ItemStack
+     * This is the handler to take care of storing
+     * the different types of Runes within the Item.
+     */
     public static class RuneSlotHandler implements ICapabilityProvider, INBTSerializable<NBTTagCompound>
     {
         @Override
