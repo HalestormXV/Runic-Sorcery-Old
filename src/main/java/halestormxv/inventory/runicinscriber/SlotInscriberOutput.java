@@ -1,5 +1,7 @@
 package halestormxv.inventory.runicinscriber;
 
+import halestormxv.api.ReagentControl;
+import halestormxv.init.ItemInit;
 import halestormxv.objects.blocks.devices.inscriber.RunicInscriberRecipes;
 import halestormxv.potion.PotionReference;
 import net.minecraft.entity.item.EntityXPOrb;
@@ -75,12 +77,15 @@ public class SlotInscriberOutput extends Slot
             }
             while (i > 0)
             {
+                if (ReagentControl.talismanCheck(this.player, new ItemStack(ItemInit.RUNE_CRAFT_TALISMAN, 1, 0), f))
+                {
+                    System.out.println("Found the Runecraft Talisman and stored XP in it.");
+                    System.out.println("The amount of EXP for that craft stored was: " + f);
+                }
+
                 int k = EntityXPOrb.getXPSplit(i);
                 i -= k;
-
                 this.player.world.spawnEntity(new EntityXPOrb(this.player.world, this.player.posX, this.player.posY + 0.5D, this.player.posZ + 0.5D, k));
-                System.out.println("The amount of EXP for that craft was: " + f);
-
             }
         }
         this.removeCount = 0;

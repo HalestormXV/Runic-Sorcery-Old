@@ -7,16 +7,21 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTBase;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
+import java.util.Optional;
 
 import static halestormxv.utility.Logging.getLogger;
 
 public class ReagentControl
 {
+    private static Optional<Float> xp;
+
     public static boolean checkReagentListAndConsume(EntityPlayer thePlayer, List<ItemStack> reagentsRequired)
     {
         IItemHandler playerInventory = thePlayer.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
@@ -171,6 +176,33 @@ public class ReagentControl
             return 0;
         }
         return 0;
+    }
+
+    public static boolean talismanCheck(EntityPlayer thePlayer, ItemStack itemStack, float Xp)
+    {
+        System.out.println("I am getting Called.");
+        Item reagentItem;
+        IItemHandler playerInventory = thePlayer.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        reagentItem = itemStack.getItem();
+        boolean hasReagent = thePlayer.inventory.hasItemStack(itemStack);
+        if (hasReagent)
+        {
+            for (int slot = 0; slot < playerInventory.getSlots(); slot++)
+            {
+                ItemStack stack = playerInventory.getStackInSlot(slot);
+                if (!stack.isEmpty() && stack.getItem().equals(reagentItem))
+                {
+                    if (stack.getTagCompound() != null)
+                    {
+                        NBTTagCompound nbt = stack.getTagCompound();
+                        float CurrentXp = nbt.getFloat("Xp");
+                        nbt.setFloat("Xp", CurrentXp + Xp);
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     public static void consumeReagent(ItemStack itemStack, int meta, int reagentCost, World worldIn, EntityPlayer entityLiving) {
