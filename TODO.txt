@@ -1,0 +1,7 @@
+IMMEDIATE
+- Created Alters to Enchant Basic Rune Essence.
+- Lock alter usage behind Rune Craft level.
+
+FUTURE (Not slated for Mod Release)
+- Work on basic spell system.
+
