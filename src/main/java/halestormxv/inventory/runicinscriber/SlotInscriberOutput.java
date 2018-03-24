@@ -59,6 +59,7 @@ public class SlotInscriberOutput extends Slot
         if(!this.player.world.isRemote)
         {
             int i = this.removeCount;
+            int loops = i;
             float f;
             if (this.player.isPotionActive(PotionReference.INSTANCE.RUNECRAFT_MASTERY))
             {
@@ -77,10 +78,11 @@ public class SlotInscriberOutput extends Slot
             }
             while (i > 0)
             {
-                if (ReagentControl.talismanCheck(this.player, new ItemStack(ItemInit.RUNE_CRAFT_TALISMAN, 1, 0), f))
+                while (loops != 0)
                 {
-                    System.out.println("Found the Runecraft Talisman and stored XP in it.");
-                    System.out.println("The amount of EXP for that craft stored was: " + f);
+                    if (ReagentControl.talismanCheck(this.player, new ItemStack(ItemInit.RUNE_CRAFT_TALISMAN, 1, 0), f)) {
+                        loops -= 1;
+                    }
                 }
 
                 int k = EntityXPOrb.getXPSplit(i);

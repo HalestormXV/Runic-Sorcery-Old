@@ -50,7 +50,6 @@ public class GeneralGuiHandler implements IGuiHandler {
 
             case Reference.GUI_RUNE_BLADE: {
                 ItemStack stack = player.getHeldItem(bladeHand);
-                System.out.println("Server: Opened the Runeblade Container");
                 IItemHandlerModifiable inventory = (IItemHandlerModifiable) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                 return new ContainerRuneBlade(player.inventory, bladeHand, inventory);
             }
@@ -79,7 +78,6 @@ public class GeneralGuiHandler implements IGuiHandler {
 
             case Reference.GUI_RUNE_BLADE: {
                 ItemStack stack = player.getHeldItem(bladeHand);
-                System.out.println("Client: Opened the Runeblade Inventory");
                 IItemHandlerModifiable inventory = (IItemHandlerModifiable) stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
                 return new GuiRuneBlade(player.inventory, bladeHand, inventory);
             }

@@ -5,6 +5,8 @@ import halestormxv.init.ItemInit;
 import halestormxv.utility.Reference;
 import halestormxv.utility.interfaces.IHasModel;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
@@ -56,9 +58,9 @@ public class ItemRuneBlade extends ItemSword implements IHasModel
     {
         ItemStack stackToSaveTo = player.getHeldItem(hand);
         NBTTagCompound nbt = new NBTTagCompound();
+
         if (!world.isRemote && player.isSneaking()) { player.openGui(RunicSorcery.instance, Reference.GUI_RUNE_BLADE, world, hand.ordinal(), -1, -1); }
         stackToSaveTo.deserializeNBT(nbt);
-
         return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
     }
 
@@ -79,6 +81,20 @@ public class ItemRuneBlade extends ItemSword implements IHasModel
         tooltip.add("\u00A7a" + "with sadness and tears.");
     }
 
+
+    /*@Override
+    public boolean hasEffect(ItemStack stack)
+    {
+        IItemHandler rbInventory = stack.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+        for (int slot = 0; slot < rbInventory.getSlots(); slot++)
+        {
+            ItemStack hasItem = rbInventory.getStackInSlot(slot);
+            if (!hasItem.isEmpty())
+                return true;
+        }
+        return false;
+    }*/
+
     /**Capability Handler for ItemStack
      * This is the handler to take care of storing
      * the different types of Runes within the Item.
@@ -86,7 +102,6 @@ public class ItemRuneBlade extends ItemSword implements IHasModel
     public static class RuneSlotHandler implements ICapabilityProvider, INBTSerializable<NBTTagCompound>
     {
         private final ItemStackHandler handler;
-
         private RuneSlotHandler() { handler = new ItemStackHandler( 4 ); }
 
         @Override
