@@ -24,6 +24,11 @@ import java.util.Random;
 
 public class EventHandler
 {
+    private static boolean isBetween(int value, int min, int max)
+    {
+        return((value > min) && (value < max));
+    }
+
     @SubscribeEvent
     public void livingDrops(LivingDropsEvent event)
     {
@@ -35,6 +40,13 @@ public class EventHandler
             {
                 Random random = new Random();
                 ItemStack itemStackToDrop = new ItemStack(ItemInit.DUST_MYSTERIUM, random.nextInt(3));
+                event.getDrops().add(new EntityItem(event.getEntity().world, event.getEntity().posX,
+                        event.getEntity().posY, event.getEntity().posZ, itemStackToDrop));
+            }
+            else if (isBetween(rareDrop, 20, 40) && (event.getSource().getTrueSource() instanceof EntityPlayer))
+            {
+                Random random = new Random();
+                ItemStack itemStackToDrop = new ItemStack(ItemInit.RUNE_ESSENCE, random.nextInt(2));
                 event.getDrops().add(new EntityItem(event.getEntity().world, event.getEntity().posX,
                         event.getEntity().posY, event.getEntity().posZ, itemStackToDrop));
             }

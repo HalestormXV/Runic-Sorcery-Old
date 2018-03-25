@@ -17,9 +17,12 @@ public class LootTableHandler
 
 
     private static LootEntry scryingOrb = new LootEntryItem(ItemInit.ITEM_SCRYING_ORB, 30, 15, new LootFunction[0], new LootCondition[0], Reference.MODID+":loot_scrying_orb");
+    private static LootEntry basicEssence = new LootEntryItem(ItemInit.RUNE_ESSENCE, 20, 10, new LootFunction[0], new LootCondition[0], Reference.MODID+":loot_basic_essence");
+
     @SubscribeEvent
     public void onLootTableLoad(final LootTableLoadEvent event)
     {
         if(event.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON)) { event.getTable().getPool("main").addEntry(scryingOrb); }
+        if(event.getName().equals(LootTableList.getAll().iterator().next())) { event.getTable().getPool("main").addEntry(basicEssence); }
     }
 }

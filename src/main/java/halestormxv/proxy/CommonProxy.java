@@ -18,6 +18,7 @@ import halestormxv.objects.items.spellblades.SpellBlade_Abilities;
 import halestormxv.utility.Reference;
 import halestormxv.capabilities.CapabilityHandler;
 import halestormxv.utility.handlers.EventHandler;
+import halestormxv.utility.handlers.LootTableHandler;
 import halestormxv.utility.handlers.SoundsHandler;
 import halestormxv.utility.handlers.TileEntityHandler;
 import halestormxv.capabilities.runecrafting.IRuneCraftLevel;
@@ -81,6 +82,7 @@ public class CommonProxy
         MinecraftForge.EVENT_BUS.register(new EventHandler());
         MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
         MinecraftForge.EVENT_BUS.register(new SpellBlade_Abilities());
+        MinecraftForge.EVENT_BUS.register(new LootTableHandler());
     }
 
     public void registerItemRenderer(Item item, int meta, String id) {}
