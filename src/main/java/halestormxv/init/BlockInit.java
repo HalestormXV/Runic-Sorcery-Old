@@ -2,6 +2,8 @@ package halestormxv.init;
 
 import halestormxv.objects.blocks.*;
 import halestormxv.objects.blocks.devices.inscriber.BlockRunicInscriber;
+import halestormxv.objects.blocks.runealtars.BlockRuneAltarFire;
+import halestormxv.objects.blocks.runealtars.BlockRuneAltarWater;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 

@@ -54,6 +54,11 @@
 		"subtitle": "effect.spell_cast_fizzle",
 		"sounds": [ {"name": "hsrs:entity/spell_fizzle", "stream": true }]
 	},
+	"effect.spell_fire_sfx": {
+		"category": "master",
+		"subtitle": "effect.spell_fire_sfx",
+		"sounds": [ {"name": "hsrs:blocks/fire_sfx", "stream": true }]
+	},
 
 	"music.mavismusic": { "sounds":[{"name": "hsrs:music/mavistheme", "stream": true}] },
 	"music.kishuu": { "sounds":[{"name": "hsrs:music/kishuumusic", "stream": true}] },
