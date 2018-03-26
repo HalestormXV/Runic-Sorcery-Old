@@ -40,5 +40,6 @@ public class BlockInit
     public static final Block MYSTIC_GRASS = new BlockGrasses("grass_mystic", Material.GRASS);
     public static final Block BLOCK_MYSTERIUM_PORTAL = new BlockMysteriumPortal("mysterium_portal");
     public static final Block BLOCK_OBELISK = new BlockObelisk("runic_obelisk", Material.ROCK);
-    //public static final Block BLOCK_ALTER_FIRE = new BlockRuneAlterFire("runealtar_fire", Material.ROCK);
+    public static final Block BLOCK_ALTAR_FIRE = new BlockRuneAltarFire("runealtar_fire", Material.ROCK);
+    public static final Block BLOCK_ALTAR_WATER = new BlockRuneAltarWater("runealtar_water", Material.ROCK);
 }

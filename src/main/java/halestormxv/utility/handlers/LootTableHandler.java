@@ -23,6 +23,5 @@ public class LootTableHandler
     public void onLootTableLoad(final LootTableLoadEvent event)
     {
         if(event.getName().equals(LootTableList.CHESTS_SIMPLE_DUNGEON)) { event.getTable().getPool("main").addEntry(scryingOrb); }
-        if(event.getName().equals(LootTableList.getAll().iterator().next())) { event.getTable().getPool("main").addEntry(basicEssence); }
     }
 }

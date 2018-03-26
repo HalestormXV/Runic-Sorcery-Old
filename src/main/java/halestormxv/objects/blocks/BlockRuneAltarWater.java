@@ -17,9 +17,9 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockRuneAlterFire extends Block implements IHasModel
+public class BlockRuneAltarWater extends Block implements IHasModel
 {
-    public BlockRuneAlterFire(String name, Material material)
+    public BlockRuneAltarWater(String name, Material material)
     {
         super(material);
         setUnlocalizedName(name);
