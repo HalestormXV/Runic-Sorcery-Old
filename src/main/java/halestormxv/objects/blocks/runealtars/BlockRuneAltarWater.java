@@ -3,6 +3,7 @@ package halestormxv.objects.blocks.runealtars;
 import halestormxv.RunicSorcery;
 import halestormxv.init.BlockInit;
 import halestormxv.init.ItemInit;
+import halestormxv.network.packets.PacketChatUtils;
 import halestormxv.objects.blocks.BlockRuneAltar;
 import halestormxv.utility.handlers.SoundsHandler;
 import halestormxv.utility.interfaces.IHasModel;
@@ -10,8 +11,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
@@ -28,6 +31,23 @@ public class BlockRuneAltarWater extends BlockRuneAltar implements IHasModel
     public BlockRuneAltarWater(String name, Material material)
     {
         super(name, material);
+    }
+
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        ItemStack stack = playerIn.getHeldItem(hand);
+        if (stack.getItem() == ItemInit.RUNE_ESSENCE && stack.getMetadata() == 0) {
+            worldIn.playSound(playerIn, playerIn.posX, playerIn.posY, playerIn.posZ, SoundsHandler.EFFECT_ESSENCE_CONVERT, SoundCategory.BLOCKS, 2.0F, 1.0F);
+            playerIn.inventory.clearMatchingItems(ItemInit.RUNE_ESSENCE, 0, 1, null);
+            ItemStack fireEssence = new ItemStack(ItemInit.RUNE_ESSENCE, 1, 2);
+            playerIn.inventory.addItemStackToInventory(fireEssence);
+            return true;
+        } else {
+            PacketChatUtils.sendNoSpam(playerIn, "\u00A73This alter will absorb the essence and change it to an " + "\u00A76Essence of Fire." +
+                    "\u00A73The altar may resonate with a Runecraft Talsiman in your inventory, which may allow you to receive RCXP.");
+        }
+        return false;
     }
 
     @Override

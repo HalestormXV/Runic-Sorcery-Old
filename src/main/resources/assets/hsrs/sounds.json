@@ -59,6 +59,11 @@
 		"subtitle": "effect.spell_fire_sfx",
 		"sounds": [ {"name": "hsrs:blocks/fire_sfx", "stream": true }]
 	},
+	"effect.essence_conversion": {
+		"category": "master",
+		"subtitle": "effect.essence_conversion",
+		"sounds": [ {"name": "hsrs:blocks/essence_conversion", "stream": true }]
+	},
 
 	"music.mavismusic": { "sounds":[{"name": "hsrs:music/mavistheme", "stream": true}] },
 	"music.kishuu": { "sounds":[{"name": "hsrs:music/kishuumusic", "stream": true}] },
