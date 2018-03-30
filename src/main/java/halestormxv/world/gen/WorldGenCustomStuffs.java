@@ -27,6 +27,9 @@ public class WorldGenCustomStuffs implements IWorldGenerator
 {
     /*###STRUCTURES###*/
     private static final WorldGenStructure CULTIST_HUT = new WorldGenStructure("cultist_hut");
+    private static final WorldGenStructure ALTAR_OF_FIRE = new WorldGenStructure("altar_fire");
+    private static final WorldGenStructure ALTAR_OF_EARTH = new WorldGenStructure("altar_earth");
+    private static final WorldGenStructure ALTAR_OF_AIR = new WorldGenStructure("altar_air");
 
     /*###TREES###*/
     private final WorldGenerator LUPRESIUM_TREE = new WorldGenLupresiumTree();

@@ -40,11 +40,11 @@ public class BlockRuneAltarWater extends BlockRuneAltar implements IHasModel
         if (stack.getItem() == ItemInit.RUNE_ESSENCE && stack.getMetadata() == 0) {
             worldIn.playSound(playerIn, playerIn.posX, playerIn.posY, playerIn.posZ, SoundsHandler.EFFECT_ESSENCE_CONVERT, SoundCategory.BLOCKS, 2.0F, 1.0F);
             playerIn.inventory.clearMatchingItems(ItemInit.RUNE_ESSENCE, 0, 1, null);
-            ItemStack fireEssence = new ItemStack(ItemInit.RUNE_ESSENCE, 1, 2);
-            playerIn.inventory.addItemStackToInventory(fireEssence);
+            ItemStack waterEssence = new ItemStack(ItemInit.RUNE_ESSENCE, 1, 2);
+            playerIn.inventory.addItemStackToInventory(waterEssence);
             return true;
         } else {
-            PacketChatUtils.sendNoSpam(playerIn, "\u00A73This alter will absorb the essence and change it to an " + "\u00A76Essence of Fire." +
+            PacketChatUtils.sendNoSpam(playerIn, "\u00A73This alter will absorb the essence and change it to an " + "\u00A76Essence of Water." +
                     "\u00A73The altar may resonate with a Runecraft Talsiman in your inventory, which may allow you to receive RCXP.");
         }
         return false;
