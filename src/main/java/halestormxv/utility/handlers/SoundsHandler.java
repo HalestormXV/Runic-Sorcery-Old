@@ -9,7 +9,7 @@ public class SoundsHandler
 {
     public static SoundEvent ENTITY_PHANTOM_AMBIENT, ENTITY_PHANTOM_HURT, ENTITY_PHANTOM_DEATH;
     public static SoundEvent  ENTITY_CULTIST_AMBIENT, ENTITY_CULTIST_HURT, ENTITY_CULTIST_DEATH, ENTITY_CULTIST_SPECIAL;
-    public static SoundEvent EFFECT_RUNIC_INSCRIBER, EFFECT_SPELL_FIZZLE, EFFECT_SPELL_FIRE_SFX, EFFECT_ESSENCE_CONVERT;
+    public static SoundEvent EFFECT_RUNIC_INSCRIBER, EFFECT_SPELL_FIZZLE, EFFECT_SPELL_FIRE_SFX, EFFECT_ESSENCE_CONVERT, WIND_SFX;
 
     public static void registerSounds()
     {
@@ -26,6 +26,7 @@ public class SoundsHandler
         EFFECT_SPELL_FIZZLE = registerSound("effect.spell_cast_fizzle");
         EFFECT_SPELL_FIRE_SFX = registerSound("effect.spell_fire_sfx");
         EFFECT_ESSENCE_CONVERT = registerSound("effect.essence_conversion");
+        WIND_SFX = registerSound("effect.wind_sfx");
     }
 
     private static SoundEvent registerSound(String name)

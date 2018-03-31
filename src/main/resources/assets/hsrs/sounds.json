@@ -64,6 +64,11 @@
 		"subtitle": "effect.essence_conversion",
 		"sounds": [ {"name": "hsrs:blocks/essence_conversion", "stream": true }]
 	},
+	"effect.wind_sfx": {
+		"category": "master",
+		"subtitle": "effect.wind_sfx",
+		"sounds": [ {"name": "hsrs:blocks/wind_sfx", "stream": true }]
+	},
 
 	"music.mavismusic": { "sounds":[{"name": "hsrs:music/mavistheme", "stream": true}] },
 	"music.kishuu": { "sounds":[{"name": "hsrs:music/kishuumusic", "stream": true}] },

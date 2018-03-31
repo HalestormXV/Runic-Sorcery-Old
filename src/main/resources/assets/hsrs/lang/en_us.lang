@@ -149,6 +149,7 @@ tile.runic_obelisk.name=Small Runic Obelisk
 tile.runealtar_fire.name=Altar of Fire
 tile.runealtar_water.name=Altar of Water
 tile.runealtar_earth.name=Altar of Earth
+tile.runealtar_air.name=Altar of Air
 
 #ORES
 tile.ore_siegre.name=Siegre Ore
