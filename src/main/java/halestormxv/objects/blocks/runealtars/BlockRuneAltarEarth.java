@@ -24,10 +24,10 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import java.util.Random;
 
 
-public class BlockRuneAltarFire extends BlockRuneAltar implements IHasModel {
+public class BlockRuneAltarEarth extends BlockRuneAltar implements IHasModel {
     private static AxisAlignedBB RUNE_ALTAR_FIRE_AABB = new AxisAlignedBB(0.0875D, 0, 0.0875D, 0.7125D, 0.625D, 0.7125D);
 
-    public BlockRuneAltarFire(String name, Material material) {
+    public BlockRuneAltarEarth(String name, Material material) {
         super(name, material);
     }
 
@@ -37,11 +37,11 @@ public class BlockRuneAltarFire extends BlockRuneAltar implements IHasModel {
         if (stack.getItem() == ItemInit.RUNE_ESSENCE && stack.getMetadata() == 0) {
             worldIn.playSound(playerIn, playerIn.posX, playerIn.posY, playerIn.posZ, SoundsHandler.EFFECT_ESSENCE_CONVERT, SoundCategory.BLOCKS, 2.0F, 1.0F);
             playerIn.inventory.clearMatchingItems(ItemInit.RUNE_ESSENCE, 0, 1, null);
-            ItemStack fireEssence = new ItemStack(ItemInit.RUNE_ESSENCE, 1, 3);
-            playerIn.inventory.addItemStackToInventory(fireEssence);
+            ItemStack earthEssence = new ItemStack(ItemInit.RUNE_ESSENCE, 1, 4);
+            playerIn.inventory.addItemStackToInventory(earthEssence);
             return true;
         } else {
-            PacketChatUtils.sendNoSpam(playerIn, "\u00A73This alter will absorb basic essence and change it to an " + "\u00A76Essence of Fire." +
+            PacketChatUtils.sendNoSpam(playerIn, "\u00A73This alter will absorb basic essence and change it to an " + "\u00A76Essence of Earth." +
                     "\u00A73The altar may resonate with a Runecraft Talsiman in your inventory, which may allow you to receive RCXP.");
         }
         return false;
@@ -61,10 +61,10 @@ public class BlockRuneAltarFire extends BlockRuneAltar implements IHasModel {
         double d2 = (double) pos.getZ() + 0.2D;
         double d4 = rand.nextDouble() * 0.6D - 0.3D;
         if (rand.nextDouble() < 0.05D) {
-            worldIn.playSound((double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, SoundsHandler.EFFECT_SPELL_FIRE_SFX,
+            worldIn.playSound((double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, SoundsHandler.EFFECT_SPELL_FIZZLE,
                     SoundCategory.BLOCKS, 0.5F, 1.0F, true);
         }
-        worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
-        worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
+        worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
+        worldIn.spawnParticle(EnumParticleTypes.PORTAL, d0 - d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
     }
 }

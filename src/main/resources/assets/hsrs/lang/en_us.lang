@@ -148,6 +148,7 @@ tile.grass_mystic.name=Mystic Touched Grass
 tile.runic_obelisk.name=Small Runic Obelisk
 tile.runealtar_fire.name=Altar of Fire
 tile.runealtar_water.name=Altar of Water
+tile.runealtar_earth.name=Altar of Earth
 
 #ORES
 tile.ore_siegre.name=Siegre Ore

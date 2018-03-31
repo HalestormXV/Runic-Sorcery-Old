@@ -44,7 +44,7 @@ public class BlockRuneAltarWater extends BlockRuneAltar implements IHasModel
             playerIn.inventory.addItemStackToInventory(waterEssence);
             return true;
         } else {
-            PacketChatUtils.sendNoSpam(playerIn, "\u00A73This alter will absorb the essence and change it to an " + "\u00A76Essence of Water." +
+            PacketChatUtils.sendNoSpam(playerIn, "\u00A73This alter will absorb basic essence and change it to an " + "\u00A76Essence of Water." +
                     "\u00A73The altar may resonate with a Runecraft Talsiman in your inventory, which may allow you to receive RCXP.");
         }
         return false;

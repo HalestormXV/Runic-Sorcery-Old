@@ -2,6 +2,7 @@ package halestormxv.init;
 
 import halestormxv.objects.blocks.*;
 import halestormxv.objects.blocks.devices.inscriber.BlockRunicInscriber;
+import halestormxv.objects.blocks.runealtars.BlockRuneAltarEarth;
 import halestormxv.objects.blocks.runealtars.BlockRuneAltarFire;
 import halestormxv.objects.blocks.runealtars.BlockRuneAltarWater;
 import net.minecraft.block.Block;
@@ -44,4 +45,5 @@ public class BlockInit
     public static final Block BLOCK_OBELISK = new BlockObelisk("runic_obelisk", Material.ROCK);
     public static final Block BLOCK_ALTAR_FIRE = new BlockRuneAltarFire("runealtar_fire", Material.ROCK);
     public static final Block BLOCK_ALTAR_WATER = new BlockRuneAltarWater("runealtar_water", Material.ROCK);
+    public static final Block BLOCK_ALTAR_EARTH = new BlockRuneAltarEarth("runealtar_earth", Material.ROCK);
 }
