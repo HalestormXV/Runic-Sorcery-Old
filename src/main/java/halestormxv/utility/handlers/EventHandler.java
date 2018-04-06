@@ -9,6 +9,7 @@ import halestormxv.init.ItemInit;
 import halestormxv.network.packets.PacketChatUtils;
 import halestormxv.capabilities.runecrafting.IRuneCraftLevel;
 import halestormxv.capabilities.spellcastlevel.ISpellCastLevel;
+import halestormxv.utility.HighQualityRandom;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,7 +35,7 @@ public class EventHandler
     {
         if (event.getEntity() instanceof EntityMob)
         {
-            Random dChance = new Random();
+            HighQualityRandom dChance = new HighQualityRandom();
             int rareDrop = dChance.nextInt(100) + 1;
             if (rareDrop < 20 && (event.getSource().getTrueSource() instanceof EntityPlayer))
             {

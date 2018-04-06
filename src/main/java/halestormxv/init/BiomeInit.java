@@ -18,19 +18,25 @@ public class BiomeInit
 
     public static void registerBiomes()
     {
-        initBiome(LUPRESIUM_FOREST, 20,"Lupresium Touched", BiomeType.WARM, Type.HILLS, Type.MAGICAL, Type.DRY);
-        initBiome(MYSTIC_LANDS, 14, "Mystic Lands", BiomeType.WARM, Type.MAGICAL, Type.SPOOKY, Type.LUSH );
+        initBiomeNoOverworld(LUPRESIUM_FOREST,"Lupresium Touched", Type.HILLS, Type.MAGICAL, Type.DRY);
+        initBiomeNoOverworld(MYSTIC_LANDS, "Mystic Lands", Type.MAGICAL, Type.SPOOKY, Type.LUSH );
     }
 
     private static Biome initBiome(Biome biome, int weight, String name, BiomeType biomeType, Type... types)
     {
         biome.setRegistryName(name);
         ForgeRegistries.BIOMES.register(biome);
-        Logging.getLogger().info("Oh boy, the biomes have been registered!");
         BiomeDictionary.addTypes(biome, types);
         BiomeManager.addBiome(biomeType, new BiomeEntry(biome, weight));
         BiomeManager.addSpawnBiome(biome);
-        Logging.getLogger().info("Awww snap! Now they were added. Locked and loaded.");
+        return biome;
+    }
+
+    private static Biome initBiomeNoOverworld(Biome biome, String name, Type... types)
+    {
+        biome.setRegistryName(name);
+        ForgeRegistries.BIOMES.register(biome);
+        BiomeDictionary.addTypes(biome, types);
         return biome;
     }
 }

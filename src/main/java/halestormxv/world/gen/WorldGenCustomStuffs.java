@@ -2,6 +2,7 @@ package halestormxv.world.gen;
 
 import halestormxv.init.BlockInit;
 import halestormxv.objects.blocks.BlockDirts;
+import halestormxv.utility.HighQualityRandom;
 import halestormxv.utility.handlers.EnumHandlerWood;
 import halestormxv.world.biomes.BiomeLupresiumForest;
 import halestormxv.world.biomes.BiomeMysticLands;
@@ -19,17 +20,14 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+
 import java.util.*;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-public class WorldGenCustomStuffs implements IWorldGenerator
-{
+public class WorldGenCustomStuffs implements IWorldGenerator {
     /*###STRUCTURES###*/
-    private static final WorldGenStructure CULTIST_HUT = new WorldGenStructure("cultist_hut");
-    private static final WorldGenStructure ALTAR_OF_FIRE = new WorldGenStructure("altar_fire");
-    private static final WorldGenStructure ALTAR_OF_EARTH = new WorldGenStructure("altar_earth");
-    private static final WorldGenStructure ALTAR_OF_AIR = new WorldGenStructure("altar_air");
+    //private static final WorldGenStructure ALTAR_OF_FIRE = new WorldGenStructure("altar_fire");
 
     /*###TREES###*/
     private final WorldGenerator LUPRESIUM_TREE = new WorldGenLupresiumTree();
@@ -38,15 +36,16 @@ public class WorldGenCustomStuffs implements IWorldGenerator
     private Block mysticDirt = BlockInit.DIRT.getDefaultState().withProperty(BlockDirts.VARIANT, EnumHandlerWood.EnumTypeWood.MYSTIC).getBlock();
 
     @Override
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider)
-    {
-        switch(world.provider.getDimension())
-        {
+    //Greater the Chance the Less Likely it is to Spawn. If chance is 100 then there is a 1 in 100 chance of equaling 0. Reaching 0 will trigger the spawn.
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
+        switch (world.provider.getDimension()) {
             case -1:
                 break;
 
             case 0:
-                generateStructures(CULTIST_HUT, world, random, chunkX, chunkZ, 80, Blocks.GRASS, getBiomeList().toArray(new Class[getBiomeList().size()]));
+                generateStructures(new WorldGenStructure("cultist_hut"), world, random, chunkX, chunkZ, 80, Blocks.GRASS, getBiomeList().toArray(new Class[getBiomeList().size()]));
+                generateRuneAltar(new WorldGenStructure("air_temple"), world, random, chunkX, chunkZ, 120, 98, 176);
+                generateRuneAltar(new WorldGenStructure("earth_temple"), world, random, chunkX, chunkZ, 180, 84, 152);
                 generateTrees(LUPRESIUM_TREE, world, random, chunkX, chunkZ, 10, lupresiumDirt, BiomeLupresiumForest.class);
                 generateTrees(MYSTIC_TREE, world, random, chunkX, chunkZ, 10, mysticDirt, BiomeMysticLands.class);
                 break;
@@ -61,68 +60,67 @@ public class WorldGenCustomStuffs implements IWorldGenerator
 
     }
 
-    //Greater the Chance the Less Likely it is to Spawn. If chance is 100 then there is a 1 in 100 chance of equaling 0 which will trigger the spawn.
-    private void generateStructures(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Block topBlock, Class<?>... classes)
-    {
+    private void generateStructures(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Block topBlock, Class<?>... classes) {
+        HighQualityRandom highQualityRandom = new HighQualityRandom();
         ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
+        int x = (chunkX * 16) + highQualityRandom.nextInt(15);
+        int z = (chunkZ * 16) + highQualityRandom.nextInt(15);
+        int y = calculateGenerationHeight(world, x, z, topBlock);
+        BlockPos pos = new BlockPos(x, y, z);
+        Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
+        if (world.getWorldType() != WorldType.FLAT) {
+            if (classesList.contains(biome) || classesList.isEmpty()) {
+                if (highQualityRandom.nextInt(chance) == 0) {
+                    generator.generate(world, highQualityRandom, pos);
+                }
+            }
+        }
+    }
 
+    private void generateRuneAltar(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, int yMin, int yMax, Class<?>... classes) {
+        ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
+        HighQualityRandom highQualityRandom = new HighQualityRandom();
         int x = (chunkX * 16) + random.nextInt(15);
         int z = (chunkZ * 16) + random.nextInt(15);
-        int y = calculateGenerationHeight(world, x, z, topBlock);
-        BlockPos pos = new BlockPos(x,y,z);
+        int y = highQualityRandom.nextInt(yMax - yMin) + yMin;
+        BlockPos pos = new BlockPos(x, y, z);
         Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
-
-        if(world.getWorldType() != WorldType.FLAT)
-        {
-            if(classesList.contains(biome) || classesList.isEmpty())
-            {
-                if(random.nextInt(chance) == 0)
-                {
-                    //Greater the Chance the Less Likely to spawn. If chance = 100 there is a 1 in a 100 chance of it being 0
+        if (world.getWorldType() != WorldType.FLAT) {
+            if (classesList.contains(biome) || classesList.isEmpty()) {
+                if (random.nextInt(chance) == 0) {
                     generator.generate(world, random, pos);
                 }
             }
         }
     }
 
-    private void generateTrees(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Block topBlock, Class<?>... classes)
-    {
+    private void generateTrees(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Block topBlock, Class<?>... classes) {
         ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
-
         int x = (chunkX * 16) + random.nextInt(15);
         int z = (chunkZ * 16) + random.nextInt(15);
         int y = calculateGenerationHeight(world, x, z, topBlock);
-        BlockPos pos = new BlockPos(x,y,z);
+        BlockPos pos = new BlockPos(x, y, z);
         Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
-
-        if(world.getWorldType() != WorldType.FLAT)
-        {
-            if(classesList.contains(biome))
-            {
-                if(random.nextInt(chance) == 0)
-                {
-                    //Greater the Chance the Less Likely to spawn. If chance = 100 there is a 1 in a 100 chance of it being 0
+        if (world.getWorldType() != WorldType.FLAT) {
+            if (classesList.contains(biome)) {
+                if (random.nextInt(chance) == 0) {
                     generator.generate(world, random, pos);
                 }
             }
         }
     }
 
-    private static int calculateGenerationHeight(World world, int x, int z, Block topBlock)
-    {
+    private static int calculateGenerationHeight(World world, int x, int z, Block topBlock) {
         int y = world.getHeight();
         boolean foundGround = false;
-        while (!foundGround && y-- >= 0)
-        {
-            Block block = world.getBlockState(new BlockPos(x,y,z)).getBlock();
+        while (!foundGround && y-- >= 0) {
+            Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
             foundGround = block == topBlock;
         }
         return y;
     }
 
-
-    private static List<Class> getBiomeList()
-    {
+    private static List<Class> getBiomeList() {
         return ForgeRegistries.BIOMES.getValues().stream().map(Biome::getBiomeClass).collect(Collectors.toList());
     }
 }

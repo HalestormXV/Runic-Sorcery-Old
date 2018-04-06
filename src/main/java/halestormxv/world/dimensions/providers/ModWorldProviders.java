@@ -1,8 +1,11 @@
 package halestormxv.world.dimensions.providers;
 
 import halestormxv.init.BiomeInit;
+import halestormxv.utility.Reference;
+import halestormxv.utility.misc.RS_SkyRender;
 import halestormxv.world.dimensions.ModDimensions;
 import halestormxv.world.dimensions.gen.MysteriumChunkGenerator;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
@@ -10,8 +13,11 @@ import net.minecraft.world.WorldProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nullable;
 
 public class ModWorldProviders extends WorldProvider
 {
@@ -32,8 +38,15 @@ public class ModWorldProviders extends WorldProvider
     @Override
     public IChunkGenerator createChunkGenerator() { return new MysteriumChunkGenerator(world); }
 
-    /*@Override
-    public float calculateCelestialAngle(long par1, float par3) { return 0.75F; }*/
+    @Override
+    public float calculateCelestialAngle(long par1, float par3) {
+        int dimensionSelection = ModDimensions.mysteriumDimension.getId();
+        if (dimensionSelection == mystID)
+        {
+            return 0.75F;
+        }
+        return 0;
+    }
 
     @Override
     protected void init()
@@ -88,13 +101,13 @@ public class ModWorldProviders extends WorldProvider
     @Override
     public boolean isSkyColored() { return true; }
 
-    /*
-    @SideOnly(Side.CLIENT)
+
+    /*@SideOnly(Side.CLIENT)
     @Nullable
     @Override
     public IRenderHandler getSkyRenderer()
     {
         return new RS_SkyRender(new ResourceLocation(Reference.MODID,"textures/environment/mysterium_sky.png"), 221, 153, 255);
-    }
-    */
+    }*/
+
 }
