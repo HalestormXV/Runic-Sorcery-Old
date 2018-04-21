@@ -43,9 +43,9 @@ public class WorldGenCustomStuffs implements IWorldGenerator {
                 break;
 
             case 0:
-                generateStructures(new WorldGenStructure("cultist_hut"), world, random, chunkX, chunkZ, 80, Blocks.GRASS, getBiomeList().toArray(new Class[getBiomeList().size()]));
-                generateRuneAltar(new WorldGenStructure("air_temple"), world, random, chunkX, chunkZ, 120, 98, 176);
-                generateRuneAltar(new WorldGenStructure("earth_temple"), world, random, chunkX, chunkZ, 180, 84, 152);
+                //generateStructures(new WorldGenStructure("cultist_hut"), world, random, chunkX, chunkZ , 10, getBiomeList().toArray(new Class[getBiomeList().size()]));
+                generateRuneAltar(new WorldGenStructure("air_temple"), world, random, chunkX, chunkZ, 360, 98, 176);
+                generateRuneAltar(new WorldGenStructure("earth_temple"), world, random, chunkX , chunkZ, 280, 84, 152);
                 generateTrees(LUPRESIUM_TREE, world, random, chunkX, chunkZ, 10, lupresiumDirt, BiomeLupresiumForest.class);
                 generateTrees(MYSTIC_TREE, world, random, chunkX, chunkZ, 10, mysticDirt, BiomeMysticLands.class);
                 break;
@@ -58,23 +58,6 @@ public class WorldGenCustomStuffs implements IWorldGenerator {
 
         }
 
-    }
-
-    private void generateStructures(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Block topBlock, Class<?>... classes) {
-        HighQualityRandom highQualityRandom = new HighQualityRandom();
-        ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
-        int x = (chunkX * 16) + highQualityRandom.nextInt(15);
-        int z = (chunkZ * 16) + highQualityRandom.nextInt(15);
-        int y = calculateGenerationHeight(world, x, z, topBlock);
-        BlockPos pos = new BlockPos(x, y, z);
-        Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
-        if (world.getWorldType() != WorldType.FLAT) {
-            if (classesList.contains(biome) || classesList.isEmpty()) {
-                if (highQualityRandom.nextInt(chance) == 0) {
-                    generator.generate(world, highQualityRandom, pos);
-                }
-            }
-        }
     }
 
     private void generateRuneAltar(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, int yMin, int yMax, Class<?>... classes) {
@@ -98,7 +81,7 @@ public class WorldGenCustomStuffs implements IWorldGenerator {
         ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
         int x = (chunkX * 16) + random.nextInt(15);
         int z = (chunkZ * 16) + random.nextInt(15);
-        int y = calculateGenerationHeight(world, x, z, topBlock);
+        int y = calculateGenerationHeight(world, x, z);
         BlockPos pos = new BlockPos(x, y, z);
         Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
         if (world.getWorldType() != WorldType.FLAT) {
@@ -110,12 +93,21 @@ public class WorldGenCustomStuffs implements IWorldGenerator {
         }
     }
 
-    private static int calculateGenerationHeight(World world, int x, int z, Block topBlock) {
+    private static int calculateGenerationHeight(World world, int x, int z) {
         int y = world.getHeight();
         boolean foundGround = false;
-        while (!foundGround && y-- >= 0) {
-            Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
-            foundGround = block == topBlock;
+        while (!foundGround && y-- >= 64)
+        {
+            Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+            foundGround =  blockAt == Blocks.WATER
+                    || blockAt == Blocks.FLOWING_WATER
+                    || blockAt == Blocks.GRASS
+                    || blockAt == Blocks.SAND
+                    || blockAt == Blocks.SNOW
+                    || blockAt == Blocks.SNOW_LAYER
+                    || blockAt == Blocks.GLASS
+                    || blockAt == Blocks.DIRT
+                    || blockAt == Blocks.MYCELIUM;
         }
         return y;
     }
@@ -124,3 +116,38 @@ public class WorldGenCustomStuffs implements IWorldGenerator {
         return ForgeRegistries.BIOMES.getValues().stream().map(Biome::getBiomeClass).collect(Collectors.toList());
     }
 }
+                          //===================================================\\
+                         //-------------------REFERENCE POINT-------------------\\
+                        //=======================================================\\
+    /*private void generateStructures(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Class<?>... classes) {
+        HighQualityRandom highQualityRandom = new HighQualityRandom();
+        ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
+        int x = (chunkX * 8) + highQualityRandom.nextInt(15);
+        int z = (chunkZ * 8) + highQualityRandom.nextInt(15);
+        float y = calculateGenerationHeight(world, x, z);
+        for (int xSize = 0; xSize < 9; x++)
+        {
+            for (int zSize = 0; zSize < 7; z++)
+            {
+                int oldY = Math.round(y);
+                y += calculateGenerationHeight(world, x + xSize, z + zSize);
+                y /= 2;
+                if (Math.round(y) != oldY)
+                {
+                    return;
+                }
+            }
+        }
+        int struc_y = (int) y - 1;
+        BlockPos pos = new BlockPos(x, struc_y, z);
+        Class<?> biome = world.provider.getBiomeForCoords(pos).getClass();
+        if (world.getWorldType() != WorldType.FLAT) {
+            if (classesList.contains(biome) || classesList.isEmpty()) {
+                if (highQualityRandom.nextInt(chance) == 0)
+                {
+
+                    generator.generate(world, highQualityRandom, pos);
+                }
+            }
+        }
+    }*/

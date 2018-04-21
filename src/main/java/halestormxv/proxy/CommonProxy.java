@@ -1,5 +1,6 @@
 package halestormxv.proxy;
 
+import halestormxv.abilities.RuneBlade_Abilities;
 import halestormxv.capabilities.learnedspells.ILearnedSpells;
 import halestormxv.capabilities.learnedspells.LearnedSpellsMain;
 import halestormxv.capabilities.runebag.RuneBagFunctions;
@@ -24,6 +25,7 @@ import halestormxv.utility.handlers.TileEntityHandler;
 import halestormxv.capabilities.runecrafting.IRuneCraftLevel;
 import halestormxv.capabilities.spellcastlevel.ISpellCastLevel;
 import halestormxv.world.dimensions.ModDimensions;
+import halestormxv.world.gen.WorldGenAdvanced;
 import halestormxv.world.gen.WorldGenCustomOres;
 import halestormxv.world.gen.WorldGenCustomStuffs;
 import net.minecraft.block.Block;
@@ -62,6 +64,7 @@ public class CommonProxy
     {
         GameRegistry.registerWorldGenerator(new WorldGenCustomOres(), 0);
         GameRegistry.registerWorldGenerator(new WorldGenCustomStuffs(), 0);
+        GameRegistry.registerWorldGenerator(new WorldGenAdvanced(), 1);
         BiomeInit.registerBiomes();
         EntityInit.registerEntities();
         CapabilityManager.INSTANCE.register(IRuneCraftLevel.class, new rcLvl_Storage(), rcLvl_Functions.class);
@@ -80,9 +83,10 @@ public class CommonProxy
     public void postInit(FMLPostInitializationEvent e)
     {
         MinecraftForge.EVENT_BUS.register(new EventHandler());
-        MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
-        MinecraftForge.EVENT_BUS.register(new SpellBlade_Abilities());
         MinecraftForge.EVENT_BUS.register(new LootTableHandler());
+        MinecraftForge.EVENT_BUS.register(new CapabilityHandler());
+        MinecraftForge.EVENT_BUS.register(new RuneBlade_Abilities());
+        MinecraftForge.EVENT_BUS.register(new SpellBlade_Abilities());
     }
 
     public void registerItemRenderer(Item item, int meta, String id) {}
