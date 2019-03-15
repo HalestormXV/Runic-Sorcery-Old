@@ -48,4 +48,5 @@ public class BlockInit
     public static final Block BLOCK_ALTAR_WATER = new BlockRuneAltarWater("runealtar_water", Material.ROCK);
     public static final Block BLOCK_ALTAR_EARTH = new BlockRuneAltarEarth("runealtar_earth", Material.ROCK);
     public static final Block BLOCK_ALTAR_AIR = new BlockRuneAltarAir("runealtar_air", Material.ROCK);
+    public static final Block BLOCK_RCXP_ALTAR = new BlockRCXPAltar("rcxp_altar", Material.IRON);
 }

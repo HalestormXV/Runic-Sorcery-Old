@@ -37,17 +37,10 @@ public class WorldGenAdvanced extends WorldGenerator implements IWorldGenerator 
 
         switch (world.provider.getDimension())
         {
-            case -1:
-                generateNether(world, rand, blockX + 8, blockZ + 8);
-                break;
             case 0:
                 //Higher Number = Less Chance to Spawn
                 generateOverworld(world, rand, 160, blockX + 8, blockZ + 8);
                 break;
-            case 1:
-                generateEnd(world, rand, blockX + 8, blockZ + 8);
-                break;
-
         }
 
     }
@@ -62,10 +55,6 @@ public class WorldGenAdvanced extends WorldGenerator implements IWorldGenerator 
         structure.generate(world, rand, pos);
         }
     }
-
-    private void generateNether(World world, Random rand, int chunkX, int chunkZ) {}
-    private void generateEnd(World world, Random rand, int chunkX, int chunkZ) {}
-
 
     private void addOreSpawn(IBlockState block, World world, Random random, int blockXPos, int blockZPos, int maxX, int maxZ, int maxVeinSize, int chanceToSpawn, int minY, int maxY)
     {
